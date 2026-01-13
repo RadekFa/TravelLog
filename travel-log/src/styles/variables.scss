@@ -1,0 +1,38 @@
+
+
+//-----------colors-----------
+$color-dark-primary: #042940;     // Hluboká Tmavá Námořnická
+$color-dark-secondary: #004a8f;   // Tmavě Tyrkysová
+$color-accent-light: #dbf3fc;    // Tlumená Limetková Zelená
+$color-accent-strong: #2bc3ff;  
+
+// DBF227
+// ----------------------------------------------------
+// 2. Systémové a neutrální barvy
+// ----------------------------------------------------
+$color-white: #ffffff;
+$color-black: #000000;
+$color-text-dark: #343a40;      
+$color-text-light: $color-white; 
+$color-error: #ff4d4f;           
+$color-border: #cccccc;          
+
+//-----------fonts-----------
+$font-family-primary: Helvetica, Arial, sans-serif;
+$font-family-header: 'Oswald', sans-serif;
+$golden-ratio: 1.618;
+$base-font-size: 16px;
+$letter-spacing-button: 2px;
+$letter-spacing-header: -1px;
+
+
+// Ostatní
+$border-radius: 8px;
+$box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
+$box-shadow-light: 2px 2px 6px rgba(255, 255, 255, 0.308);
+$shadow-hover: 0px 0px 6px $color-accent-strong;
+
+//zatřesení
+@mixin apply-shake-animation($duration: 0.4s) {
+    animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both;
+}

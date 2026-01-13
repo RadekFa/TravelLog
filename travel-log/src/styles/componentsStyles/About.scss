@@ -1,0 +1,70 @@
+@use '../variables.scss' as *;
+
+.about {
+  width: 95vw;
+  background: #fff;
+  box-shadow: $box-shadow;
+  border-radius: $border-radius;
+  margin: 30px auto;
+
+  h2 {
+    font-family: $font-family-header;
+    font-size: $base-font-size * $golden-ratio;
+    color: $color-text-dark;
+    text-shadow: $box-shadow;
+    text-align: left;
+    margin: 0;
+    margin-left: 20px;
+    padding-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid $color-border;
+    margin: 0 20px;
+  }
+
+  .about-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: $font-family-primary;
+    font-size: $base-font-size;
+    color: $color-text-dark;
+    padding: 15px 20px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: #ececec;
+    }
+
+    &:active {
+      background-color: #d4d4d4;
+    }
+
+    .about-content {
+      display: flex;
+      align-items: center;
+      gap: 12px; // Mezera mezi ikonou a textem
+
+      .about-svg {
+        width: 20px;
+        height: 20px;
+        color: $color-accent-strong; // Vaše požadovaná barva
+        flex-shrink: 0;
+      }
+    }
+  }
+
+  #help-support {
+    padding-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 710px) {
+  .about {
+    width: 90vw;
+  }
+}

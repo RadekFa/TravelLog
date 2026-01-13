@@ -1,0 +1,110 @@
+@use "../variables.scss" as *;
+@use "sass:math";
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+
+    .input-group {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        gap: 5px;
+        transition: transform 0.3s ease;
+
+        &.shake-animation {
+            @include apply-shake-animation;
+        }
+
+        label { 
+            font-size: $base-font-size; 
+            font-weight: 600; 
+            color: $color-text-dark; 
+            padding-left: 5px; 
+        }
+
+        input {
+            padding: 12px 15px;
+            border-radius: $border-radius;
+            border: 2px solid rgba($color-accent-strong, 0.1);
+            background: rgba(255, 255, 255, 0.5);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: $font-family-primary;
+            
+            &::placeholder {
+                color: rgba($color-text-dark, 0.4);
+            }
+            
+            &:focus { 
+                outline: none; 
+                border-color: $color-accent-strong; 
+                background: white; 
+                box-shadow: 0 4px 12px rgba($color-accent-strong, 0.1);
+            }
+
+            &.error-field { 
+                border-color: $color-error; 
+                background: rgba(255, 77, 79, 0.05);
+            }
+        }
+
+        .error-text { 
+            color: $color-error; 
+            font-size: math.div($base-font-size, $golden-ratio);
+            font-weight: 500;
+            margin-top: 2px; 
+            padding-left: 5px;
+            animation: fadeIn 0.3s ease-out;
+        }
+    }
+
+    .submit-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 48px;
+        margin-top: 10px;
+        padding: 14px;
+        background: $color-accent-strong;
+        color: white;
+        border: none;
+        border-radius: $border-radius;
+        font-weight: 600;
+        font-size: $base-font-size;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba($color-accent-strong, 0.3);
+        
+        &:hover:not(:disabled) { 
+            background: hsl(196, 100%, 49%);
+            transform: translateY(-2px); 
+        }
+
+        &:disabled { 
+            opacity: 0.7; 
+            cursor: not-allowed; 
+        }
+
+        .loader {
+            width: 20px;
+            height: 20px;
+            border: 2.5px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #ffffff;
+            animation: spin 0.8s linear infinite;
+        }
+    }
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes shake {
+    10%, 90% { transform: translate3d(-1px, 0, 0); }
+    20%, 80% { transform: translate3d(2px, 0, 0); }
+    30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+    40%, 60% { transform: translate3d(4px, 0, 0); }
+}

@@ -1,0 +1,96 @@
+@use '../variables.scss' as *;
+
+.achievements {
+  width: 95vw;
+  border-radius: $border-radius;
+  background: #fff;
+  box-shadow: $box-shadow;
+  margin: 0 auto;
+  margin-top: 230px;
+
+  .ach-divider { 
+    border: none; 
+    border-top: 1px solid $color-border;
+    margin: 0;
+  }
+  
+  h2 {
+    font-family: $font-family-header;
+    color: $color-text-dark;
+    text-shadow: $box-shadow;
+    text-align: left;
+    margin: 0;
+    margin-left: 20px;
+    padding-top: 20px;
+  }
+
+  .achievement-list {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  
+  .achievement {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    align-items: center;
+    gap: 10px;
+    padding: 15px;
+    filter: grayscale(100%);
+    opacity: 0.5;
+
+
+    &.done {
+      border-radius: $border-radius;
+      padding: 15px;
+      filter: grayscale(0%);
+      opacity: 1;
+    }
+
+    .achievement-icon {
+      height: 50px;
+      width: 50px;
+      object-fit: contain;
+      grid-column: 1 / 2;
+      justify-self: center;
+    }
+    
+
+    .text {
+      grid-column: 2 / 3;
+
+      h3 {
+        font-family: $font-family-header;
+        font-size: $base-font-size * $golden-ratio;
+        color: $color-text-dark;
+        text-shadow: $box-shadow;
+        font-weight: 600;
+        margin: 0;
+        text-align: left;
+      }
+
+      p {
+        font-family: $font-family-primary;
+        font-size: $base-font-size;
+        color: $color-text-dark;
+        margin: 5px 0 0;
+        text-align: left;
+      }
+
+      
+    }
+  }
+}
+
+@media screen and (max-width: 710px){
+  .achievements {
+  width: 90vw;
+  border-radius: $border-radius;
+  background: #fff;
+  box-shadow: $box-shadow;
+  margin: 0 auto;
+  margin-top: 490px;
+}
+}

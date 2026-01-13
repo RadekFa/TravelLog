@@ -1,0 +1,82 @@
+@use '../variables.scss' as *;
+
+.settings-page{
+    h1{
+    text-align: left;
+    margin-top: 0;
+    padding-top: 20px;
+    padding-left: 2.5vw;
+    font-family: $font-family-header;
+    color: #fff;
+    font-size: $base-font-size * $golden-ratio * $golden-ratio;
+    text-shadow: $box-shadow-light;
+    letter-spacing: $letter-spacing-header; 
+    font-weight: 600;
+    background-color: $color-text-dark;
+    padding-bottom: 20px;
+}
+}
+main {
+  padding-bottom: 104px;
+  margin: 0;
+  margin-left: auto;
+  margin-right: auto;
+
+  .sign-out-button {
+    width: 95vw;
+    background: #fff;
+    box-shadow: $box-shadow;
+    border-radius: $border-radius;
+    margin: 30px auto;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 0;
+    transition: 0.2s all ease;
+    margin-bottom: 0;
+
+    &:hover {
+      background-color: #ececec;
+    }
+
+    &:active {
+      background-color: #d4d4d4;
+    }
+
+    .sign-out-box {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+
+      p {
+        font-family: $font-family-primary;
+        font-size: $base-font-size;
+        font-weight: 500;
+        color: red;
+        text-shadow: $box-shadow;
+        margin: 0;
+      }
+      svg{
+        color: red;
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: 710px){
+  .settings-page{
+    h1{
+    padding-left: 5vw;
+    font-size: $base-font-size * $golden-ratio;
+}
+}
+main {
+  .sign-out-button {
+    width: 90vw;
+  }
+}
+}

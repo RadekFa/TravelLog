@@ -1,0 +1,116 @@
+@use '../variables.scss' as *;
+
+h2{
+    font-size: $base-font-size * $golden-ratio;
+    margin-left: 2.5vw;
+    color: $color-text-dark;
+    text-align: left;
+    z-index: 600;
+    font-family: $font-family-header;
+  }
+
+ .scroll-container {
+  position: relative;
+  width: 95vw;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+
+  .country-row {
+  display: flex;
+  flex-wrap: nowrap;     
+  gap: 10px;
+  overflow-x: auto;      
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  padding: 0 0 20px 0;
+  scrollbar-width: none; 
+  &::-webkit-scrollbar { display: none; }
+ }
+
+  
+  .scroll-btn {
+    border: none;
+    width: 50px;
+    height: 300px;
+    cursor: pointer;
+    transition: 0.2s ease;
+    z-index: 500;
+    
+
+    
+
+    &.left {
+      position: absolute;
+      left: -5px; 
+      top: 0; 
+      color: $color-accent-strong;
+      width: 48px;
+      height: 100%; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center;
+      padding: 0; 
+      margin: 0; 
+      border: none;
+      background: linear-gradient(to left, #fafafac2, #fafafa);
+      box-shadow: 20px 0 12px -1px #fafafac2;
+      transition: 0.2s ease;
+      
+
+      &:active {
+        opacity: 0.8;
+        transition: 0.1s ease;
+      }
+    }
+
+    &.right {
+      position: absolute;
+      right: -5px; 
+      color: $color-accent-strong;
+      top: 0; 
+      width: 48px;
+      height: 100%; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center;
+      padding: 0; 
+      margin: 0; 
+      border: none;
+      box-shadow: 12px 0 12px 20px #fafafac2;
+      background: linear-gradient(to left, #fafafac2, #fafafa);
+      
+      
+      &:active {
+        opacity: 0.8;
+        transition: 0.1s ease;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 710px){
+   .scroll-container {
+    width: calc(100% - 10px);
+    margin-left: 10px;
+  .scroll-btn {
+    display: none;
+
+    &.left {
+      display: none;
+    }
+
+    &.right {
+      display: none;
+    }
+  }
+}
+}
+
+
+
+
+
+
+
+

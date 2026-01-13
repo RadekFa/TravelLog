@@ -1,0 +1,82 @@
+@use '../variables.scss' as *;
+
+.profile-countries {
+  width: 95vw;
+  border-radius: $border-radius;
+  background: #fff;
+  box-shadow: $box-shadow;
+  margin: 0 auto;
+  margin-top: 30px;
+
+  .country-divider { 
+    border: none; 
+    border-top: 1px solid $color-border;
+    margin: 0;
+  }
+
+  h2 {
+    font-family: $font-family-header;
+    color: $color-text-dark;
+    text-shadow: $box-shadow;
+    text-align: left;
+    margin: 0;
+    margin-left: 20px;
+    padding-top: 20px;
+  }
+
+  .countries-list {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .country-item {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    align-items: center;
+    gap: 10px;
+    padding: 15px;
+
+    .flag-profile {
+      width: 50px;
+      height: auto;
+      object-fit: cover;
+      grid-column: 1 / 2;
+      justify-self: center;
+      box-shadow: $box-shadow;
+      border-radius: 2px;
+    }
+
+    .text {
+      grid-column: 2 / 3;
+
+      h3 {
+        font-family: $font-family-header;
+        font-size: $base-font-size * $golden-ratio;
+        color: $color-text-dark;
+        text-shadow: $box-shadow;
+        font-weight: 600;
+        margin: 0;
+        text-align: left;
+      }
+
+      .dates {
+        font-family: $font-family-primary;
+        font-size: $base-font-size;
+        color: $color-text-dark;
+        margin: 5px 0 0;
+        opacity: 0.8;
+        text-align: left;
+      }
+    }
+    
+  }
+}
+
+@media screen and (max-width: 710px){
+  .profile-countries {
+    width: 90vw;
+  }
+}

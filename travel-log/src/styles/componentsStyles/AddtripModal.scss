@@ -1,0 +1,211 @@
+@use "../variables.scss" as *;
+@use "sass:color";
+
+/* ----------------------------- */
+/* OVERLAY */
+/* ----------------------------- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px); 
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* ----------------------------- */
+/* MODAL BOX */
+/* ----------------------------- */
+.modal-content {
+  max-width: 400px;
+  background: #fff;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  h2 {
+    font-family: $font-family-header;
+    font-size: $base-font-size * $golden-ratio;
+    color: $color-text-dark;
+    text-shadow: $box-shadow;
+    margin: 0;
+  }
+}
+
+/* ----------------------------- */
+/* COUNTRY SEARCH */
+/* ----------------------------- */
+.country-search-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.add-country-header {
+  font-family: $font-family-primary;
+  font-size: $base-font-size;
+  color: $color-text-dark;
+  margin-bottom: 6px;
+  font-weight: 500;
+  text-align: left;
+  padding-left: 10px;
+  margin-top: 2px;
+}
+
+/* Kontejner pro křížek - neovlivňuje vnější rozměry */
+.input-with-clear {
+  position: relative;
+  width: 100%; // Držíme vaši původní šířku
+  max-width: 275px; // Držíme váš původní limit
+
+  .country-search-input {
+    border-radius: $border-radius;
+    border: 2px solid $color-accent-strong;
+    padding: 10px;
+    padding-right: 35px; 
+    width: 100%; 
+    box-shadow: $box-shadow;
+    transition: 0.2s ease;
+    text-shadow: $box-shadow;
+    font-family: $font-family-primary;
+    font-style: italic;
+    background-color: #fff;
+
+    &:hover { transform: scale(1.005); }
+    &:focus { outline: none; box-shadow: $shadow-hover; }
+  }
+
+  .clear-input-button {
+    position: absolute;
+    right: -40px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: color.scale($color-text-dark, $alpha: -60%);
+    padding: 0;
+    display: flex;
+    align-items: center;
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    &:hover { color: $color-accent-strong; }
+  }
+}
+
+.country-dropdown {
+  position: absolute;
+  top: 70px;
+  left: 50%;
+  width: 95%;
+  max-height: 160px;
+  overflow-y: auto;
+  background: #fff;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  z-index: 1000;
+  border: 1px solid $color-border;
+  transform: translate(-50%);
+
+  /* --- iOS-like minimalist scrollbar --- */
+  &::-webkit-scrollbar { width: 4px; }
+  &::-webkit-scrollbar-track { background: transparent; }
+  &::-webkit-scrollbar-thumb {
+    background: color.scale($color-text-dark, $alpha: -75%); 
+    border-radius: 10px;
+    &:hover { background: color.scale($color-text-dark, $alpha: -55%); }
+  }
+  scrollbar-width: thin;
+  scrollbar-color: color.scale($color-text-dark, $alpha: -75%) transparent;
+
+  li {
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-family: $font-family-primary;
+    transition: 0.15s ease;
+
+    img {
+      width: 22px;
+      height: 15px;
+      border-radius: 2px;
+      box-shadow: $box-shadow;
+      flex-shrink: 0;
+    }
+    &:hover { background: #f3f3f3; }
+  }
+}
+
+/* ----------------------------- */
+/* ZBYTEK STYLŮ (beze změny rozměrů) */
+/* ----------------------------- */
+.error-message {
+  color: #d32f2f;
+  font-size: $base-font-size;
+  font-style: italic;
+  margin: -6px 0 0 0;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 5px;
+
+  button {
+    padding: 10px 18px;
+    border-radius: $border-radius;
+    border: none;
+    font-family: $font-family-primary;
+    cursor: pointer;
+    transition: 0.2s ease;
+    font-weight: 500;
+  }
+
+  .cancel-button {
+    background: #ececec;
+    color: $color-text-dark;
+    &:hover { background: #d4d4d4; }
+  }
+
+  .add-button {
+    background: $color-accent-strong;
+    color: #fff;
+    &:hover:not(:disabled) { background: color.scale($color-accent-strong, $lightness: -10%); }
+    &:disabled { cursor: not-allowed; opacity: 0.6; }
+  }
+}
+
+/* VAŠE PŮVODNÍ MEDIA QUERIES */
+@media screen and (max-width: 400px) {
+  .modal-content {
+    width: 85%;
+  }  
+  .input-with-clear {
+
+  .country-search-input {
+    border-radius: $border-radius;
+    border: 2px solid $color-accent-strong;
+    width: 90%; 
+
+  }
+  .clear-input-button {
+    right: -10px;
+}
+  }
+
+}

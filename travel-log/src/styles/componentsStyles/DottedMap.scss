@@ -1,0 +1,16 @@
+.dotted-map-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
+  svg {
+    display: block;
+    outline: none !important;
+  }
+
+  path {
+    outline: none !important;
+    transition: none !important; 
+    pointer-events: none; 
+  }
+}

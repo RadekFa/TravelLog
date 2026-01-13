@@ -1,0 +1,168 @@
+@use "../variables.scss" as *;
+
+.welcome-screen {
+    position: relative;
+    width: 100%; 
+    min-height: 100vh;
+    overflow-x: hidden; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f4f7f9;
+
+    .WelcomeScreen-Header{
+        background: none;
+        border: none;
+        display: grid;
+        grid-template-columns: 60px 220px;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        img{
+            width: 60px;
+            height: 60px;
+        }
+        h1{
+            font-size: $base-font-size * $golden-ratio* $golden-ratio;
+            color: $color-accent-strong;
+            margin: 0;
+            line-height: 60px;
+            font-family: $font-family-header;
+        }
+    }
+
+    .map-background {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        opacity: 0.4;
+        pointer-events: none;
+    }
+
+    .welcome-container {
+        position: relative;
+        z-index: 10;
+        width: 100%;
+        max-width: 950px;
+        box-sizing: border-box; 
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        top: 40px;
+        margin-bottom: 50px;
+        .auth-card-split {
+            display: flex;
+            width: 100%; 
+            background: rgba(255, 255, 255, 0.4); 
+            backdrop-filter: blur(25px) saturate(180%);
+            -webkit-backdrop-filter: blur(25px) saturate(180%);
+            border-radius: $border-radius;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            box-shadow: $box-shadow;
+            overflow: hidden;
+            height: 720px; 
+            transition: all 0.4s ease;
+
+            .form-side {
+                flex: 1.2;
+                padding: 40px 60px;
+                background: rgba(255, 255, 255, 0.5);
+                border-right: 1px solid rgba(255, 255, 255, 0.3);
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+
+                .auth-header {
+                    margin-bottom: 25px;
+                    h1 { font-size: $base-font-size * $golden-ratio; 
+                    color: $color-text-dark; 
+                    font-weight: 800; 
+                    margin: 0; 
+                    font-family: $font-family-header;}
+                    p { 
+                        color: #666; 
+                        font-size: $base-font-size;
+                        font-family: $font-family-header;
+                     }
+                }
+
+                .auth-footer {
+                    margin-top: auto; 
+                    padding-top: 15px;
+                    text-align: center;
+                    
+                    .toggle-btn {
+                    background: none !important;
+                    border: none !important;
+                    color: $color-accent-strong;
+                    font-weight: 700;
+                    cursor: pointer;
+                    margin-left: 5px;
+                    font-family: inherit;
+                    text-decoration: underline;
+
+                    &:hover {
+                        text-decoration: none;
+                        color: hsl(196, 100%, 47%);
+                        
+                    }
+                    }
+
+
+
+
+                }
+            }
+
+            .info-side {
+                flex: 1;
+                padding: 60px;
+                display: flex;
+                align-items: center;
+                background: rgba(255, 255, 255, 0.1);
+            }
+        }
+    }
+    .footer-welcomeScreen{
+        position: absolute;
+        bottom: 10px;
+        
+        
+        p{
+            color: $color-text-dark;
+            opacity: 60%;
+            font-family: $font-family-primary;
+            margin: 0;
+        }
+    }
+}
+
+
+@media (max-width: 900px) {
+    .welcome-screen {
+        height: auto;
+        padding: 40px 0;
+    }
+    .welcome-container {
+        padding: 15px;
+    }
+    .auth-card-split {
+        flex-direction: column;
+        height: auto !important; 
+        max-width: 450px; 
+        .info-side { display: none; }
+    }
+
+    
+}
+
+@media (max-height: 750px) {
+    .welcome-screen {
+        height: auto;
+        padding: 40px 0;
+    }
+    .auth-card-split {
+        height: auto !important;
+        min-height: 650px;
+    }
+}

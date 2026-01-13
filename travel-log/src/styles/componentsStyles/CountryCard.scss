@@ -1,0 +1,89 @@
+@use '../variables.scss' as *;
+
+
+.country-card {
+  flex: 0 0 auto;
+  background: white;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: 1fr 80px;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  transition: transform 0.2s ease;
+  width: 200px;
+  height: 280px;
+  cursor: pointer;
+  justify-items: center;
+  align-items: center;
+  
+
+  .country-image {
+    justify-self: center;
+    align-self: flex-start;
+    overflow: hidden;
+    height: 200px;
+    width: 190px;
+    margin-top: 5px;
+    border-radius: $border-radius;
+    object-fit: cover;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    transition: transform 0.4s ease;
+  }
+  &:hover{
+    transform: scale(1.03);
+    transition: transform 0.2s ease;
+  }
+  &:active {
+    opacity: 0.8;
+    transition: 0.2s ease;
+    transform: scale(0.95);
+  }
+
+
+    .flag-icon {
+      width: 40px;
+      height: auto;
+      position: relative;
+      top: -270px;
+      left: 110px;
+      box-shadow: $box-shadow;
+    }
+  
+  .country-name {
+      font-size: $base-font-size;
+      font-weight: bold;
+      color: $color-text-dark;
+      font-family: $font-family-primary;
+      display: block;
+      grid-row-start: 2;
+      grid-row-end: 3;
+      grid-column-start: 1;
+      grid-column-end: 3;
+    }
+}
+
+@media screen and (max-width: 710px){
+   .country-card {
+  width: 170px;
+  height: 250px;
+
+  .country-image {
+    height: 170px;
+    width: 160px;
+    margin-top: 5px;
+  }
+  .flag-icon {
+      width: 40px;
+      height: auto;
+      position: relative;
+      top: -240px;
+      left: 90px;
+      box-shadow: $box-shadow;
+    }
+   }
+}

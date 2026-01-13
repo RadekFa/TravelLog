@@ -1,0 +1,120 @@
+@use '../variables.scss' as *;
+@use "sass:color";
+
+.travel-goal-setting {
+  width: 95vw;
+  background: #fff;
+  box-shadow: $box-shadow;
+  border-radius: $border-radius;
+  margin: 30px auto;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto auto;
+  row-gap: 10px;
+
+  h2 {
+    font-family: $font-family-header;
+    font-size: $base-font-size * $golden-ratio;
+    color: $color-text-dark;
+    text-shadow: $box-shadow;
+    margin: 0;
+    padding-top: 20px;
+    margin-left: 20px;
+  }
+
+  .subtitle {
+    font-family: $font-family-primary;
+    font-size: $base-font-size;
+    color: $color-text-dark;
+    opacity: 0.8;
+    margin: 0;
+    margin-left: 20px;
+    text-align: left;
+  }
+
+  
+  .slider-grid {
+    display: grid;
+    grid-template-columns: 1fr 80px;
+    align-items: center;
+  }
+
+  .goal-value {
+    font-family: $font-family-header;
+    font-size: $base-font-size * $golden-ratio;
+    font-weight: 600;
+    color: $color-text-dark;
+    text-shadow: $box-shadow;
+    text-align: right;
+    margin-right: 20px;
+  }
+}
+
+.target-setter {
+  -webkit-appearance: none;
+  width: calc(100% - 40px);
+  margin-left: 20px;
+  height: 6px;
+  border-radius: $border-radius;
+  outline: none;
+  cursor: pointer;
+  transition: 0.2s ease;
+
+  background: linear-gradient(
+    to right,
+    $color-accent-strong 0%,
+    $color-accent-strong calc((var(--value) - var(--min)) / (var(--max) - var(--min)) * 100%),
+    $color-border calc((var(--value) - var(--min)) / (var(--max) - var(--min)) * 100%),
+    $color-border 100%
+  );
+
+  accent-color: $color-accent-strong;
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    background: $color-accent-strong;
+    border-radius: 50%;
+    box-shadow: $box-shadow;
+    transition: 0.2s ease;
+  }
+
+  &::-webkit-slider-thumb:hover {
+    background: color.scale($color-accent-strong, $lightness: -5%);
+  }
+
+  &::-webkit-slider-thumb:active {
+    background: color.scale($color-accent-strong, $lightness: -10%);
+    transform: scale(0.95);
+  }
+
+  &::-moz-range-track {
+    height: 6px;
+    background: $color-border;
+    border-radius: $border-radius;
+  }
+
+  &::-moz-range-progress {
+    background-color: $color-accent-strong;
+    height: 6px;
+    border-radius: $border-radius;
+  }
+
+  &::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: $color-accent-strong;
+    border-radius: 50%;
+    box-shadow: $box-shadow;
+    border: none;
+    transition: 0.2s ease;
+  }
+}
+
+@media screen and (max-width: 710px){
+  .travel-goal-setting{
+    width: 90vw;
+  }
+}

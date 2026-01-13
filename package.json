@@ -1,0 +1,12 @@
+{
+  "devDependencies": {
+    "@types/react-simple-maps": "^3.0.6"
+  },
+  "dependencies": {
+    "canvas-confetti": "^1.9.4",
+    "lucide-react": "^0.555.0",
+    "prop-types": "^15.8.1",
+    "react-circular-progressbar": "^2.2.0",
+    "react-simple-maps": "^3.0.0"
+  }
+}

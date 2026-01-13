@@ -1,0 +1,79 @@
+@use '../variables.scss' as *;
+
+body, html, #root, .main-page-placeholder {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: $font-family-primary;
+    background: #fafafa;
+}   
+
+.header-explore{
+    margin: 0;
+    z-index: 10;
+    padding-bottom: 50px;
+    background: #fafafa;
+    border: none;
+h1{
+    text-align: left;
+    margin-top: 0;
+    padding-top: 20px;
+    padding-left: 2.5vw;
+    font-family: $font-family-header;
+    color: #fff;
+    font-size: $base-font-size * $golden-ratio * $golden-ratio;
+    text-shadow: $box-shadow-light;
+    letter-spacing: $letter-spacing-header; 
+    font-weight: 600;
+    background-color: $color-text-dark;
+    padding-bottom: 20px;
+}
+
+.country-search-input{
+    border-radius: $border-radius;
+    border: 2px solid $color-accent-strong;
+    padding: 10px;
+    left: 2.5vw;
+    width: 300px;
+    position: absolute;
+    box-shadow: $box-shadow; 
+    transition: 0.2s ease;
+    text-shadow: $box-shadow;
+    font-family: $font-family-primary;
+    font-style: italic;
+ 
+    &:hover {
+    transform: scale(1.02);
+    transition: 0.2s ease;
+    outline: none;
+    }
+
+    &:focus {
+        transition: 0.2s ease;
+        outline: none;
+        box-shadow: $shadow-hover;
+    }
+}
+}
+
+
+
+main{
+    margin-top: 80px;
+    padding-bottom: 100px;
+    text-shadow: $box-shadow;
+}
+
+@media screen and (max-width: 710px){
+.header-explore{
+    h1{
+    padding-left: 2.5vw;
+    font-size: $base-font-size * $golden-ratio;
+}
+.country-search-input{
+    width: calc(80vw);
+    left: 2.5vw;
+} 
+}
+}
+
