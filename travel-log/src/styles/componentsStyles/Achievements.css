@@ -1,0 +1,82 @@
+.achievements {
+  width: 95vw;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  margin-top: 230px;
+}
+.achievements .ach-divider {
+  border: none;
+  border-top: 1px solid #cccccc;
+  margin: 0;
+}
+.achievements h2 {
+  font-family: "Oswald", sans-serif;
+  color: #343a40;
+  text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  margin: 0;
+  margin-left: 20px;
+  padding-top: 20px;
+}
+.achievements .achievement-list {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.achievements .achievement {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  align-items: center;
+  gap: 10px;
+  padding: 15px;
+  filter: grayscale(100%);
+  opacity: 0.5;
+}
+.achievements .achievement.done {
+  border-radius: 8px;
+  padding: 15px;
+  filter: grayscale(0%);
+  opacity: 1;
+}
+.achievements .achievement .achievement-icon {
+  height: 50px;
+  width: 50px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  grid-column: 1/2;
+  justify-self: center;
+}
+.achievements .achievement .text {
+  grid-column: 2/3;
+}
+.achievements .achievement .text h3 {
+  font-family: "Oswald", sans-serif;
+  font-size: 25.888px;
+  color: #343a40;
+  text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
+  font-weight: 600;
+  margin: 0;
+  text-align: left;
+}
+.achievements .achievement .text p {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  color: #343a40;
+  margin: 5px 0 0;
+  text-align: left;
+}
+
+@media screen and (max-width: 710px) {
+  .achievements {
+    width: 90vw;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    margin-top: 490px;
+  }
+}/*# sourceMappingURL=Achievements.css.map */

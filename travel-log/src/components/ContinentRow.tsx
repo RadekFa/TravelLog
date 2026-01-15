@@ -15,7 +15,7 @@ interface ContinentRowProps {
 }
 
 /* ------------------------------------------
-   Scroll Arrow Component (zůstává v souboru)
+   Scroll Arrow Component 
 ------------------------------------------- */
 const ScrollArrow = ({
   direction,

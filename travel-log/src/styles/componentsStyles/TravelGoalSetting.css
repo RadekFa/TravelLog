@@ -1,0 +1,99 @@
+.travel-goal-setting {
+  width: 95vw;
+  background: #fff;
+  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin: 30px auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto auto;
+  row-gap: 10px;
+}
+.travel-goal-setting h2 {
+  font-family: "Oswald", sans-serif;
+  font-size: 25.888px;
+  color: #343a40;
+  text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 0;
+  padding-top: 20px;
+  margin-left: 20px;
+}
+.travel-goal-setting .subtitle {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  color: #343a40;
+  opacity: 0.8;
+  margin: 0;
+  margin-left: 20px;
+  text-align: left;
+}
+.travel-goal-setting .slider-grid {
+  display: grid;
+  grid-template-columns: 1fr 80px;
+  align-items: center;
+}
+.travel-goal-setting .goal-value {
+  font-family: "Oswald", sans-serif;
+  font-size: 25.888px;
+  font-weight: 600;
+  color: #343a40;
+  text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: right;
+  margin-right: 20px;
+}
+
+.target-setter {
+  -webkit-appearance: none;
+  width: calc(100% - 40px);
+  margin-left: 20px;
+  height: 6px;
+  border-radius: 8px;
+  outline: none;
+  cursor: pointer;
+  transition: 0.2s ease;
+  background: linear-gradient(to right, #2bc3ff 0%, #2bc3ff calc((var(--value) - var(--min)) / (var(--max) - var(--min)) * 100%), #cccccc calc((var(--value) - var(--min)) / (var(--max) - var(--min)) * 100%), #cccccc 100%);
+  accent-color: #2bc3ff;
+}
+.target-setter::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #2bc3ff;
+  border-radius: 50%;
+  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+}
+.target-setter::-webkit-slider-thumb:hover {
+  background: rgb(28.1, 190.7830188679, 255);
+}
+.target-setter::-webkit-slider-thumb:active {
+  background: rgb(13.2, 186.5660377358, 255);
+  transform: scale(0.95);
+}
+.target-setter::-moz-range-track {
+  height: 6px;
+  background: #cccccc;
+  border-radius: 8px;
+}
+.target-setter::-moz-range-progress {
+  background-color: #2bc3ff;
+  height: 6px;
+  border-radius: 8px;
+}
+.target-setter::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: #2bc3ff;
+  border-radius: 50%;
+  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
+  border: none;
+  -moz-transition: 0.2s ease;
+  transition: 0.2s ease;
+}
+
+@media screen and (max-width: 710px) {
+  .travel-goal-setting {
+    width: 90vw;
+  }
+}/*# sourceMappingURL=TravelGoalSetting.css.map */

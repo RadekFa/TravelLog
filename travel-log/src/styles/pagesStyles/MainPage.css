@@ -1,0 +1,106 @@
+body, html, #root, .main-page-placeholder {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Helvetica, Arial, sans-serif;
+  background: #fafafa;
+}
+
+.MainPage-header {
+  position: relative;
+  margin: 0;
+  z-index: 10;
+  background-color: #343a40;
+  width: 100%;
+  height: 110px;
+}
+.MainPage-header .plus-icon {
+  color: #2bc3ff;
+  position: absolute;
+  right: 2.5vw;
+  top: 50%;
+  transform: translate(0%, -50%);
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+}
+.MainPage-header h1 {
+  font-size: 41.886784px;
+  color: #fff;
+  font-family: "Oswald", sans-serif;
+  text-shadow: 2px 2px 6px rgba(255, 255, 255, 0.308);
+  margin: 0;
+  letter-spacing: -1px;
+  position: absolute;
+  top: 20px;
+  left: 2.5vw;
+  font-weight: bold;
+}
+.MainPage-header .subtitle-mainPage {
+  font-size: 16px;
+  color: #fff;
+  font-family: Helvetica, Arial, sans-serif;
+  text-shadow: 2px 2px 6px rgba(255, 255, 255, 0.308);
+  margin: 0;
+  position: absolute;
+  top: 70px;
+  left: 2.5vw;
+}
+
+main {
+  padding: 0;
+  margin: 0;
+  padding-bottom: 48px;
+}
+main #travel-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+  width: 95vw;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  height: 100%;
+}
+main .right-column {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 20px;
+}
+
+@media screen and (max-width: 1330px) {
+  main #travel-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media screen and (max-width: 760px) {
+  .MainPage-header .subtitle-mainPage {
+    display: none;
+  }
+  .MainPage-header h1 {
+    top: 50%;
+    transform: translate(0%, -50%);
+  }
+}
+@media screen and (max-width: 710px) {
+  .MainPage-header {
+    padding-bottom: 0px;
+    height: 70px;
+  }
+  .MainPage-header .plus-icon {
+    right: 5vw;
+    width: 35px;
+    height: 35px;
+  }
+  .MainPage-header h1 {
+    font-size: 25.888px;
+    left: 5vw;
+  }
+  .MainPage-header .subtitle-mainPage {
+    left: 5vw;
+  }
+  main #travel-grid {
+    width: 90vw;
+  }
+}/*# sourceMappingURL=MainPage.css.map */

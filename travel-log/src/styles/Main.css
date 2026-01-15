@@ -1,0 +1,20 @@
+.input-group input:-webkit-autofill,
+.input-group input:-webkit-autofill:hover,
+.input-group input:-webkit-autofill:focus,
+.input-group input:-webkit-autofill:active {
+  box-shadow: 0 0 0 30px transparent inset !important;
+  -webkit-text-fill-color: white !important;
+  -webkit-transition: background-color 5000s ease-in-out 0s;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+#root {
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}/*# sourceMappingURL=Main.css.map */

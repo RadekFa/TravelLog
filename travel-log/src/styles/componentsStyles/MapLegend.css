@@ -1,0 +1,44 @@
+.map-legend .progress-ring {
+  transform: rotate(-90deg);
+}
+.map-legend .progress-ring__background {
+  stroke: #e4e1e1;
+}
+.map-legend .progress-ring__circle {
+  transition: stroke-dashoffset 0.5s ease;
+  stroke-linecap: round;
+}
+.map-legend .legend-info {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 10px 0;
+  margin: 0;
+  height: 100px;
+  text-align: center;
+  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
+  align-items: center;
+  font-family: Helvetica, Arial, sans-serif;
+}
+.map-legend .legend-info .percents {
+  padding-right: 20px;
+}
+.map-legend .legend-info .countries {
+  padding-left: 20px;
+}
+.map-legend .legend-info .legend-number {
+  font-size: 41.886784px;
+  font-weight: bold;
+  margin: 0;
+  font-family: Helvetica, Arial, sans-serif;
+}
+.map-legend .legend-info .legend-label {
+  font-size: 16px;
+  color: #666;
+  margin: 0;
+  font-family: Helvetica, Arial, sans-serif;
+}/*# sourceMappingURL=MapLegend.css.map */

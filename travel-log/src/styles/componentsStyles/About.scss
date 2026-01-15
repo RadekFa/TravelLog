@@ -47,12 +47,12 @@
     .about-content {
       display: flex;
       align-items: center;
-      gap: 12px; // Mezera mezi ikonou a textem
+      gap: 12px; 
 
       .about-svg {
         width: 20px;
         height: 20px;
-        color: $color-accent-strong; // Vaše požadovaná barva
+        color: $color-accent-strong; 
         flex-shrink: 0;
       }
     }

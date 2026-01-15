@@ -6,7 +6,7 @@ const TravelGoalSetting = () => {
 
   return (
     <div className="travel-goal-setting">
-      <h2>Travel Goal</h2>
+      <h2 className="h2-travelGoalSet">Travel Goal</h2>
       <p className="subtitle">Set your country target</p>
 
       <div className="slider-grid">
@@ -17,6 +17,8 @@ const TravelGoalSetting = () => {
           max={195}
           value={goal}
           onChange={(e) => setGoal(Number(e.target.value))}
+          aria-label="Set your target number of visited countries"
+          aria-valuetext={`${goal} countries`}
           style={{
             "--value": goal,
             "--min": 1,

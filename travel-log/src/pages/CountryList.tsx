@@ -20,6 +20,7 @@ const CountryList: React.FC = () => {
         value={searchTerm}
         onChange={e => setSearchTerm(e.target.value)}
         className="country-search-input"
+        id="country-search-input"
       />
       </header>
       <main>

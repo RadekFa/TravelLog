@@ -3,7 +3,7 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import '../styles/componentsStyles/AuthForm.scss';
 
-// Base validation schema
+
 const BaseSchema = {
   email: Yup.string()
     .email('Invalid email format.')
@@ -55,11 +55,11 @@ const AuthForm: React.FC<AuthFormProps> = ({ isLogin, onSubmit }) => {
 
         return (
           <Form className="auth-form">
-
             {!isLogin && (
               <div className={fieldClass('name')}>
-                <label>Full Name</label>
+                <label htmlFor="name">Full Name</label>
                 <Field
+                  id="name"
                   name="name"
                   placeholder="John Doe"
                   className={inputErrorClass('name')}
@@ -69,8 +69,9 @@ const AuthForm: React.FC<AuthFormProps> = ({ isLogin, onSubmit }) => {
             )}
 
             <div className={fieldClass('email')}>
-              <label>Email Address</label>
+              <label htmlFor="email">Email Address</label>
               <Field
+                id="email"
                 name="email"
                 type="email"
                 placeholder="email@example.com"
@@ -80,8 +81,9 @@ const AuthForm: React.FC<AuthFormProps> = ({ isLogin, onSubmit }) => {
             </div>
 
             <div className={fieldClass('password')}>
-              <label>Password</label>
+              <label htmlFor="password">Password</label>
               <Field
+                id="password"
                 name="password"
                 type="password"
                 placeholder="••••••••"
@@ -92,8 +94,9 @@ const AuthForm: React.FC<AuthFormProps> = ({ isLogin, onSubmit }) => {
 
             {!isLogin && (
               <div className={fieldClass('confirmPassword')}>
-                <label>Confirm Password</label>
+                <label htmlFor="confirmPassword">Confirm Password</label>
                 <Field
+                  id="confirmPassword"
                   name="confirmPassword"
                   type="password"
                   placeholder="••••••••"

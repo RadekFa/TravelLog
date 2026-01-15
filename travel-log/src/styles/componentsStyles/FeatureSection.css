@@ -1,0 +1,109 @@
+.features-info {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+.features-info .features-mini-list {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  margin-top: 40%;
+}
+.features-info .mini-feature-item {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  justify-items: center;
+}
+.features-info .mini-feature-item .mini-icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  background: rgba(43, 195, 255, 0.15);
+  color: #2bc3ff;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.features-info .mini-feature-item .mini-icon svg {
+  width: 24px;
+  height: 24px;
+}
+.features-info .mini-feature-item .mini-text .featureSection-title {
+  font-size: 16px;
+  margin: 0;
+  font-weight: 700;
+  color: #343a40;
+  text-align: left;
+  font-family: "Oswald", sans-serif;
+}
+.features-info .mini-feature-item .mini-text p {
+  font-size: 0.85rem;
+  margin: 0;
+  color: #444444;
+  opacity: 0.9;
+  line-height: 1.4;
+  text-align: left;
+  font-family: Helvetica, Arial, sans-serif;
+}
+.features-info .social-section {
+  margin-top: 30px;
+  text-align: center;
+}
+.features-info .social-section p {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #444444;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-family: Helvetica, Arial, sans-serif;
+}
+.features-info .social-section .social-links {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+.features-info .social-section .social-links .social-item {
+  width: 42px;
+  height: 42px;
+  background: rgba(255, 255, 255, 0.3);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #343a40;
+  transition: all 0.3s ease;
+}
+.features-info .social-section .social-links .social-item svg {
+  width: 20px;
+  height: 20px;
+}
+.features-info .social-section .social-links .social-item:hover {
+  background: #2bc3ff;
+  color: white;
+  transform: translateY(-3px);
+  border-color: #2bc3ff;
+}
+
+@media screen and (max-width: 900px) {
+  .features-info {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+    padding: 10px 0;
+  }
+  .features-info .features-mini-list {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    margin-top: 0%;
+  }
+}/*# sourceMappingURL=FeatureSection.css.map */

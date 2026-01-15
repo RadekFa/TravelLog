@@ -1,0 +1,87 @@
+.bottom-menu-placeholder {
+  display: flex;
+  position: fixed;
+  z-index: 900;
+  width: 100%;
+  bottom: 0;
+  justify-content: space-around;
+  align-items: center;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.856);
+  border-top: 1px solid #e4e1e1;
+}
+.bottom-menu-placeholder .LinkSettings,
+.bottom-menu-placeholder .LinkCountries,
+.bottom-menu-placeholder .LinkHome,
+.bottom-menu-placeholder .LinkProfile {
+  text-decoration: none;
+  color: #343a40;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: 0.3s ease-in-out;
+}
+.bottom-menu-placeholder .LinkSettings p,
+.bottom-menu-placeholder .LinkCountries p,
+.bottom-menu-placeholder .LinkHome p,
+.bottom-menu-placeholder .LinkProfile p {
+  margin: 0;
+  letter-spacing: 0px;
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+.bottom-menu-placeholder .LinkSettings.active,
+.bottom-menu-placeholder .LinkCountries.active,
+.bottom-menu-placeholder .LinkHome.active,
+.bottom-menu-placeholder .LinkProfile.active {
+  color: #2bc3ff;
+}
+.bottom-menu-placeholder .LinkSettings.active .menu-icon,
+.bottom-menu-placeholder .LinkCountries.active .menu-icon,
+.bottom-menu-placeholder .LinkHome.active .menu-icon,
+.bottom-menu-placeholder .LinkProfile.active .menu-icon {
+  color: #2bc3ff;
+}
+.bottom-menu-placeholder .LinkSettings:not(.active):hover,
+.bottom-menu-placeholder .LinkCountries:not(.active):hover,
+.bottom-menu-placeholder .LinkHome:not(.active):hover,
+.bottom-menu-placeholder .LinkProfile:not(.active):hover {
+  opacity: 0.7;
+  transition: 0.3s ease-in-out;
+  transform: scale(1.03);
+}
+.bottom-menu-placeholder .LinkSettings:not(.active):active,
+.bottom-menu-placeholder .LinkCountries:not(.active):active,
+.bottom-menu-placeholder .LinkHome:not(.active):active,
+.bottom-menu-placeholder .LinkProfile:not(.active):active {
+  transform: scale(0.97);
+  transition: 0.1s ease-in-out;
+}
+.bottom-menu-placeholder .menu-icon {
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  padding: 10px 0 0 0;
+}
+
+@media screen and (max-width: 710px) {
+  .bottom-menu-placeholder .LinkSettings p,
+  .bottom-menu-placeholder .LinkCountries p,
+  .bottom-menu-placeholder .LinkHome p,
+  .bottom-menu-placeholder .LinkProfile p {
+    display: none;
+  }
+  .bottom-menu-placeholder .menu-icon {
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    padding: 10px 0 10px 0;
+  }
+}
+@media screen and (max-width: 500px) {
+  .bottom-menu-placeholder .menu-icon {
+    width: 40px;
+    height: 40px;
+  }
+}/*# sourceMappingURL=BottomMenu.css.map */

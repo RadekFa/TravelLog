@@ -1,5 +1,3 @@
-// /src/context/TripContext.tsx
-
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import type { ReactNode } from 'react'; 
 import type { Trip, Entry } from './../types/tripTypes'; 
@@ -7,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 const STORAGE_KEY = 'travelLogTrips';
 
-// 1. Definice typu pro Context
+
 interface TripContextType {
   trips: Trip[];
   addTrip: (newTrip: Omit<Trip, 'id' | 'entries'>) => void;
@@ -19,11 +17,9 @@ interface TripContextType {
 
 const TripContext = createContext<TripContextType | undefined>(undefined);
 
-// 2. Provider
 export const TripProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [trips, setTrips] = useState<Trip[]>([]);
 
-  // Načtení dat při startu (z LocalStorage)
   useEffect(() => {
     const savedTrips = localStorage.getItem(STORAGE_KEY);
     if (savedTrips) {

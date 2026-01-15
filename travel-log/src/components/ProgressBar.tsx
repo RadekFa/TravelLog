@@ -13,7 +13,7 @@ const ProgressBar: React.FC = () => {
   useEffect(() => {
     const timeout = setTimeout(() => {
       setAnimatedProgress(Math.min(targetProgress, 100));
-    }, 100); // delay for smooth start
+    }, 100);
     return () => clearTimeout(timeout);
   }, []);
 

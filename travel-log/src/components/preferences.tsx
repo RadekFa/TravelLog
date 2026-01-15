@@ -42,6 +42,7 @@ const Preferences = () => {
             type="checkbox"
             checked={notifications}
             onChange={() => setNotifications(!notifications)}
+            aria-label="Enable notifications"
           />
           <span className="slider" />
         </label>
@@ -54,11 +55,12 @@ const Preferences = () => {
           <MoonIcon />
           <span>Dark Mode</span>
         </div>
-        <label className="switch">
+        <label className="switch" >
           <input
             type="checkbox"
             checked={darkMode}
             onChange={() => setDarkMode(!darkMode)}
+            aria-label="Enable dark mode"
           />
           <span className="slider" />
         </label>
@@ -69,11 +71,12 @@ const Preferences = () => {
       <div className="preference-item language-select">
         <div className="pref-content">
           <GlobeIcon />
-          <span>Language</span>
+          <span id="language-label">Language</span>
         </div>
         <select
           value={language}
           onChange={(e) => setLanguage(e.target.value)}
+          aria-labelledby="language-label"
         >
           <option>English</option>
           <option>Deutsch</option>

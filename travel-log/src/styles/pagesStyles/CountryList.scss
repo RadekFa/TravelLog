@@ -1,6 +1,8 @@
 @use '../variables.scss' as *;
 
-body, html, #root, .main-page-placeholder {
+
+
+.main-page-placeholder {
     height: 100%;
     margin: 0;
     padding: 0;
@@ -11,13 +13,17 @@ body, html, #root, .main-page-placeholder {
 .header-explore{
     margin: 0;
     z-index: 10;
-    padding-bottom: 50px;
     background: #fafafa;
     border: none;
-h1{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 0px;
+
+    h1{
     text-align: left;
     margin-top: 0;
     padding-top: 20px;
+    padding-bottom: 20px;
     padding-left: 2.5vw;
     font-family: $font-family-header;
     color: #fff;
@@ -26,16 +32,16 @@ h1{
     letter-spacing: $letter-spacing-header; 
     font-weight: 600;
     background-color: $color-text-dark;
-    padding-bottom: 20px;
 }
 
-.country-search-input{
+#country-search-input{
     border-radius: $border-radius;
     border: 2px solid $color-accent-strong;
     padding: 10px;
-    left: 2.5vw;
+    margin-left: 2.5vw;
     width: 300px;
-    position: absolute;
+    display: block;
+    align-self: left;
     box-shadow: $box-shadow; 
     transition: 0.2s ease;
     text-shadow: $box-shadow;
@@ -59,7 +65,7 @@ h1{
 
 
 main{
-    margin-top: 80px;
+    margin-top: 0px;
     padding-bottom: 100px;
     text-shadow: $box-shadow;
 }
@@ -70,9 +76,9 @@ main{
     padding-left: 2.5vw;
     font-size: $base-font-size * $golden-ratio;
 }
-.country-search-input{
+#country-search-input{
     width: calc(80vw);
-    left: 2.5vw;
+    margin-left: 2.5vw;
 } 
 }
 }

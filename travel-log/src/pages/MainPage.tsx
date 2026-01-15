@@ -18,7 +18,7 @@ const MainPage: React.FC = () => {
     return (
         <div className="main-page-layout">
 
-            <header className="page-header">
+            <header className="MainPage-header">
                 <h1>Travel Log</h1>
                 <p className='subtitle-mainPage'>Track the countries you've visited, explore your stats, and plan your next adventures.</p>
                 <svg className="plus-icon" viewBox="0 0 24 24" stroke="currentColor" onClick={() => setModalOpen(true)}>

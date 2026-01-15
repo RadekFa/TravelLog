@@ -1,0 +1,151 @@
+.welcome-screen {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f4f7f9;
+}
+.welcome-screen .WelcomeScreen-Header {
+  background: none;
+  border: none;
+  display: grid;
+  grid-template-columns: 60px 220px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+.welcome-screen .WelcomeScreen-Header img {
+  width: 60px;
+  height: 60px;
+}
+.welcome-screen .WelcomeScreen-Header h1 {
+  font-size: 41.886784px;
+  color: #2bc3ff;
+  margin: 0;
+  line-height: 60px;
+  font-family: "Oswald", sans-serif;
+}
+.welcome-screen .map-background {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 0.4;
+  pointer-events: none;
+}
+.welcome-screen .welcome-container {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 950px;
+  box-sizing: border-box;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  top: 40px;
+  margin-bottom: 50px;
+  font-family: Helvetica, Arial, sans-serif;
+}
+.welcome-screen .welcome-container .auth-card-split {
+  display: flex;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(25px) saturate(180%);
+  -webkit-backdrop-filter: blur(25px) saturate(180%);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  height: 720px;
+  transition: all 0.4s ease;
+}
+.welcome-screen .welcome-container .auth-card-split .form-side {
+  flex: 1.2;
+  padding: 40px 60px;
+  background: rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.welcome-screen .welcome-container .auth-card-split .form-side .auth-header {
+  margin-bottom: 25px;
+}
+.welcome-screen .welcome-container .auth-card-split .form-side .auth-header h1 {
+  font-size: 25.888px;
+  color: #343a40;
+  font-weight: 800;
+  margin: 0;
+  font-family: "Oswald", sans-serif;
+}
+.welcome-screen .welcome-container .auth-card-split .form-side .auth-header p {
+  color: #666;
+  font-size: 16px;
+  font-family: "Oswald", sans-serif;
+}
+.welcome-screen .welcome-container .auth-card-split .form-side .auth-footer {
+  margin-top: auto;
+  padding-top: 15px;
+  text-align: center;
+}
+.welcome-screen .welcome-container .auth-card-split .form-side .auth-footer .toggle-btn {
+  background: none !important;
+  border: none !important;
+  color: #2bc3ff;
+  font-weight: 700;
+  cursor: pointer;
+  margin-left: 5px;
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: underline;
+}
+.welcome-screen .welcome-container .auth-card-split .form-side .auth-footer .toggle-btn:hover {
+  text-decoration: none;
+  color: hsl(196, 100%, 47%);
+}
+.welcome-screen .welcome-container .auth-card-split .info-side {
+  flex: 1;
+  padding: 60px;
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+}
+.welcome-screen .footer-welcomeScreen {
+  position: absolute;
+  bottom: 10px;
+}
+.welcome-screen .footer-welcomeScreen p {
+  color: #343a40;
+  opacity: 60%;
+  font-family: Helvetica, Arial, sans-serif;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .welcome-screen {
+    height: auto;
+    padding: 40px 0;
+  }
+  .welcome-container {
+    padding: 15px;
+  }
+  .auth-card-split {
+    flex-direction: column;
+    height: auto !important;
+    max-width: 450px;
+  }
+  .auth-card-split .info-side {
+    display: none;
+  }
+}
+@media (max-height: 750px) {
+  .welcome-screen {
+    height: auto;
+    padding: 40px 0;
+  }
+  .auth-card-split {
+    height: auto !important;
+    min-height: 650px;
+  }
+}/*# sourceMappingURL=WelcomeScreen.css.map */

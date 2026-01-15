@@ -1,0 +1,14 @@
+.dotted-map-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+.dotted-map-container svg {
+  display: block;
+  outline: none !important;
+}
+.dotted-map-container path {
+  outline: none !important;
+  transition: none !important;
+  pointer-events: none;
+}/*# sourceMappingURL=DottedMap.css.map */

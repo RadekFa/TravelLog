@@ -1,0 +1,19 @@
+.simple-map-wrapper {
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 8px;
+  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.simple-map-wrapper svg {
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  display: block;
+}/*# sourceMappingURL=SimpleWorldMap.css.map */

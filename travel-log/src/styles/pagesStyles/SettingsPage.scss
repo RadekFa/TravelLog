@@ -55,12 +55,12 @@ main {
         font-family: $font-family-primary;
         font-size: $base-font-size;
         font-weight: 500;
-        color: red;
+        color: $color-error;
         text-shadow: $box-shadow;
         margin: 0;
       }
       svg{
-        color: red;
+        color: $color-error;
       }
     }
   }

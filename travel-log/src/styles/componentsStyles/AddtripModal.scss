@@ -1,9 +1,6 @@
 @use "../variables.scss" as *;
 @use "sass:color";
 
-/* ----------------------------- */
-/* OVERLAY */
-/* ----------------------------- */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -16,9 +13,6 @@
   -webkit-backdrop-filter: blur(4px);
 }
 
-/* ----------------------------- */
-/* MODAL BOX */
-/* ----------------------------- */
 .modal-content {
   max-width: 400px;
   background: #fff;
@@ -38,9 +32,6 @@
   }
 }
 
-/* ----------------------------- */
-/* COUNTRY SEARCH */
-/* ----------------------------- */
 .country-search-wrapper {
   position: relative;
   width: 100%;
@@ -57,11 +48,10 @@
   margin-top: 2px;
 }
 
-/* Kontejner pro křížek - neovlivňuje vnější rozměry */
 .input-with-clear {
   position: relative;
-  width: 100%; // Držíme vaši původní šířku
-  max-width: 275px; // Držíme váš původní limit
+  width: 100%; 
+  max-width: 275px; 
 
   .country-search-input {
     border-radius: $border-radius;
@@ -119,7 +109,6 @@
   border: 1px solid $color-border;
   transform: translate(-50%);
 
-  /* --- iOS-like minimalist scrollbar --- */
   &::-webkit-scrollbar { width: 4px; }
   &::-webkit-scrollbar-track { background: transparent; }
   &::-webkit-scrollbar-thumb {
@@ -150,9 +139,6 @@
   }
 }
 
-/* ----------------------------- */
-/* ZBYTEK STYLŮ (beze změny rozměrů) */
-/* ----------------------------- */
 .error-message {
   color: #d32f2f;
   font-size: $base-font-size;
@@ -190,7 +176,7 @@
   }
 }
 
-/* VAŠE PŮVODNÍ MEDIA QUERIES */
+
 @media screen and (max-width: 400px) {
   .modal-content {
     width: 85%;

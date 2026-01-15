@@ -29,7 +29,7 @@ const WelcomeScreen: React.FC = () => {
                 <img src="/logo.png" alt="website logo" />
                 <h1>Travel Log</h1>
             </header>
-
+            <main>
             <div className='welcome-container'>
                 <div className='auth-card-split'>
                     <div className='form-side'>
@@ -49,12 +49,15 @@ const WelcomeScreen: React.FC = () => {
                         </div>
                     </div>
 
-                    {/* PRAVÁ ČÁST: FEATURES (MODRÁ) */}
                     <div className='info-side'>
                         <FeatureSection />
                     </div>
+                    
                 </div>
+                
+                
             </div>
+            </main>
             <footer className='footer-welcomeScreen'>
             <p>©2026 Travel Log. All rights reserved.</p>
             </footer>

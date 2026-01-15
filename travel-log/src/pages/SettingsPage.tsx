@@ -13,8 +13,8 @@ const SettingsPage = () => {
   const { logout } = useAuth();
 
   const handleSignOut = () => {
-    logout();       // ✔ odhlásí uživatele
-    navigate("/");  // ✔ přesměruje na WelcomeScreen
+    logout();       
+    navigate("/");  
   };
 
   return (

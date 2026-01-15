@@ -1,0 +1,202 @@
+@charset "UTF-8";
+/* ----------------------------- */
+/* WRAPPER & INPUT FIELD */
+/* ----------------------------- */
+.date-range-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 900;
+}
+
+.date-range-input {
+  border-radius: 8px;
+  border: 2px solid #2bc3ff;
+  padding: 10px 10px;
+  width: 300px;
+  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease-in-out;
+  font-family: Helvetica, Arial, sans-serif;
+  background: #fff;
+  cursor: pointer;
+  color: #343a40;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+.date-range-input:hover {
+  border-color: rgb(13.2, 186.5660377358, 255);
+}
+.date-range-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(43, 195, 255, 0.2);
+}
+.date-range-input::-moz-placeholder {
+  color: #aaa;
+  font-style: italic;
+}
+.date-range-input::placeholder {
+  color: #aaa;
+  font-style: italic;
+}
+
+/* ----------------------------- */
+/* POPUP CALENDAR CONTAINER */
+/* ----------------------------- */
+.calendar-popup {
+  position: absolute;
+  bottom: calc(100% + 5px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+  display: flex;
+  gap: 30px;
+  z-index: 110;
+  border: 1px solid #cccccc;
+  animation: calendarFadeUp 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+@media screen and (max-width: 600px) {
+  .calendar-popup {
+    flex-direction: column;
+    width: 290px;
+    gap: 10px;
+    padding: 15px;
+  }
+  .calendar-popup .calendar-month:last-child {
+    display: none;
+  }
+}
+
+@keyframes calendarFadeUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 15px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  width: 100%;
+  padding: 0 5px;
+}
+.calendar-header .calendar-title {
+  font-family: "Oswald", sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #343a40;
+  margin: 0;
+  flex-grow: 1;
+  text-align: center;
+}
+.calendar-header .nav-button {
+  background: transparent;
+  border: none;
+  color: #2bc3ff;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+.calendar-header .nav-button:hover {
+  background: rgb(238.04, 250.2, 255);
+  transform: scale(1.1);
+}
+.calendar-header .nav-button svg {
+  width: 18px;
+  height: 18px;
+}
+.calendar-header .nav-button.next svg {
+  transform: rotate(180deg);
+}
+
+@media screen and (min-width: 601px) {
+  .calendar-month:first-child .nav-button.next {
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+
+@media screen and (min-width: 601px) {
+  .calendar-month:last-child .nav-button.prev {
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+
+/* ----------------------------- */
+/* GRID & DAY CELLS */
+/* ----------------------------- */
+.calendar-month {
+  width: 250px;
+  margin: 0 auto;
+}
+
+.calendar-grid {
+  display: grid;
+  /* Fixní šířka sloupce 32px zaručuje symetrii mřížky */
+  grid-template-columns: repeat(7, 32px);
+  justify-content: center;
+  gap: 4px;
+}
+
+.calendar-day-name {
+  text-align: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #999;
+  padding-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.calendar-day {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-family: Helvetica, Arial, sans-serif;
+  border-radius: 6px;
+  transition: 0.2s, color 0.2s;
+  color: #343a40;
+}
+.calendar-day:hover:not(.empty) {
+  background: #f0f0f0;
+  color: #2bc3ff;
+}
+.calendar-day.selected {
+  background: rgb(233.8, 249, 255);
+  color: #2bc3ff;
+  border-radius: 0;
+}
+.calendar-day.start, .calendar-day.end {
+  background: #2bc3ff !important;
+  color: #fff !important;
+  font-weight: 700;
+  border-radius: 6px;
+  z-index: 2;
+}
+.calendar-day.empty {
+  cursor: default;
+}
+
+@media screen and (max-width: 400px) {
+  .calendar-popup {
+    width: 90%;
+  }
+}/*# sourceMappingURL=DateRangeInput.css.map */

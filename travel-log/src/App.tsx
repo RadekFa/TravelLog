@@ -1,14 +1,23 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { TripProvider } from './context/TripContext';
+import './styles/Main.scss'
 
-import WelcomeScreen from './pages/WelcomeScreen';
-import MainPage from './pages/MainPage';
-import CountryList from './pages/CountryList';
-import CountryDetail from './pages/CountryDetail';
-import SettingsPage from './pages/SettingsPage';
-import ProfilePage from './pages/ProfilePage';
+
+const WelcomeScreen = lazy(() => import('./pages/WelcomeScreen'));
+const MainPage = lazy(() => import('./pages/MainPage'));
+const CountryList = lazy(() => import('./pages/CountryList'));
+const CountryDetail = lazy(() => import('./pages/CountryDetail'));
+const SettingsPage = lazy(() => import('./pages/SettingsPage'));
+const ProfilePage = lazy(() => import('./pages/ProfilePage'));
+
+
+const PageLoader = () => (
+  <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+    <div className="loader">Loading...</div>
+  </div>
+);
 
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { isLoggedIn } = useAuth();
@@ -22,57 +31,59 @@ const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) =
 
 const AppContent: React.FC = () => {
   return (
-    <Routes>
-      <Route path="/" element={<WelcomeScreen />} />
+    
+    <Suspense fallback={<PageLoader />}>
+      <Routes>
+        <Route path="/" element={<WelcomeScreen />} />
 
-      <Route
-        path="/map"
-        element={
-          <ProtectedRoute>
-            <MainPage />
-          </ProtectedRoute>
-        }
-      />
+        <Route
+          path="/map"
+          element={
+            <ProtectedRoute>
+              <MainPage />
+            </ProtectedRoute>
+          }
+        />
 
-      <Route
-        path="/countries"
-        element={
-          <ProtectedRoute>
-            <CountryList />
-          </ProtectedRoute>
-        }
-      />
+        <Route
+          path="/countries"
+          element={
+            <ProtectedRoute>
+              <CountryList />
+            </ProtectedRoute>
+          }
+        />
 
-      {/* ✅ detail země podle názvu */}
-      <Route
-        path="/country/:name"
-        element={
-          <ProtectedRoute>
-            <CountryDetail />
-          </ProtectedRoute>
-        }
-      />
+        <Route
+          path="/country/:name"
+          element={
+            <ProtectedRoute>
+              <CountryDetail />
+            </ProtectedRoute>
+          }
+        />
 
-      <Route
-        path="/settings"
-        element={
-          <ProtectedRoute>
-            <SettingsPage />
-          </ProtectedRoute>
-        }
-      />
+        <Route
+          path="/settings"
+          element={
+            <ProtectedRoute>
+              <SettingsPage />
+            </ProtectedRoute>
+          }
+        />
 
-      <Route
-        path="/profile"
-        element={
-          <ProtectedRoute>
-            <ProfilePage />
-          </ProtectedRoute>
-        }
-      />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <ProfilePage />
+            </ProtectedRoute>
+          }
+        />
 
-      <Route path="*" element={<Navigate to="/" replace />} />
-    </Routes>
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </Suspense>
   );
 };
 

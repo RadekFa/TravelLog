@@ -17,7 +17,7 @@ const CountryDetail = () => {
   return (
     <div className="country-detail-page">
       <header className="header-country-detail">
-        <button className="back-button" onClick={() => window.history.back()}>
+        <button className="back-button" onClick={() => window.history.back()} aria-label="Back button">
       <svg 
         width="24" 
         height="24" 
@@ -38,7 +38,7 @@ const CountryDetail = () => {
       </header>
 
           
-          
+    <main>     
     <div className="detail-box">
       
 
@@ -98,9 +98,10 @@ const CountryDetail = () => {
           <p className="regular-info">{country.continent}</p>
         </div>
       </div>
-      <iframe className="detail-map"  allowFullScreen src={`https://maps.google.com/maps?q=${encodeURIComponent(country.name)}&t=&z=5&ie=UTF8&iwloc=&output=embed`} />
+      <iframe className="detail-map"  title="Map of the country" allowFullScreen src={`https://maps.google.com/maps?q=${encodeURIComponent(country.name)}&t=&z=5&ie=UTF8&iwloc=&output=embed`} />
       
       </div>
+      </main> 
       <BottomMenu />
     </div>
   );

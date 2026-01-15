@@ -22,6 +22,7 @@
             font-weight: 600; 
             color: $color-text-dark; 
             padding-left: 5px; 
+            font-family: $font-family-primary;
         }
 
         input {
@@ -56,6 +57,7 @@
             margin-top: 2px; 
             padding-left: 5px;
             animation: fadeIn 0.3s ease-out;
+            font-family: $font-family-primary;
         }
     }
 
@@ -75,6 +77,7 @@
         cursor: pointer;
         transition: all 0.3s ease;
         box-shadow: 0 4px 15px rgba($color-accent-strong, 0.3);
+        font-family: $font-family-primary;
         
         &:hover:not(:disabled) { 
             background: hsl(196, 100%, 49%);

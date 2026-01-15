@@ -24,8 +24,8 @@
             flex-shrink: 0;
             width: 48px;
             height: 48px;
-            background: rgba(#2bc3ff, 0.15);
-            color: #2bc3ff;
+            background: rgba($color-accent-strong, 0.15);
+            color: $color-accent-strong;
             border-radius: $border-radius;
             display: flex;
             align-items: center;
@@ -34,7 +34,7 @@
         }
 
         .mini-text {
-            h3 { 
+            .featureSection-title { 
                 font-size: $base-font-size; 
                 margin: 0; 
                 font-weight: 700; 
@@ -45,7 +45,7 @@
             p { 
                 font-size: 0.85rem; 
                 margin: 0; 
-                color: #666; 
+                color: #444444; 
                 opacity: 0.9; 
                 line-height: 1.4; 
                 text-align: left; 
@@ -61,10 +61,11 @@
         p {
             font-size: 0.75rem;
             font-weight: 700;
-            color: rgba($color-text-dark, 0.5);
+            color: #444444;
             margin-bottom: 15px;
             text-transform: uppercase;
             letter-spacing: 1.5px;
+            font-family: $font-family-primary;
         }
 
         .social-links {
@@ -88,10 +89,10 @@
                 svg { width: 20px; height: 20px; }
 
                 &:hover {
-                    background: #2bc3ff;
+                    background: $color-accent-strong;
                     color: white;
                     transform: translateY(-3px);
-                    border-color: #2bc3ff;
+                    border-color: $color-accent-strong;
                 }
             }
         }

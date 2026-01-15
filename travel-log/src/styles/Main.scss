@@ -3,14 +3,10 @@
 .input-group input:-webkit-autofill:focus,
 .input-group input:-webkit-autofill:active {
     
-    // Klíčové: Použijeme box-shadow s transparentní barvou, 
-    // aby se přepsalo výchozí světlé pozadí.
     box-shadow: 0 0 0 30px transparent inset !important;
     
-    // Nastavíme barvu písma na bílou
     -webkit-text-fill-color: white !important;
     
-    // Vypnutí případného prohlížečového přechodu
     transition: background-color 5000s ease-in-out 0s;
 }
 
@@ -23,4 +19,5 @@
 html, body {
   margin: 0;
   padding: 0;
+  background-color: #fafafa;
 }

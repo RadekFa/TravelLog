@@ -76,7 +76,7 @@ const FeatureSection: React.FC = () => {
           <div className="mini-feature-item" key={i}>
             <div className="mini-icon">{f.icon}</div>
             <div className="mini-text">
-              <h3>{f.title}</h3>
+              <p className='featureSection-title'>{f.title}</p>
               <p>{f.desc}</p>
             </div>
           </div>
@@ -86,10 +86,10 @@ const FeatureSection: React.FC = () => {
       <div className="social-section">
         <p>Follow our journey</p>
         <div className="social-links">
-          <a href="https://www.instagram.com/" className="social-item" target="_blank" rel="noopener noreferrer"><InstagramIcon /></a>
-          <a href="https://www.facebook.com/" className="social-item" target="_blank" rel="noopener noreferrer"><FacebookIcon /></a>
-          <a href="https://www.youtube.com/" className="social-item" target="_blank" rel="noopener noreferrer"><YouTubeIcon /></a>
-          <a href="https://x.com" className="social-item" target="_blank" rel="noopener noreferrer"><XIcon/></a>
+          <a href="https://www.instagram.com/" className="social-item" target="_blank" rel="noopener noreferrer" aria-label="Visit our Instagram"><InstagramIcon /></a>
+          <a href="https://www.facebook.com/" className="social-item" target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook"><FacebookIcon /></a>
+          <a href="https://www.youtube.com/" className="social-item" target="_blank" rel="noopener noreferrer" aria-label="Visit our YouTube"><YouTubeIcon /></a>
+          <a href="https://x.com" className="social-item" target="_blank" rel="noopener noreferrer" aria-label="Visit our X"><XIcon/></a>
         </div>
       </div>
     </div>

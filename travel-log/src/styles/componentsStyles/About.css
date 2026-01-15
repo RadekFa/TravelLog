@@ -1,0 +1,60 @@
+.about {
+  width: 95vw;
+  background: #fff;
+  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin: 30px auto;
+}
+.about h2 {
+  font-family: "Oswald", sans-serif;
+  font-size: 25.888px;
+  color: #343a40;
+  text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  margin: 0;
+  margin-left: 20px;
+  padding-top: 20px;
+  margin-bottom: 10px;
+}
+.about hr {
+  border: none;
+  border-top: 1px solid #cccccc;
+  margin: 0 20px;
+}
+.about .about-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  color: #343a40;
+  padding: 15px 20px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.about .about-item:hover {
+  background-color: #ececec;
+}
+.about .about-item:active {
+  background-color: #d4d4d4;
+}
+.about .about-item .about-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.about .about-item .about-content .about-svg {
+  width: 20px;
+  height: 20px;
+  color: #2bc3ff;
+  flex-shrink: 0;
+}
+.about #help-support {
+  padding-bottom: 20px;
+}
+
+@media screen and (max-width: 710px) {
+  .about {
+    width: 90vw;
+  }
+}/*# sourceMappingURL=About.css.map */
