@@ -1,169 +1,122 @@
 @use "../variables.scss" as *;
 
 .welcome-screen {
-    position: relative;
-    width: 100%; 
-    min-height: 100vh;
-    overflow-x: hidden; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #f4f7f9;
+  background: #f8fafc;
+  width: 100%;
+  position: relative;
+  overflow-x: hidden;
 
-    .WelcomeScreen-Header{
-        background: none;
-        border: none;
-        display: grid;
-        grid-template-columns: 60px 220px;
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        img{
-            width: 60px;
-            height: 60px;
-        }
-        h1{
-            font-size: $base-font-size * $golden-ratio* $golden-ratio;
-            color: $color-accent-strong;
-            margin: 0;
-            line-height: 60px;
-            font-family: $font-family-header;
-        }
+  // Společný základ pro fixní elementy
+  .persistent-logo, .fixed-video-placeholder, .fixed-features-wrapper {
+    position: fixed;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    pointer-events: none;
+  }
+
+  .persistent-logo { 
+    z-index: 9999; 
+    .logo-row {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      img { width: 80px; }
+      h1 { font-family: $font-family-header; font-size: 4rem; color: $color-accent-strong; margin: 0; }
     }
+  }
 
-    .map-background {
-        position: absolute;
-        inset: 0;
-        z-index: 1;
-        opacity: 0.4;
-        pointer-events: none;
+  .fixed-video-placeholder { 
+    z-index: 1000; 
+    .red-square {
+      width: 90%;
+      max-width: 1000px;
+      height: 500px;
+      background: #ff4d4f;
+      border-radius: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      h2 { color: white; font-size: 3.5rem; text-align: center; font-family: $font-family-header; padding: 0 30px; }
     }
+  }
 
-    .welcome-container {
-        position: relative;
-        z-index: 10;
-        width: 100%;
-        max-width: 950px;
-        box-sizing: border-box; 
-        padding: 20px;
-        display: flex;
-        justify-content: center;
-        top: 40px;
-        margin-bottom: 50px;
-        font-family: $font-family-primary;
-        .auth-card-split {
-            display: flex;
-            width: 100%; 
-            background: rgba(255, 255, 255, 0.4); 
-            backdrop-filter: blur(25px) saturate(180%);
-            -webkit-backdrop-filter: blur(25px) saturate(180%);
-            border-radius: $border-radius;
-            border: 1px solid rgba(255, 255, 255, 0.7);
-            box-shadow: $box-shadow;
-            overflow: hidden;
-            height: 720px; 
-            transition: all 0.4s ease;
-
-            .form-side {
-                flex: 1.2;
-                padding: 40px 60px;
-                background: rgba(255, 255, 255, 0.5);
-                border-right: 1px solid rgba(255, 255, 255, 0.3);
-                display: flex;
-                flex-direction: column;
-                justify-content: flex-start;
-
-                .auth-header {
-                    margin-bottom: 25px;
-                    h1 { font-size: $base-font-size * $golden-ratio; 
-                    color: $color-text-dark; 
-                    font-weight: 800; 
-                    margin: 0; 
-                    font-family: $font-family-header;}
-                    p { 
-                        color: #666; 
-                        font-size: $base-font-size;
-                        font-family: $font-family-header;
-                     }
-                }
-
-                .auth-footer {
-                    margin-top: auto; 
-                    padding-top: 15px;
-                    text-align: center;
-                    
-                    .toggle-btn {
-                    background: none !important;
-                    border: none !important;
-                    color: $color-accent-strong;
-                    font-weight: 700;
-                    cursor: pointer;
-                    margin-left: 5px;
-                    font-family: $font-family-primary;
-                    text-decoration: underline;
-
-                    &:hover {
-                        text-decoration: none;
-                        color: hsl(196, 100%, 47%);
-                        
-                    }
-                    }
-
-
-
-
-                }
-            }
-
-            .info-side {
-                flex: 1;
-                padding: 60px;
-                display: flex;
-                align-items: center;
-                background: rgba(255, 255, 255, 0.1);
-            }
-        }
-    }
-    .footer-welcomeScreen{
-        position: absolute;
-        bottom: 10px;
-        
-        
-        p{
-            color: $color-text-dark;
-            opacity: 60%;
-            font-family: $font-family-primary;
-            margin: 0;
-        }
-    }
-}
-
-
-@media (max-width: 900px) {
-    .welcome-screen {
-        height: auto;
-        padding: 40px 0;
-    }
-    .welcome-container {
-        padding: 15px;
-    }
-    .auth-card-split {
-        flex-direction: column;
-        height: auto !important; 
-        max-width: 450px; 
-        .info-side { display: none; }
-    }
-
+  // Obal, který drží tvoje grid styly uprostřed
+  .fixed-features-wrapper {
+    z-index: 5000;
+    padding: 0 20px;
     
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); // Pro desktop fixní 3 sloupce
+      gap: 40px;
+      width: 100%;
+      max-width: 1200px;
+      pointer-events: auto;
+
+      // TVOJE STYLY KARET
+      .big-feature-card {
+        background: white;
+        padding: 60px 40px;
+        border-radius: 40px;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.06);
+        position: relative;
+        overflow: hidden;
+        
+        .card-icon svg { width: 60px; height: 60px; color: $color-accent-strong; margin-bottom: 20px; }
+        h3 { font-family: $font-family-header; font-size: 2rem; margin-bottom: 15px; }
+        p { color: #64748b; line-height: 1.6; font-size: 1.1rem; }
+        
+        .card-decoration {
+          position: absolute;
+          bottom: -20px;
+          right: -20px;
+          width: 100px;
+          height: 100px;
+          background: rgba($color-accent-strong, 0.05);
+          border-radius: 50%;
+          transition: transform 0.4s ease;
+        }
+        &:hover { transform: translateY(-10px); .card-decoration { transform: scale(3); } }
+      }
+    }
+  }
+
+  .scroll-flow-content {
+    position: relative;
+    z-index: 6000;
+
+    .animation-spacer {
+      height: 400vh; 
+    }
+
+    .cta-area {
+      display: flex;
+      justify-content: center;
+      margin-top: 100px;
+      .primary-btn {
+        background: $color-accent-strong;
+        color: white;
+        padding: 24px 80px;
+        border-radius: 100px;
+        border: none;
+        font-weight: 800;
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+    }
+
+    .final-spacer {
+      height: 100vh;
+    }
+  }
 }
 
-@media (max-height: 750px) {
-    .welcome-screen {
-        height: auto;
-        padding: 40px 0;
-    }
-    .auth-card-split {
-        height: auto !important;
-        min-height: 650px;
-    }
+// Responzivita pro menší obrazovky, aby se grid nezlomil ošklivě
+@media (max-width: 1000px) {
+  .fixed-features-wrapper .features-grid {
+    grid-template-columns: 1fr;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
 }

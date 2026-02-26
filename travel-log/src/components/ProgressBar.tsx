@@ -19,7 +19,7 @@ const ProgressBar: React.FC = () => {
 
   return (
     <div className="goal-progress">
-      <h2>Travel Goal</h2>
+      <h2 className='h2-progressBar'>Travel Goal</h2>
       <span className="progress-count">
         {visitedCount}/{travelGoal} countries
       </span>

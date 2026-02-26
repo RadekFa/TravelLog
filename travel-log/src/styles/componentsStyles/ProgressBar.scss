@@ -12,10 +12,12 @@
   margin-top: 20px;
   margin-bottom: 74px;
 
-  h2 {
+  .h2-progressBar {
     font-size: $base-font-size * $golden-ratio;
     margin-bottom: 10px;
     font-family: $font-family-header;
+    text-align: left;
+    margin-left: 20px;
   }
 
   .progress-count {
