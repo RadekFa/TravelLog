@@ -41,7 +41,7 @@ Aplikace je navržena v souladu s principy **vícevrstvé architektury**, což z
 * **Repository vrstva (DAO):** Využívá Spring Data JPA k přístupu k MySQL databázi. Zahrnuje CRUD operace, podporu pro stránkování (`Pageable`) a složitější JPQL dotazy pro administrátorské statistiky.
 * **Entity / Modely:** Třídy reprezentující datové objekty mapované přímo do databázových tabulek (např. `User`, `UserSetting`).
 * **Validace:** Systém využívá standardní Spring validace doplněné o vlastní mechanismy (např. anotace pro sílu hesla a cestovatelské cíle).
-* 
+  
 ## 4. Testování
 V projektu je implementováno testování klíčové business logiky, čímž je zajištěna stabilita aplikace. Součástí jsou jednotkové testy (např. otestování komponenty UserService), které ověřují správnost registrace uživatelů, kontrolu unikátnosti emailu a bezpečné ukládání zahashovaných hesel do databáze.
 
