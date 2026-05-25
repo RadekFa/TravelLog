@@ -3,10 +3,10 @@
 
 .travel-goal-setting {
   width: 95vw;
-  background: #fff;
+  background: $color-card-bg;
   box-shadow: $box-shadow;
   border-radius: $border-radius;
-  margin: 30px auto;
+  margin: 0px auto;
 
   display: grid;
   grid-template-columns: 1fr;
@@ -54,6 +54,7 @@
 
 .target-setter {
   -webkit-appearance: none;
+  appearance: none;
   width: calc(100% - 40px);
   margin-left: 20px;
   height: 6px;

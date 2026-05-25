@@ -6,7 +6,7 @@
   }
 
   .progress-ring__background {
-    stroke: #e4e1e1ff;
+    stroke: $slider-background;
   }
 
   .progress-ring__circle {
@@ -20,7 +20,7 @@
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
-    background-color: $color-white;
+    background-color: $color-card-bg;
     border-radius: $border-radius;
     padding: 10px 0;
     margin: 0;

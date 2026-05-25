@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/componentsStyles/ProgressBar.scss'; 
-import { visitedCountriesDB } from '../data/VisitedCountries';
+import { useLanguage } from '../context/LanguageContext';
 
-const travelGoal = 20;
-const visitedCount = visitedCountriesDB.length;
-const remainingCount = travelGoal - visitedCount;
-const targetProgress = (visitedCount / travelGoal) * 100;
+interface ProgressBarProps {
+  visitedCount: number;
+  travelGoal: number;
+}
 
-const ProgressBar: React.FC = () => {
+const ProgressBar: React.FC<ProgressBarProps> = ({ visitedCount, travelGoal }) => {
+  const { t } = useLanguage();
+  const remainingCount = travelGoal - visitedCount;
+  const targetProgress = (visitedCount / travelGoal) * 100;
+  
   const [animatedProgress, setAnimatedProgress] = useState(0);
 
   useEffect(() => {
@@ -15,25 +19,43 @@ const ProgressBar: React.FC = () => {
       setAnimatedProgress(Math.min(targetProgress, 100));
     }, 100);
     return () => clearTimeout(timeout);
-  }, []);
+  }, [targetProgress]); 
 
   return (
     <div className="goal-progress">
-      <h2 className='h2-progressBar'>Travel Goal</h2>
-      <span className="progress-count">
-        {visitedCount}/{travelGoal} countries
-      </span>
+      
+      {/* HLAVNÍ FLEXBOX OBAL PRO TEXTY */}
+      <div className="progress-header-row">
+        
+        {/* LEVÁ STRANA: Nadpis a pod ním počítadlo s nápisem */}
+        <div className="header-left-side">
+          <h2 className='h2-progressBar'>{t('progress_bar.goal_title')}</h2>
+          <span className="progress-count">
+            {visitedCount}/{travelGoal} {t('progress_bar.countries')}
+          </span>
+        </div>
+
+        {/* PRAVÁ STRANA: Zbývající země ve stejném řádku */}
+        <div className="header-right-side">
+          <span className="progress-remaining">
+            {remainingCount > 0
+              ? `${remainingCount} ${t('progress_bar.to_go')}`
+              : t('progress_bar.reached')}
+          </span>
+        </div>
+
+      </div>
+
+      {/* ČÁRA POD TEXTY */}
       <div className="progress-bar">
         <div
           className="progress-fill"
-          style={{ width: `${animatedProgress}%` }}
+          style={{ 
+            width: `${animatedProgress}%`,
+            transition: 'width 1s ease-out' 
+          }}
         ></div>
       </div>
-      <span className="progress-remaining">
-        {remainingCount > 0
-          ? `${remainingCount} countries to go!`
-          : `Goal reached! 🎉`}
-      </span>
     </div>
   );
 };

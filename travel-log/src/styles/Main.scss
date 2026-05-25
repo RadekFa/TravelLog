@@ -1,23 +1,47 @@
+@use './variables.scss' as *;
+
+// Podpora pro plynulé přepínání barev na hlavním kontejneru aplikovaných stránek
+.app-theme-container {
+  background-color: $color-background;
+  color: $color-text-dark;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+// FIX: Úprava webkit autofillu, aby fungoval pro světlé i tmavé inputy
 .input-group input:-webkit-autofill,
 .input-group input:-webkit-autofill:hover,
 .input-group input:-webkit-autofill:focus,
 .input-group input:-webkit-autofill:active {
+    // Vnitřní stín zabrání té ošklivé výchozí žluté/modré barvě od prohlížeče
+    box-shadow: 0 0 0 30px var(--color-card-bg) inset !important;
     
-    box-shadow: 0 0 0 30px transparent inset !important;
-    
-    -webkit-text-fill-color: white !important;
+    // ZMĚNA: Text se přizpůsobí – na Welcome screen bude tmavý, v mapě/profilu ve tmě světlý
+    -webkit-text-fill-color: $color-text-dark !important;
     
     transition: background-color 5000s ease-in-out 0s;
 }
 
-#root {
-  margin: 0 auto;
-  padding: 0;
-  text-align: center;
-}
-
+/* OPRAVA: html a body dostanou pojistku proti horizontálnímu přetékání */
 html, body {
   margin: 0;
   padding: 0;
-  background-color: #fafafa;
+  background-color: #fafafa; // Výchozí barva pro welcome gate a admin panel
+  max-width: 100%;
+  overflow-x: hidden; /* Stoprocentně utne jakékoliv posouvání do stran */
+}
+
+/* OPRAVA: #root se teď bude striktně držet šířky okna a nepřeteče kvůli vw jednotkám */
+#root {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+  overflow-x: hidden; /* Druhá pojistka pro vnitřní flexboxy a gridy */
+  box-sizing: border-box;
+}
+
+/* Globální reset, aby paddingy a bordery nenafukovaly šířku prvků */
+*, *::before, *::after {
+  box-sizing: border-box;
 }

@@ -1,16 +1,73 @@
-//barvy
-$color-dark-primary: #042940;     
-$color-dark-secondary: #004a8f;   
-$color-accent-light: #dbf3fc;   
+// ==========================================================================
+// 1. DYNAMICKÉ CSS PROMĚNNÉ (Mění se v prohlížeči podle data-theme)
+// ==========================================================================
+
+:root {
+  --color-background: #fafafa;
+  --color-dark-primary: #042940;
+  --color-card-bg: #ffffff;
+  --color-text-dark: #343a40;
+  --color-text-light: #ffffff;
+  --color-border: #cccccc;
+  --box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
+  --box-shadow-light: 2px 2px 6px rgba(255, 255, 255, 0.308);
+  --bottom-menu-background: rgba(255, 255, 255, 0.8);
+  --gradient-overlay: linear-gradient(to left, color-mix(in srgb, #fafafa 76%, transparent), #fafafa);
+  --box-shadow-button-right: 12px 0 12px 20px color-mix(in srgb, #fafafa 76%, transparent);
+  --box-shadow-button-left: 20px 0 12px -1px color-mix(in srgb, #fafafa 76%, transparent);
+  --cancel-button: #ececec;
+  --slider-background: #ccc;
+  --map-country-default: #ccc;   
+  --map-country-visited: #2bc3ff;   
+  --map-country-stroke: #ffffff;
+  --timecapsule-bg: #fdfdfd;
+}
+
+[data-theme="dark"] {
+  --color-background: #2D2D2D;      
+  --color-dark-primary: #042940;    
+  --color-card-bg: #373737;         
+  --color-text-dark: #fff;       // Téměř bílá, skvěle čitelná (slate-50)
+  --color-text-light: #f1f5f9;      // Světlý text na tmavých panelech
+  --color-border: #334155;          // Tmavé ohraničení (slate-700)
+  --box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.4); 
+  --box-shadow-light: 2px 2px 6px rgba(0, 0, 0, 0.5);
+  --bottom-menu-background: #2d2d2dbd; 
+  --gradient-overlay: linear-gradient(to left, color-mix(in srgb, #2D2D2D 76%, transparent), #2D2D2D);
+  --box-shadow-button-right: 12px 0 12px 20px color-mix(in srgb, #2D2D2D 76%, transparent);
+  --box-shadow-button-left: 20px 0 12px -1px color-mix(in srgb, #2D2D2D 76%, transparent);
+  --cancel-button: #373737;
+  --slider-background: #555555;
+  --map-country-default: #555555;   // Tmavší šedá, aby země nesvítily na tmavém podkladu karty
+  --map-country-visited: #2bc3ff;   // Tyrkysová zůstává zářivá, aby skvěle kontrastovala
+  --map-country-stroke: #373737;
+  --timecapsule-bg: #555555;
+}
+
+// ==========================================================================
+// 2. MAPOVÁNÍ SASS PROMĚNNÝCH (Ponechány tvé původní názvy)
+// ==========================================================================
+
+$color-dark-primary: var(--color-dark-primary);
+$color-background: var(--color-background);
+$color-text-dark: var(--color-text-dark);
+$color-text-light: var(--color-text-light);
+$color-border: var(--color-border);
+$box-shadow: var(--box-shadow);
+$color-card-bg: var(--color-card-bg);
+$box-shadow-light: var(--box-shadow-light);
+$bottom-menu-background: var(--bottom-menu-background);
 $color-accent-strong: #2bc3ff;  
-
 $color-white: #ffffff;
-$color-text-dark: #343a40;      
-$color-text-light: $color-white; 
-$color-error: #ce0306;           
-$color-border: #cccccc;          
-
-//-----------fonts-----------
+$color-error: #ce0306; 
+$shadow-hover: 0px 0px 6px $color-accent-strong;
+$gradient-overlay: var(--gradient-overlay);
+$box-shadow-button-right: var(--box-shadow-button-right);
+$box-shadow-button-left: var(--box-shadow-button-left);
+$cancel-button: var(--cancel-button);
+$slider-background: var(--slider-background);
+$timecapsule-bg: var(--timecapsule-bg);
+// -----------fonts-----------
 $font-family-primary: Helvetica, Arial, sans-serif;
 $font-family-header: 'Oswald', sans-serif;
 $golden-ratio: 1.618;
@@ -18,14 +75,19 @@ $base-font-size: 16px;
 $letter-spacing-button: 2px;
 $letter-spacing-header: -1px;
 
-
 // Ostatní
 $border-radius: 8px;
-$box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
-$box-shadow-light: 2px 2px 6px rgba(255, 255, 255, 0.308);
-$shadow-hover: 0px 0px 6px $color-accent-strong;
 
-//zatřesení
+// ==========================================================================
+// 3. GLOBÁLNÍ FIX PRO COLOR.SCALE (Třeba pro AddtripModal.scss)
+// ==========================================================================
+// Kdykoliv bude komponenta potřebovat zprůhledněný text, použiješ tyto proměnné
+// namísto nefunkčního color.scale($color-text-dark, ...)
+$color-text-dark-muted: color-mix(in srgb, $color-text-dark 40%, transparent); // Původní -60% alpha
+$color-text-dark-bg-75: color-mix(in srgb, $color-text-dark 25%, transparent); // Původní -75% alpha
+$color-text-dark-bg-55: color-mix(in srgb, $color-text-dark 45%, transparent); // Původní -55% alpha
+
+// zatřesení
 @mixin apply-shake-animation($duration: 0.4s) {
     animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both;
 }

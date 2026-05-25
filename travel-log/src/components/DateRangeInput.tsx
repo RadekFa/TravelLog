@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useLanguage } from "../context/LanguageContext"; // Import kontextu pro lokalizaci
 import "../styles/componentsStyles/DateRangeInput.scss";
 
 type Props = {
@@ -11,15 +12,32 @@ const DateRangeInput: React.FC<Props> = ({ value, onChange }) => {
   // Stav pro posun měsíců (0 = aktuální měsíc založený na dnešku)
   const [currentOffset, setCurrentOffset] = useState(0);
   const wrapperRef = useRef<HTMLDivElement>(null);
+  
+  // OPRAVA CHYBY: Vytáhneme 'lang' z kontextu a přejmenujeme na 'language'
+  const { t, lang: language } = useLanguage(); 
 
-  // Formátování data podle požadavku: May 10, 2023
+  // Formátování data podle vybraného jazyka s dynamickou lokalizací
   const format = (date: Date | null) => {
     if (!date) return "";
-    return date.toLocaleDateString("en-US", {
+    return date.toLocaleDateString(language, {
       month: "long",
       day: "numeric",
       year: "numeric",
     });
+  };
+
+  // Generování lokalizovaných zkratek dnů v týdnu (Po-Ne / Mo-Su) na základě jazyka
+  const getWeekdayNames = () => {
+    // Použijeme pevné referenční dny (od pondělí 1. 1. 2024), abychom dostali správné zkratky
+    const baseDate = new Date(2024, 0, 1); 
+    const names = [];
+    for (let i = 0; i < 7; i++) {
+      names.push(
+        baseDate.toLocaleDateString(language, { weekday: "short" })
+      );
+      baseDate.setDate(baseDate.getDate() + 1);
+    }
+    return names;
   };
 
   /* ----------------------------- */
@@ -82,7 +100,8 @@ const DateRangeInput: React.FC<Props> = ({ value, onChange }) => {
           </button>
 
           <h4 className="calendar-title">
-            {first.toLocaleString("en-US", { month: "long" })} {first.getFullYear()}
+            {/* Dynamický lokalizovaný název měsíce */}
+            {first.toLocaleString(language, { month: "long" })} {first.getFullYear()}
           </h4>
 
           <button 
@@ -95,8 +114,9 @@ const DateRangeInput: React.FC<Props> = ({ value, onChange }) => {
         </div>
 
         <div className="calendar-grid">
-          {["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"].map((d) => (
-            <div key={d} className="calendar-day-name">{d}</div>
+          {/* Vykreslení dynamicky přeložených zkratek dnů */}
+          {getWeekdayNames().map((d, index) => (
+            <div key={index} className="calendar-day-name">{d}</div>
           ))}
 
           {Array(weekdayOffset).fill(null).map((_, i) => (
@@ -148,7 +168,8 @@ const DateRangeInput: React.FC<Props> = ({ value, onChange }) => {
             ? `${format(value.start)} – ${format(value.end)}` 
             : ""
         }
-        placeholder="Select trip range (Month DD, YYYY)"
+        // Přesměrováno na správný překladový klíč hlavní stránky
+        placeholder={t('main_page.select_range') || "Select trip range..."}
         onClick={() => setOpen((prev) => !prev)}
       />
 

@@ -1,96 +1,179 @@
 @use '../variables.scss' as *;
 
-.achievements {
+.achievements-section {
   width: 95vw;
-  border-radius: $border-radius;
-  background: #fff;
-  box-shadow: $box-shadow;
-  margin: 0 auto;
-  margin-top: 230px;
-
-  .ach-divider { 
-    border: none; 
-    border-top: 1px solid $color-border;
-    margin: 0;
-  }
+  margin: 0 auto 0px auto;
+  box-sizing: border-box;
   
-  h2 {
-    font-family: $font-family-header;
-    color: $color-text-dark;
-    text-shadow: $box-shadow;
-    text-align: left;
-    margin: 0;
-    margin-left: 20px;
-    padding-top: 20px;
+  .section-header {
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 10px;
+
+    h2 { 
+      margin: 0; 
+      font-family: $font-family-header; 
+      color: $color-text-dark;
+      font-size: $base-font-size * $golden-ratio;
+    }
   }
 
-  .achievement-list {
+  .achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 20px;
+    padding: 10px;
+    position: relative; 
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+
+    &.collapsed {
+      max-height: 295px; 
+      mask-image: linear-gradient(to bottom, black 82%, transparent 98%);
+      -webkit-mask-image: linear-gradient(to bottom, black 82%, transparent 98%);
+    }
+    &.expanded {
+      max-height: 5000px;
+      mask-image: none;
+      -webkit-mask-image: none;
+    }
+  }
+
+  // MODERNÍ HRYVÝ BADGE STYL KARTY
+  .achievement-card {
+    height: auto; 
+    background: $color-card-bg;
+    padding: 22px 16px;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
     display: flex;
     flex-direction: column;
-    padding: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
-  
-  .achievement {
-    display: grid;
-    grid-template-columns: 80px 1fr;
     align-items: center;
-    gap: 10px;
-    padding: 15px;
-    filter: grayscale(100%);
-    opacity: 0.5;
+    text-align: center;
+    box-sizing: border-box;
+    position: relative;
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
 
-
-    &.done {
-      border-radius: $border-radius;
-      padding: 15px;
-      filter: grayscale(0%);
+    // Unlocked odznaky září barvami
+    &.unlocked {
+      filter: none;
       opacity: 1;
+
+      &:hover { 
+        transform: translateY(-4px); 
+        .icon-container {
+          transform: scale(1.06);
+        }
+      }
     }
 
-    .achievement-icon {
-      height: 50px;
-      width: 50px;
-      object-fit: contain;
-      grid-column: 1 / 2;
-      justify-self: center;
+    // Zamknuté odznaky zešednou a schovají se do mlhy
+    &.locked { 
+      filter: grayscale(1); 
+      opacity: 0.45; 
     }
-    
 
-    .text {
-      grid-column: 2 / 3;
-
-      h3 {
-        font-family: $font-family-header;
-        font-size: $base-font-size * $golden-ratio;
-        color: $color-text-dark;
-        text-shadow: $box-shadow;
-        font-weight: 600;
-        margin: 0;
-        text-align: left;
-      }
-
-      p {
-        font-family: $font-family-primary;
-        font-size: $base-font-size;
-        color: $color-text-dark;
-        margin: 5px 0 0;
-        text-align: left;
-      }
-
+    // KONTEJNER PRO BARVAMI NAPLNĚNÉ DUOLINGO SVG
+    .icon-container {
+      width: 75px; 
+      height: 75px;
+      margin-bottom: 14px;
+      flex-shrink: 0;
+      transition: transform 0.2s ease;
       
+      // Klíčový Duolingo efekt: plastický 3D spodní stín odznaku
+      filter: drop-shadow(0px 4px 0px rgba(0, 0, 0, 0.08));
+
+      svg { 
+        width: 100%; 
+        height: 100%; 
+        display: block;
+      }
+    }
+
+    .info {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1; 
+
+      h3 { 
+        font-family: $font-family-header; // Změna na header font pro lepší herní styl
+        font-size: 0.95rem; 
+        font-weight: 700; 
+        margin: 0; 
+        color: $color-text-dark;
+        line-height: 1.2;
+      }
+
+      p { 
+        font-family: $font-family-primary; 
+        font-size: 0.75rem; 
+        color: $color-text-dark; 
+        margin: 6px 0 12px 0;
+        line-height: 1.4;
+        overflow: visible; 
+        display: block; 
+        flex-grow: 1; 
+        opacity: 0.85;
+      }
+
+      .progress-wrapper {
+        margin-top: auto; 
+        padding-top: 6px;
+        width: 100%;
+
+        .progress-bar {
+          height: 6px; // Trochu tlustší hravější progress bar
+          background: #eeebef; 
+          border-radius: 10px; 
+          margin-bottom: 4px;
+          overflow: hidden;
+          
+          .fill { 
+            height: 100%; 
+            background: $color-accent-strong; 
+            border-radius: 10px;
+          }
+        }
+        .progress-num { 
+          font-family: $font-family-primary;
+          font-size: 0.7rem; 
+          font-weight: 800; 
+          color: $color-accent-strong; 
+        }
+      }
+    }
+  }
+
+  .footer-action {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end; 
+    margin-top: 20px;
+    
+    .view-more-btn {
+      background: none; 
+      border: none; 
+      color: $color-accent-strong; 
+      font-weight: bold; 
+      font-family: $font-family-primary; 
+      font-size: 0.85rem; 
+      cursor: pointer;
+      &:hover { text-decoration: underline; }
     }
   }
 }
 
-@media screen and (max-width: 710px){
-  .achievements {
-  width: 90vw;
-  border-radius: $border-radius;
-  background: #fff;
-  box-shadow: $box-shadow;
-  margin: 0 auto;
-  margin-top: 490px;
-}
+// Mobilní úpravy
+@media screen and (max-width: 480px) {
+  .achievements-section {
+    .achievements-grid {
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 12px;
+      &.collapsed { max-height: 250px; } 
+    }
+  }
 }

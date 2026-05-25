@@ -1,82 +1,267 @@
 @use '../variables.scss' as *;
 
-.profile-countries {
+.profile-countries-section {
   width: 95vw;
-  border-radius: $border-radius;
-  background: #fff;
-  box-shadow: $box-shadow;
-  margin: 0 auto;
-  margin-top: 30px;
+  margin: 0px auto;
+  padding-bottom: 20px; // Příjemná vzdušnost nad spodním menu
 
-  .country-divider { 
-    border: none; 
-    border-top: 1px solid $color-border;
-    margin: 0;
-  }
-
-  h2 {
+  .section-header h2 {
     font-family: $font-family-header;
     color: $color-text-dark;
-    text-shadow: $box-shadow;
+    font-size: $base-font-size * $golden-ratio;
+    margin-bottom: 20px;
     text-align: left;
-    margin: 0;
-    margin-left: 20px;
-    padding-top: 20px;
+    margin-left: 0;
   }
 
-  .countries-list {
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
-
-  .country-item {
+  // Izolovaný grid pouze pro profil
+  .countries-grid {
     display: grid;
-    grid-template-columns: 80px 1fr;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 20px;
+    padding: 10px 5px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+
+    &.collapsed {
+      max-height: 152px; 
+      mask-image: linear-gradient(to bottom, black 55%, transparent 95%);
+      -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 95%);
+    }
+
+    &.expanded {
+      max-height: 4000px; 
+      mask-image: none;
+      -webkit-mask-image: none;
+    }
+  }
+
+  // Izolovaná karta pouze pro profil (přetlačí 200px z druhé stránky)
+  .country-card {
+    width: 100% !important; 
+    max-width: 100% !important;
+    height: 90px !important; // Pevná nízká výška pro profilový řádek
+    background: $color-card-bg;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+    padding: 12px 20px; 
+    display: flex;
+    position: relative;
+    box-sizing: border-box;
     align-items: center;
-    gap: 10px;
-    padding: 15px;
+    justify-content: space-between;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid rgba(0, 0, 0, 0.03);
 
-    .flag-profile {
-      width: 50px;
-      height: auto;
-      object-fit: cover;
-      grid-column: 1 / 2;
-      justify-self: center;
-      box-shadow: $box-shadow;
-      border-radius: 2px;
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
     }
 
-    .text {
-      grid-column: 2 / 3;
+    .card-main-info {
+      display: flex;
+      flex-direction: row; 
+      align-items: center;
+      gap: 15px;
+      height: 100%;
+      flex: 1;
+      overflow: hidden;
 
-      h3 {
-        font-family: $font-family-header;
-        font-size: $base-font-size * $golden-ratio;
-        color: $color-text-dark;
-        text-shadow: $box-shadow;
-        font-weight: 600;
-        margin: 0;
-        text-align: left;
+      .country-flag {
+        width: 42px;
+        height: 26px;
+        object-fit: cover;
+        border-radius: 3px;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+        flex-shrink: 0;
       }
 
-      .dates {
-        font-family: $font-family-primary;
-        font-size: $base-font-size;
-        color: $color-text-dark;
-        margin: 5px 0 0;
-        opacity: 0.8;
-        text-align: left;
+      .text-details {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        overflow: hidden;
+        
+        h3 {
+          font-family: $font-family-header;
+          font-size: 1.05rem;
+          color: $color-text-dark;
+          margin: 0;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          width: 100%;
+        }
+
+        .continent-badge {
+          font-family: $font-family-primary;
+          font-size: 0.75rem;
+          color: #888;
+        }
       }
     }
-    
+
+    .card-right-group {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 20px;
+      height: 100%;
+      flex-shrink: 0;
+
+      .card-timeline {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 6px;
+        height: 100%;
+
+        .timeline-capsule {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          font-family: $font-family-primary;
+          font-size: 0.7rem;
+          color: $color-text-dark ;
+          background: $timecapsule-bg;
+          border: 1px solid $timecapsule-bg;
+          padding: 3px 10px;
+          border-radius: 20px;
+
+          .plane-icon {
+            width: 12px;
+            height: 12px;
+            color: $color-accent-strong;
+          }
+        }
+      }
+
+      .card-actions-block {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        justify-content: center;
+        height: 100%;
+
+        .delete-popover-container {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .action-btn {
+          background: none;
+          border: none;
+          cursor: pointer;
+          color: #c5c5c5;
+          display: flex;
+          align-items: center;
+          padding: 2px;
+          transition: color 0.15s ease;
+
+          svg { width: 16px; height: 16px; }
+          &.edit:hover { color: $color-accent-strong; }
+          &.delete:hover, &.delete.active { color: #ff4d4d; }
+        }
+
+        .inline-delete-popover {
+          position: absolute;
+          bottom: 130%; 
+          left: 50%;
+          transform: translateX(-50%);
+          background: #2b2b2b;
+          color: #fff;
+          padding: 6px 10px;
+          border-radius: 6px;
+          z-index: 100;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+          animation: popoverFadeIn 0.12s ease-out;
+
+          p {
+            margin: 0 0 4px 0;
+            font-family: $font-family-primary;
+            font-size: 0.7rem;
+            font-weight: bold;
+            text-align: center;
+            white-space: nowrap;
+          }
+
+          .popover-btns {
+            display: flex;
+            gap: 6px;
+
+            button {
+              border: none;
+              padding: 2px 6px;
+              border-radius: 3px;
+              font-size: 0.65rem;
+              font-weight: bold;
+              cursor: pointer;
+              font-family: $font-family-primary;
+              &:hover { opacity: 0.9; }
+              &.btn-yes { background: #ff4d4d; color: #fff; }
+              &.btn-no { background: #444; color: #ccc; }
+            }
+          }
+
+          .popover-arrow {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 5px solid #2b2b2b;
+          }
+        }
+      }
+    }
+  }
+
+  .footer-action {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 25px;
+
+    .view-more-btn {
+      background: none;
+      border: none;
+      color: $color-accent-strong;
+      font-weight: bold;
+      font-family: $font-family-primary;
+      cursor: pointer;
+      font-size: 0.85rem;
+      &:hover { text-decoration: underline; }
+    }
   }
 }
 
-@media screen and (max-width: 710px){
-  .profile-countries {
-    width: 90vw;
+// MEDIÁLNÍ DOTAZY PRO PROFIL
+@media screen and (max-width: 1150px) {
+  .profile-countries-section .countries-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
   }
+}
+
+@media screen and (max-width: 850px) {
+  .profile-countries-section .countries-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media screen and (max-width: 710px) {
+  .profile-countries-section { 
+    width: 90vw; 
+    padding-bottom: 20px;
+  }
+}
+
+@keyframes popoverFadeIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(2px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
 }

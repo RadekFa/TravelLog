@@ -1,47 +1,53 @@
 @use '../variables.scss' as *;
 
-.settings-page{
-    h1{
+.settings-page {
+  h1 {
     text-align: left;
     margin-top: 0;
     padding-top: 20px;
     padding-left: 2.5vw;
     font-family: $font-family-header;
-    color: #fff;
+    
+    // ZMĚNA: Použita světlá proměnná pro text na tmavém headeru
+    color: $color-text-light; 
+    
     font-size: $base-font-size * $golden-ratio * $golden-ratio;
-    text-shadow: $box-shadow-light;
     letter-spacing: $letter-spacing-header; 
     font-weight: 600;
-    background-color: $color-text-dark;
+    background-color: var(--color-dark-primary); // Dynamické podbarvení hlavičky
     padding-bottom: 20px;
+  }
 }
-}
+
 main {
-  padding-bottom: 104px;
-  margin: 0;
-  margin-left: auto;
-  margin-right: auto;
+  // 👑 KLÍČOVÁ OPRAVA: Vytvoříme flex sloupec a definujeme pevný rozestup mezi sekcemi
+  display: flex;
+  flex-direction: column;
+  gap: 20px; 
+
+  padding-bottom: 120px;
+  margin: 0 auto;
+  max-width: 100%;
 
   .sign-out-button {
     width: 95vw;
-    background: #fff;
+    background: var(--color-card-bg); // ZMĚNA: Reaguje na Dark Mode
     box-shadow: $box-shadow;
     border-radius: $border-radius;
-    margin: 30px auto;
+    margin: 0 auto;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 15px 0;
     transition: 0.2s all ease;
-    margin-bottom: 0;
 
     &:hover {
-      background-color: #ececec;
+      background-color: $color-text-dark-bg-75; // Bezpečný hover z variables.scss
     }
 
     &:active {
-      background-color: #d4d4d4;
+      background-color: $color-text-dark-bg-55; // Bezpečný active z variables.scss
     }
 
     .sign-out-box {
@@ -59,24 +65,23 @@ main {
         text-shadow: $box-shadow;
         margin: 0;
       }
-      svg{
+      svg {
         color: $color-error;
       }
     }
   }
 }
 
-
-@media screen and (max-width: 710px){
-  .settings-page{
-    h1{
-    padding-left: 5vw;
-    font-size: $base-font-size * $golden-ratio;
-}
-}
-main {
-  .sign-out-button {
-    width: 90vw;
+@media screen and (max-width: 710px) {
+  .settings-page {
+    h1 {
+      padding-left: 5vw;
+      font-size: $base-font-size * $golden-ratio;
+    }
   }
-}
+  main {
+    .sign-out-button {
+      width: 90vw;
+    }
+  }
 }

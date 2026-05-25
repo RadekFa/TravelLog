@@ -15,7 +15,7 @@
 
 .modal-content {
   max-width: 400px;
-  background: #fff;
+  background: $color-background;
   border-radius: $border-radius;
   box-shadow: $box-shadow;
   padding: 20px;
@@ -58,13 +58,14 @@
     border: 2px solid $color-accent-strong;
     padding: 10px;
     padding-right: 35px; 
-    width: 100%; 
+    width: 110%; 
     box-shadow: $box-shadow;
     transition: 0.2s ease;
     text-shadow: $box-shadow;
     font-family: $font-family-primary;
     font-style: italic;
-    background-color: #fff;
+    background-color: $color-card-bg;
+    color: $color-text-dark;
 
     &:hover { transform: scale(1.005); }
     &:focus { outline: none; box-shadow: $shadow-hover; }
@@ -72,13 +73,13 @@
 
   .clear-input-button {
     position: absolute;
-    right: -40px;
+    right: -20px;
     top: 50%;
     transform: translateY(-50%);
     background: transparent;
     border: none;
     cursor: pointer;
-    color: color.scale($color-text-dark, $alpha: -60%);
+    color: $color-text-dark-muted;
     padding: 0;
     display: flex;
     align-items: center;
@@ -99,7 +100,7 @@
   width: 95%;
   max-height: 160px;
   overflow-y: auto;
-  background: #fff;
+  background: $color-card-bg;
   border-radius: $border-radius;
   box-shadow: $box-shadow;
   padding: 0;
@@ -112,12 +113,14 @@
   &::-webkit-scrollbar { width: 4px; }
   &::-webkit-scrollbar-track { background: transparent; }
   &::-webkit-scrollbar-thumb {
-    background: color.scale($color-text-dark, $alpha: -75%); 
+    background: $color-text-dark-bg-75;; 
     border-radius: 10px;
-    &:hover { background: color.scale($color-text-dark, $alpha: -55%); }
+    &:hover { 
+      background: $color-text-dark-bg-55;
+    }
   }
   scrollbar-width: thin;
-  scrollbar-color: color.scale($color-text-dark, $alpha: -75%) transparent;
+  scrollbar-color: $color-text-dark-bg-75 transparent;
 
   li {
     padding: 10px 12px;
@@ -163,7 +166,7 @@
   }
 
   .cancel-button {
-    background: #ececec;
+    background: $cancel-button;
     color: $color-text-dark;
     &:hover { background: #d4d4d4; }
   }
@@ -187,7 +190,6 @@
     border-radius: $border-radius;
     border: 2px solid $color-accent-strong;
     width: 90%; 
-
   }
   .clear-input-button {
     right: -10px;

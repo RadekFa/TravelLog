@@ -2,10 +2,10 @@
 
 .preferences {
   width: 95vw;
-  background: #fff;
+  background: $color-card-bg;
   box-shadow: $box-shadow;
   border-radius: $border-radius;
-  margin: 30px auto;
+  margin: 0px auto;
 
   h2 {
     font-family: $font-family-header;
@@ -52,8 +52,9 @@
       border-radius: $border-radius;
       border: 1px solid $color-border;
       font-family: $font-family-primary;
-      background-color: white;
+      background-color: $slider-background;
       outline: none;
+      color: $color-text-dark;
       
       &:focus {
         border-color: $color-accent-strong;
@@ -76,7 +77,7 @@
       position: absolute;
       cursor: pointer;
       inset: 0;
-      background-color: #ccc;
+      background-color: $slider-background;
       transition: 0.4s;
       border-radius: 24px;
 

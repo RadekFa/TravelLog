@@ -1,53 +1,38 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useLanguage } from "../context/LanguageContext"; // IMPORT
 import '../styles/componentsStyles/CountryCard.scss';
 
 interface CountryCardProps {
   name: string;
-  continent: string;
-  flag: string;
-  image?: string;  
+  imageAvif?: string;
+  imageWebp?: string;
+  imageJpg?: string;
+  flag?: string; 
 }
 
-const CountryCard: React.FC<CountryCardProps> = ({ name, flag, image }) => {
+const CountryCard: React.FC<CountryCardProps> = ({ name, imageAvif, imageWebp, imageJpg, flag }) => {
   const navigate = useNavigate();
-
-  // Pomocná funkce pro získání cesty k moderním formátům
-  const getModernSrc = (src: string, ext: string) => {
-    if (!src) return "";
-    return src.substring(0, src.lastIndexOf('.')) + '.' + ext;
-  };
+  const { t } = useLanguage(); // HOOK PRO PŘEKLAD
 
   return (
-    <div 
-      className="country-card" 
-      onClick={() => navigate(`/country/${name}`)}
-      role="button"
-      tabIndex={0}
-    >
-      {image && (
-        <picture className="country-image-container">
-          <source srcSet={getModernSrc(image, 'avif')} type="image/avif" />
-          <source srcSet={getModernSrc(image, 'webp')} type="image/webp" />
-          <img 
-            src={image} 
-            alt={name} 
-            className="country-image" 
-            loading="lazy"
-            decoding="async"
-          />
-        </picture>
-      )}
+    <div className="country-card" onClick={() => navigate(`/country/${name}`)}>
+      <picture className="country-image-container">
+        {imageAvif && <source srcSet={imageAvif} type="image/avif" />}
+        {imageWebp && <source srcSet={imageWebp} type="image/webp" />}
+        {/* Přeložený alt text pro přístupnost */}
+        <img src={imageJpg} alt={t(`countries.${name}`)} className="country-image" loading="lazy" />
+      </picture>
 
-      {/* Vlajka je nyní samostatně pro snadnější pozicování v Gridu */}
+      {/* Vlajka z DB */}
       <img 
-        src={flag} 
-        alt={`${name} flag`} 
+        src={flag || "/flags/default.svg"} 
+        alt={`${t(`countries.${name}`)} flag`} 
         className="flag-icon" 
-        loading="lazy"
       />
 
-      <span className="country-name">{name}</span>
+      {/* PŘELOŽENÝ NÁZEV ZEMĚ */}
+      <span className="country-name">{t(`countries.${name}`)}</span>
     </div>
   );
 };

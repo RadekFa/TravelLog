@@ -2,10 +2,10 @@
 
 .about {
   width: 95vw;
-  background: #fff;
+  background: $color-card-bg;
   box-shadow: $box-shadow;
   border-radius: $border-radius;
-  margin: 30px auto;
+  margin: 0px auto;
 
   h2 {
     font-family: $font-family-header;
@@ -37,11 +37,11 @@
     transition: background-color 0.2s ease;
 
     &:hover {
-      background-color: #ececec;
+      background-color: $color-text-dark-bg-75; // Bezpečný hover z variables.scss
     }
 
     &:active {
-      background-color: #d4d4d4;
+      background-color: $color-text-dark-bg-55; // Bezpečný active z variables.scss
     }
 
     .about-content {

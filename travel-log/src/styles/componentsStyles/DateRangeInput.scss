@@ -17,7 +17,7 @@
   box-shadow: $box-shadow;
   transition: all 0.2s ease-in-out;
   font-family: $font-family-primary;
-  background: #fff;
+  background: $color-card-bg;
   cursor: pointer;
   color: $color-text-dark;
   font-weight: 500;
@@ -45,7 +45,7 @@
   left: 50%;
   transform: translateX(-50%);
   
-  background: #fff;
+  background: $color-card-bg;
   border-radius: $border-radius;
   box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.15);
   padding: 20px;

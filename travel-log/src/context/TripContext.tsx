@@ -1,97 +1,134 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import type { ReactNode } from 'react'; 
-import type { Trip, Entry } from './../types/tripTypes'; 
-import { v4 as uuidv4 } from 'uuid';
+import { useAuth } from './AuthContext';
 
-const STORAGE_KEY = 'travelLogTrips';
-
+interface Trip {
+  id: number;
+  country: {
+    id: number;
+    name: string;
+    flag: string;
+    continent: string;
+  };
+  arrivalDate: string;
+  departureDate: string;
+}
 
 interface TripContextType {
   trips: Trip[];
-  addTrip: (newTrip: Omit<Trip, 'id' | 'entries'>) => void;
-  getTripById: (id: string) => Trip | undefined;
-  updateTrip: (updatedTrip: Trip) => void;
-  deleteTrip: (id: string) => void;
-  addEntry: (tripId: string, entryData: Omit<Entry, 'id'>) => void;
+  addTrip: (countryId: number, start: string, end: string) => Promise<void>;
+  updateTrip: (tripId: number, countryId: number, start: string, end: string) => Promise<void>;
+  deleteTrip: (tripId: number) => Promise<void>;
+  loading: boolean;
 }
 
 const TripContext = createContext<TripContextType | undefined>(undefined);
 
 export const TripProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [trips, setTrips] = useState<Trip[]>([]);
+  const [loading, setLoading] = useState(true);
+  const { token } = useAuth();
 
-  useEffect(() => {
-    const savedTrips = localStorage.getItem(STORAGE_KEY);
-    if (savedTrips) {
-      try {
-        setTrips(JSON.parse(savedTrips) as Trip[]);
-      } catch (e) {
-        console.error("Chyba při načítání dat z LocalStorage:", e);
-        setTrips([]);
+  const fetchVisits = async () => {
+    if (!token) return;
+    try {
+      const res = await fetch('http://localhost:8080/api/visits/my-visits', {
+        headers: { 'Authorization': `Bearer ${token}` }
+      });
+      if (res.ok) {
+        const data = await res.json();
+        setTrips(data);
       }
+    } catch (err) {
+      console.error("Error fetching visits:", err);
+    } finally {
+      setLoading(false);
     }
-  }, []);
+  };
 
-  // Uložení dat při změně stavu
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(trips));
-  }, [trips]);
+    fetchVisits();
+  }, [token]);
 
-  // 3. CRUD Operace pro Cesty
-  
-  const addTrip = (newTripData: Omit<Trip, 'id' | 'entries'>) => {
-    const newTrip: Trip = {
-      ...newTripData,
-      id: uuidv4(), // Generování unikátního ID
-      entries: [],   // Nová cesta nemá žádné záznamy
-    };
-    setTrips(prev => [...prev, newTrip]);
+  const addTrip = async (countryId: number, start: string, end: string) => {
+    try {
+      const response = await fetch("http://localhost:8080/api/visits/add", {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${token}`,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          countryId: countryId,
+          arrivalDate: start,
+          departureDate: end
+        })
+      });
+
+      if (response.ok) {
+        await fetchVisits();
+      }
+    } catch (error) {
+      console.error("Failed to save trip:", error);
+    }
   };
 
-  const getTripById = (id: string) => {
-    return trips.find(trip => trip.id === id);
+  // NOVÁ METODA: UPDATE
+  const updateTrip = async (tripId: number, countryId: number, start: string, end: string) => {
+    try {
+      const response = await fetch(`http://localhost:8080/api/visits/${tripId}`, {
+        method: "PUT",
+        headers: {
+          "Authorization": `Bearer ${token}`,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          countryId: countryId,
+          arrivalDate: start,
+          departureDate: end
+        })
+      });
+
+      if (response.ok) {
+        await fetchVisits(); // Znovu načteme data pro synchronizaci UI
+      } else {
+        console.error("Failed to update trip on server");
+      }
+    } catch (error) {
+      console.error("Error during updateTrip:", error);
+    }
   };
 
-  const updateTrip = (updatedTrip: Trip) => {
-    setTrips(prev => 
-      prev.map(trip => (trip.id === updatedTrip.id ? updatedTrip : trip))
-    );
-  };
+  // NOVÁ METODA: DELETE
+  const deleteTrip = async (tripId: number) => {
+    try {
+      const response = await fetch(`http://localhost:8080/api/visits/${tripId}`, {
+        method: "DELETE",
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
+      });
 
-  const deleteTrip = (id: string) => {
-    setTrips(prev => prev.filter(trip => trip.id !== id));
+      if (response.ok) {
+        // Můžeme buď znovu fetchovat, nebo jen odfiltrovat lokálně pro rychlost
+        setTrips(prev => prev.filter(trip => trip.id !== tripId));
+      } else {
+        console.error("Failed to delete trip on server");
+      }
+    } catch (error) {
+      console.error("Error during deleteTrip:", error);
+    }
   };
-
-  // 4. CRUD Operace pro Záznamy
-  
-  const addEntry = (tripId: string, entryData: Omit<Entry, 'id'>) => {
-      const newEntry: Entry = {
-          ...entryData,
-          id: uuidv4(),
-      };
-
-      setTrips(prev => 
-          prev.map(trip => 
-              trip.id === tripId 
-                  ? { ...trip, entries: [...trip.entries, newEntry] }
-                  : trip
-          )
-      );
-  };
-  
 
   return (
-    <TripContext.Provider value={{ trips, addTrip, getTripById, updateTrip, deleteTrip, addEntry }}>
+    <TripContext.Provider value={{ trips, addTrip, updateTrip, deleteTrip, loading }}>
       {children}
     </TripContext.Provider>
   );
 };
 
-// 5. Custom Hook
 export const useTrips = () => {
   const context = useContext(TripContext);
-  if (context === undefined) {
-    throw new Error('useTrips must be used within a TripProvider');
-  }
+  if (!context) throw new Error('useTrips must be used within TripProvider');
   return context;
 };

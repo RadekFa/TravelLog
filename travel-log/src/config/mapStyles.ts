@@ -1,11 +1,12 @@
-// Definice barev pro mapu
+// Definice barev pro mapu napojená na CSS proměnné
 export const mapColors = {
-    default: '#e4e1e1ff',       // Nenavštívená země
-    visited: '#2bc3ff',       // Navštívená země (např. SeaGreen)
-    stroke: '#FFFFFF',        // Hranice zemí
+    // 👑 Použijeme CSS proměnné, které za chvíli nadefinujeme ve variables.scss
+    default: 'var(--map-country-default)',   // Nenavštívená země
+    visited: 'var(--map-country-visited)',   // Navštívená země
+    stroke: 'var(--map-country-stroke)',    // Hranice zemí
 };
 
-// Funkce, která vrátí styl pro konkrétní zemi na základě toho, zda je navštívená
+// Funkce zůstává vizuálně stejná, ale díky var() bude dynamická hned od startu
 export const getGeographyStyle = (isVisited: boolean) => {
   const baseFill = isVisited ? mapColors.visited : mapColors.default;
 
@@ -13,23 +14,23 @@ export const getGeographyStyle = (isVisited: boolean) => {
     default: {
       fill: baseFill,
       stroke: mapColors.stroke,
-      strokeWidth: 1.5,
+      strokeWidth: 1.2, // Mírně ztenčeno, aby na tmavém pozadí mapy lépe vynikly detaily
       outline: 'none',
-      transition: 'none',
+      transition: 'fill 0.3s ease, stroke 0.3s ease', // Přidána plynulá změna při přepnutí modu
       cursor: 'default',
     },
     hover: {
       fill: baseFill, 
       stroke: mapColors.stroke,
-      strokeWidth: 1.5,
+      strokeWidth: 1.2,
       outline: 'none',
       transition: 'none',
-      cursor: 'default',
+      cursor: 'default', 
     },
     pressed: {
       fill: baseFill, 
       stroke: mapColors.stroke,
-      strokeWidth: 1.5,
+      strokeWidth: 1.2,
       outline: 'none',
       transition: 'none',
       cursor: 'default',

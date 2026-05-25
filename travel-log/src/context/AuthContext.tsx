@@ -1,52 +1,63 @@
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useState, useContext, useEffect } from "react";
 import type { ReactNode } from "react";
 
-// 1. Definice typu pro Context
+// 1. Definice typu pro data uživatele - PŘIDÁNO pole role
+interface UserData {
+  id: number;
+  email: string;
+  username: string;
+  fullName: string;
+  registrationYear: number;
+  role: string; // ROLE_USER nebo ROLE_ADMIN
+  avatar?: string;
+  token?: string; 
+}
+
 interface AuthContextType {
-  isLoggedIn: boolean;
-  currentUser: string | null; // username
-  login: (username: string) => void;
+  isAuthenticated: boolean;
+  user: UserData | null;
+  token: string | null;
+  login: (userData: UserData) => void;
   logout: () => void;
 }
 
-// 2. Vytvoření Contextu
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-// 3. Provider (obalí celou aplikaci)
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  // Inicializace stavu z LocalStorage
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(
-    localStorage.getItem("isLoggedIn") === "true"
-  );
+  const [token, setToken] = useState<string | null>(localStorage.getItem("token"));
+  const [user, setUser] = useState<UserData | null>(() => {
+    const savedUser = localStorage.getItem("user");
+    return savedUser ? JSON.parse(savedUser) : null;
+  });
 
-  const [currentUser, setCurrentUser] = useState<string | null>(
-    localStorage.getItem("currentUser")
-  );
+  const isAuthenticated = !!token;
 
-  const login = (username: string) => {
-    // Simulace úspěšného přihlášení
-    setIsLoggedIn(true);
-    setCurrentUser(username);
-    localStorage.setItem("isLoggedIn", "true");
-    localStorage.setItem("currentUser", username);
+  const login = (userData: UserData) => {
+    if (userData.token) {
+      localStorage.setItem("token", userData.token);
+      localStorage.setItem("user", JSON.stringify(userData));
+      
+      setToken(userData.token);
+      setUser(userData);
+      
+      console.log("Uživatel autentizován s rolí:", userData.role);
+    }
   };
 
   const logout = () => {
-    // Odhlášení
-    setIsLoggedIn(false);
-    setCurrentUser(null);
-    localStorage.removeItem("isLoggedIn");
-    localStorage.removeItem("currentUser");
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    setToken(null);
+    setUser(null);
   };
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, currentUser, login, logout }}>
+    <AuthContext.Provider value={{ isAuthenticated, user, token, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
 };
 
-// 4. Custom Hook pro snadné použití
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (context === undefined) {

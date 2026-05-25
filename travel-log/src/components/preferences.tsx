@@ -1,7 +1,8 @@
-import { useState } from "react";
+import React from "react";
+import { useSettings } from "../context/SettingsContext";
+import { useLanguage } from "../context/LanguageContext";
 import "../styles/componentsStyles/Preferences.scss";
 
-// Ikony
 const BellIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="pref-svg">
     <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
@@ -23,26 +24,25 @@ const GlobeIcon = () => (
   </svg>
 );
 
+
 const Preferences = () => {
-  const [notifications, setNotifications] = useState(true);
-  const [darkMode, setDarkMode] = useState(false);
-  const [language, setLanguage] = useState("English");
+  const { settings, updateSettings } = useSettings();
+  const { t } = useLanguage();
 
   return (
     <div className="preferences">
-      <h2>Preferences</h2>
+      <h2>{t('settings.preferences')}</h2>
 
       <div className="preference-item">
         <div className="pref-content">
           <BellIcon />
-          <span>Notifications</span>
+          <span>{t('settings.notifications')}</span>
         </div>
         <label className="switch">
           <input
             type="checkbox"
-            checked={notifications}
-            onChange={() => setNotifications(!notifications)}
-            aria-label="Enable notifications"
+            checked={settings.notificationsEnabled}
+            onChange={() => updateSettings({ notificationsEnabled: !settings.notificationsEnabled })}
           />
           <span className="slider" />
         </label>
@@ -53,14 +53,13 @@ const Preferences = () => {
       <div className="preference-item">
         <div className="pref-content">
           <MoonIcon />
-          <span>Dark Mode</span>
+          <span>{t('settings.dark_mode')}</span>
         </div>
-        <label className="switch" >
+        <label className="switch">
           <input
             type="checkbox"
-            checked={darkMode}
-            onChange={() => setDarkMode(!darkMode)}
-            aria-label="Enable dark mode"
+            checked={settings.darkModeEnabled}
+            onChange={() => updateSettings({ darkModeEnabled: !settings.darkModeEnabled })}
           />
           <span className="slider" />
         </label>
@@ -71,16 +70,16 @@ const Preferences = () => {
       <div className="preference-item language-select">
         <div className="pref-content">
           <GlobeIcon />
-          <span id="language-label">Language</span>
+          <span id="language-label">{t('settings.language')}</span>
         </div>
         <select
-          value={language}
-          onChange={(e) => setLanguage(e.target.value)}
+          value={settings.language}
+          onChange={(e) => updateSettings({ language: e.target.value })}
           aria-labelledby="language-label"
         >
-          <option>English</option>
-          <option>Deutsch</option>
-          <option>Español</option>
+          <option value="en">English</option>
+          <option value="de">Deutsch</option>
+          <option value="es">Español</option>
         </select>
       </div>
     </div>

@@ -1,7 +1,7 @@
 @use '../variables.scss' as *;
 
 .continent-section{
-  background-color: #fafafa;
+  background-color: $color-background;
 }
 h2{
     font-size: $base-font-size * $golden-ratio;
@@ -29,6 +29,10 @@ h2{
   padding: 0 0 20px 0;
   scrollbar-width: none; 
   &::-webkit-scrollbar { display: none; }
+
+  &.last-row {
+    padding-bottom: 0px; 
+  }
  }
 
   
@@ -56,8 +60,8 @@ h2{
       padding: 0; 
       margin: 0; 
       border: none;
-      background: linear-gradient(to left, #fafafac2, #fafafa);
-      box-shadow: 20px 0 12px -1px #fafafac2;
+      background: $gradient-overlay;
+      box-shadow: $box-shadow-button-left;
       transition: 0.2s ease;
       
 
@@ -80,8 +84,8 @@ h2{
       padding: 0; 
       margin: 0; 
       border: none;
-      box-shadow: 12px 0 12px 20px #fafafac2;
-      background: linear-gradient(to left, #fafafac2, #fafafa);
+      box-shadow: $box-shadow-button-right;
+      background: $gradient-overlay;
       
       
       &:active {
@@ -109,11 +113,3 @@ h2{
   }
 }
 }
-
-
-
-
-
-
-
-

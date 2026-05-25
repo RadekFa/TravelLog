@@ -1,22 +1,24 @@
 import React, { useRef, useState, useEffect } from "react";
 import CountryCard from "./CountryCard";
 import "../styles/componentsStyles/ContinentRow.scss";
+import { useLanguage } from "../context/LanguageContext"; // PŘIDÁNO
 
 interface Country {
+  id: number;
   name: string;
   continent: string;
   flag: string;
-  image?: string;
+  imageAvif?: string;
+  imageWebp?: string;
+  imageJpg?: string;
 }
 
 interface ContinentRowProps {
   continent: string;
   countries: Country[];
+  isLast?: boolean; // <-- PŘIDÁNO DO PROPS INTERFACE
 }
 
-/* ------------------------------------------
-   Scroll Arrow Component 
-------------------------------------------- */
 const ScrollArrow = ({
   direction,
   onClick,
@@ -39,21 +41,17 @@ const ScrollArrow = ({
   </svg>
 );
 
-/* ------------------------------------------
-   Main Component
-------------------------------------------- */
-const ContinentRow: React.FC<ContinentRowProps> = ({ continent, countries }) => {
+const ContinentRow: React.FC<ContinentRowProps> = ({ continent, countries, isLast }) => {
+  const { t } = useLanguage(); // PŘIDÁNO
   const rowRef = useRef<HTMLDivElement>(null);
   const [showLeft, setShowLeft] = useState(false);
   const [showRight, setShowRight] = useState(false);
 
   const checkScroll = () => {
     if (!rowRef.current) return;
-
     const { scrollLeft, scrollWidth, clientWidth } = rowRef.current;
     const maxScrollLeft = scrollWidth - clientWidth;
     const EPS = 2;
-
     setShowLeft(scrollLeft > EPS);
     setShowRight(scrollLeft < maxScrollLeft - EPS);
   };
@@ -61,16 +59,12 @@ const ContinentRow: React.FC<ContinentRowProps> = ({ continent, countries }) => 
   useEffect(() => {
     const row = rowRef.current;
     if (!row) return;
-
     const init = () => checkScroll();
     requestAnimationFrame(init);
-
     const resizeObserver = new ResizeObserver(checkScroll);
     resizeObserver.observe(row);
-
     row.addEventListener("scroll", checkScroll);
     window.addEventListener("resize", checkScroll);
-
     return () => {
       row.removeEventListener("scroll", checkScroll);
       window.removeEventListener("resize", checkScroll);
@@ -86,8 +80,10 @@ const ContinentRow: React.FC<ContinentRowProps> = ({ continent, countries }) => 
   };
 
   return (
-    <section className="continent-section">
-      <h2>{continent}</h2>
+    // OPRAVA: Dynamicky doplňujeme třídu "last-row" na základě prop isLast
+    <section className={`continent-section ${isLast ? "last-row" : ""}`}>
+      {/* DYNAMICKÝ PŘEKLAD KONTINENTU */}
+      <h2>{t(`continents.${continent}`)}</h2>
 
       <div className="scroll-container">
         {showLeft && (
@@ -101,11 +97,12 @@ const ContinentRow: React.FC<ContinentRowProps> = ({ continent, countries }) => 
         <div ref={rowRef} className="country-row">
           {countries.map((country) => (
             <CountryCard
-              key={country.name}
+              key={country.id || country.name}
               name={country.name}
-              continent={country.continent}
+              imageAvif={country.imageAvif}
+              imageWebp={country.imageWebp}
+              imageJpg={country.imageJpg}
               flag={country.flag}
-              image={country.image}
             />
           ))}
         </div>

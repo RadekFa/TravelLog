@@ -1,6 +1,6 @@
+import { useLanguage } from "../context/LanguageContext";
 import "../styles/componentsStyles/About.scss";
 
-// Ikona Informace (pro About Travel Log)
 const InfoIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="about-svg">
     <circle cx="12" cy="12" r="10"></circle>
@@ -9,7 +9,6 @@ const InfoIcon = () => (
   </svg>
 );
 
-// Ikona Pomoci (pro Help & Support)
 const HelpIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="about-svg">
     <circle cx="12" cy="12" r="10"></circle>
@@ -19,14 +18,16 @@ const HelpIcon = () => (
 );
 
 const About = () => {
+  const { t } = useLanguage();
+
   return (
     <div className="about">
-      <h2>About</h2>
+      <h2>{t('settings.about_title')}</h2>
 
       <div className="about-item">
         <div className="about-content">
           <InfoIcon />
-          <span>About Travel Log</span>
+          <span>{t('settings.about_app')}</span>
         </div>
       </div>
       
@@ -35,7 +36,7 @@ const About = () => {
       <div className="about-item" id="help-support">
         <div className="about-content">
           <HelpIcon />
-          <span>Help & Support</span>
+          <span>{t('settings.help')}</span>
         </div>
       </div>
     </div>

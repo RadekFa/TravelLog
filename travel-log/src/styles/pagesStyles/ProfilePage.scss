@@ -1,47 +1,254 @@
 @use '../variables.scss' as *;
 
-header{
-    width: 100%;
-    background: $color-text-dark;
-    border-bottom: 1px solid $color-border;
-    padding-bottom: 100px;
+.profile-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: $color-background; 
+    font-family: $font-family-primary; // Nastavení výchozího fontu pro stránku
+}
 
-    .avatar{
-        width: 100px;
-        height: 100px;
+header {
+    width: 100%;
+    background: $color-dark-primary;
+    border-bottom: 1px solid $color-border;
+    padding-bottom: 120px; 
+    text-align: center; 
+
+    .avatar-wrapper {
+        position: relative;
+        width: 110px;
+        height: 110px;
+        margin: 20px auto 10px;
+        cursor: pointer;
         border-radius: 50%;
-        object-fit: cover;
         border: 3px solid $color-accent-strong;
         box-shadow: $box-shadow;
-        margin-top: 20px;
+        overflow: hidden;
+
+        .avatar {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .avatar-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: color-mix(in srgb, #000 55%, transparent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            color: $color-white;
+
+            svg {
+                width: 28px;
+                height: 28px;
+            }
+        }
+
+        &:hover .avatar-overlay {
+            opacity: 1;
+        }
     }
-    h2{
+
+    h2 {
+        font-family: $font-family-header;
         font-size: $base-font-size * $golden-ratio;
+        letter-spacing: $letter-spacing-header;
         margin-top: 10px;
         margin-bottom: 5px;
-        margin-left: auto;
-        margin-right: auto;
-        width: fit-content;
-        color: #fff;
-        letter-spacing: $letter-spacing-header;
-        font-family: $font-family-primary;
-        text-shadow: $box-shadow-light;
+        color: $color-text-light;
+        text-align: center;
+        margin-left: 0;
+        margin-right: 0;
     }
 
-    p{
+    p {
+        font-family: $font-family-primary;
         font-size: $base-font-size;
         margin: 0;
-        color: #fff;
-        font-family: $font-family-primary;
-        text-shadow: $box-shadow-light;
+        color: color-mix(in srgb, $color-text-light 80%, transparent);
+    }
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 30px; 
+    padding-bottom: 120px;
+
+    .travel-stats {
+        margin-top: -60px; 
+        z-index: 10;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* INSTAGRAM STYLE MODÁLNÍ OKNA (PŘIZPŮSOBENO PRO DARK MODE) */
+.instagram-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: color-mix(in srgb, #000 65%, transparent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 20px;
+}
+
+/* Okno s volbami (Nahrát / Smazat) */
+.instagram-menu-content {
+    background: $color-card-bg;
+    border-radius: $border-radius; // Sjednocení poloměru
+    width: 100%;
+    max-width: 340px;
+    overflow: hidden;
+    box-shadow: $box-shadow;
+    text-align: center;
+    font-family: $font-family-primary;
+
+    .menu-header {
+        padding: 24px 16px;
+        border-bottom: 1px solid $color-border;
+        h3 {
+            margin: 0;
+            font-family: $font-family-header;
+            font-size: $base-font-size * 1.125;
+            letter-spacing: $letter-spacing-header;
+            color: $color-text-dark;
+        }
     }
 
+    .menu-action {
+        width: 100%;
+        padding: 14px 16px;
+        background: none;
+        border: none;
+        border-bottom: 1px solid $color-border;
+        font-family: $font-family-primary;
+        font-size: $base-font-size * 0.875; // Běžný text trochu zmenšený (14px)
+        font-weight: 700;
+        cursor: pointer;
+        transition: background 0.15s;
+        color: $color-text-dark; 
+
+        &:hover {
+            background-color: $timecapsule-bg; 
+        }
+
+        &.blue { color: $color-accent-strong; }
+        &.red { color: $color-error; }
+        &.cancel {
+            font-weight: 400;
+            border-bottom: none;
+        }
+    }
 }
-main{
-    .travel-stats{
-        position: absolute;
-        top: 230px;
-        left: 50%;
-        transform: translateX(-50%);
+
+/* Okno pro úpravu měřítka (Zoomu) */
+.instagram-crop-content {
+    background: $color-card-bg;
+    border-radius: $border-radius; // Sjednocení poloměru
+    width: 100%;
+    max-width: 380px;
+    padding: 20px;
+    box-shadow: $box-shadow;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: $font-family-primary;
+
+    h3 {
+        margin-top: 0;
+        margin-bottom: 16px;
+        font-family: $font-family-header;
+        font-size: $base-font-size * 1.125;
+        letter-spacing: $letter-spacing-header;
+        color: $color-text-dark;
+    }
+
+    .crop-preview-container {
+        width: 240px;
+        height: 240px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 16px;
+        user-select: none;
+
+        .circular-mask {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid $color-border;
+            position: relative;
+            background: $color-background;
+
+            .image-to-crop {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.02s ease-out;
+                transform-origin: center center;
+            }
+        }
+    }
+
+    .zoom-slider-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+        max-width: 280px;
+        margin-bottom: 24px;
+        color: $color-text-dark;
+
+        .zoom-slider {
+            flex: 1;
+            accent-color: $color-accent-strong;
+            cursor: pointer;
+        }
+    }
+
+    .modal-actions {
+        display: flex;
+        gap: 12px;
+        width: 100%;
+        justify-content: flex-end;
+
+        button {
+            padding: 8px 16px;
+            border-radius: $border-radius; // Sjednocení poloměru
+            font-family: $font-family-primary;
+            font-size: $base-font-size * 0.875;
+            letter-spacing: $letter-spacing-button;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+
+            &.btn-secondary {
+                background: $cancel-button;
+                color: $color-text-dark;
+                &:hover { background: $color-border; }
+            }
+
+            &.btn-primary {
+                background: $color-accent-strong;
+                color: $color-white;
+                &:hover { background: color-mix(in srgb, $color-accent-strong 90%, black); }
+            }
+        }
     }
 }

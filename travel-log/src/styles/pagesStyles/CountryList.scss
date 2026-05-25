@@ -7,13 +7,12 @@
     margin: 0;
     padding: 0;
     font-family: $font-family-primary;
-    background: #fafafa;
 }   
 
 .header-explore{
     margin: 0;
     z-index: 10;
-    background: #fafafa;
+    background: $color-background;
     border: none;
     display: flex;
     flex-direction: column;
@@ -28,10 +27,9 @@
     font-family: $font-family-header;
     color: #fff;
     font-size: $base-font-size * $golden-ratio * $golden-ratio;
-    text-shadow: $box-shadow-light;
     letter-spacing: $letter-spacing-header; 
     font-weight: 600;
-    background-color: $color-text-dark;
+    background-color: $color-dark-primary;
 }
 
 #country-search-input{
@@ -47,6 +45,8 @@
     text-shadow: $box-shadow;
     font-family: $font-family-primary;
     font-style: italic;
+    background: $color-card-bg;
+    color: $color-text-dark;
  
     &:hover {
     transform: scale(1.02);
@@ -66,7 +66,7 @@
 
 main{
     margin-top: 0px;
-    padding-bottom: 100px;
+    padding-bottom: 120px;
     text-shadow: $box-shadow;
 }
 
