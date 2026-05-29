@@ -214,7 +214,7 @@ const WelcomeScreen: React.FC = () => {
                 {[
                   { val: "12k", desc: "Happy & Satisfied Travelers" },
                   { val: "10yrs", desc: "Travel Industry Experience" },
-                  { val: "50+", desc: "Destinations Covered" }
+                  { val: "190+", desc: "Destinations Covered" }
                 ].map((stat, index) => (
                   <motion.div 
                     key={index}

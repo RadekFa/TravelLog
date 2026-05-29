@@ -20,6 +20,12 @@ export const translationsData ={
       goal_title: "Travel Goal",
       goal_subtitle: "Set your country target"
     },
+    user_stats: {
+      countries_visited: "Countries Visited",
+      continents_visited: "Continents Visited",
+      travel_goal: "Travel Goal",
+      traveling_since: "Traveling Since"
+    },
     continents: {
       Europe: "Europe",
       Asia: "Asia",
@@ -189,6 +195,12 @@ export const translationsData ={
       edit_title: "Editar foto de perfil",
       back: "Atrás",
       save: "Guardar"
+    },
+    user_stats: {
+      countries_visited: "Países Visitados",
+      continents_visited: "Continentes Visitados",
+      travel_goal: "Meta de Viaje",
+      traveling_since: "Viajando Desde"
     },
     detail_page: {
       loading: "Cargando detalles...",
@@ -653,7 +665,13 @@ export const translationsData ={
       cancel: "Abbrechen",
       edit_title: "Profilbild bearbeiten",
       back: "Zurück",
-      save: "Speichern"
+      save: "Speichern",
+    },
+    user_stats: {
+      countries_visited: "Besuchte Länder",
+      continents_visited: "Besuchte Kontinente",
+      travel_goal: "Reiseziel",
+      traveling_since: "Reist Seit"
     },
     settings: {
       title: "Optionen",

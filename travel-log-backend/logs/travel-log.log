@@ -7241,3 +7241,329 @@ This generated password is for development use only. Your security configuration
 2026-05-29 11:50:17 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
 2026-05-29 11:50:17 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
 2026-05-29 11:50:17 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-05-29 13:30:56 [main] INFO  c.u.t.TravelLogBackendApplication - Starting TravelLogBackendApplication using Java 23.0.2 with PID 26380 (C:\VisualStudioProjects\React\TravelLogNew\travel-log-backend\target\classes started by rfajc in C:\VisualStudioProjects\React\TravelLogNew\travel-log-backend)
+2026-05-29 13:30:57 [main] INFO  c.u.t.TravelLogBackendApplication - No active profile set, falling back to 1 default profile: "default"
+2026-05-29 13:30:58 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-29 13:30:58 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 109 ms. Found 6 JPA repository interfaces.
+2026-05-29 13:30:59 [main] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-05-29 13:30:59 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-05-29 13:30:59 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-05-29 13:30:59 [main] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 2796 ms
+2026-05-29 13:31:00 [main] INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-05-29 13:31:00 [main] INFO  org.hibernate.orm.core - HHH000001: Hibernate ORM core version 7.2.4.Final
+2026-05-29 13:31:01 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-05-29 13:31:01 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-05-29 13:31:01 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5870fc05
+2026-05-29 13:31:01 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-05-29 13:31:02 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/travel_log_db?createDatabaseIfNotExist=true&serverTimezone=UTC]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.46
+	Default catalog/schema: travel_log_db/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-05-29 13:31:03 [main] INFO  org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-05-29 13:31:03 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-05-29 13:31:04 [main] INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-05-29 13:31:06 [main] WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-05-29 13:31:06 [main] WARN  o.s.b.s.a.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 11898d81-bf75-419a-ad8f-a8bf8a7133e7
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-05-29 13:31:06 [main] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-05-29 13:31:07 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
+2026-05-29 13:31:08 [main] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-05-29 13:31:08 [main] INFO  c.u.t.TravelLogBackendApplication - Started TravelLogBackendApplication in 11.862 seconds (process running for 13.099)
+2026-05-29 13:31:08 [RMI TCP Connection(4)-192.168.5.132] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-05-29 13:31:08 [RMI TCP Connection(4)-192.168.5.132] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-05-29 13:31:08 [RMI TCP Connection(4)-192.168.5.132] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2026-05-29 13:31:28 [http-nio-8080-exec-8] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 949 ms
+2026-05-29 13:31:53 [http-nio-8080-exec-4] INFO  c.u.t.controller.UserController - Login attempt for user: test@test.com
+2026-05-29 13:31:53 [http-nio-8080-exec-4] WARN  c.u.t.controller.UserController - Invalid password attempt for user: test@test.com
+2026-05-29 13:32:11 [http-nio-8080-exec-7] INFO  c.u.t.controller.UserController - Login attempt for user: admin@admin.com
+2026-05-29 13:32:11 [http-nio-8080-exec-7] INFO  c.u.t.security.JwtUtils - Generating JWT token for user: admin@admin.com with role: ROLE_ADMIN
+2026-05-29 13:32:11 [http-nio-8080-exec-7] INFO  c.u.t.controller.UserController - Login successful for user: admin@admin.com
+2026-05-29 13:32:12 [http-nio-8080-exec-10] INFO  c.u.t.c.UserVisitedCountryController - Fetching trip history for user: admin@admin.com
+2026-05-29 13:32:12 [http-nio-8080-exec-1] INFO  c.u.t.c.UserSettingController - Retrieving settings for user: admin@admin.com
+2026-05-29 13:32:12 [http-nio-8080-exec-4] INFO  c.u.t.controller.UserController - ADMIN: Fetching users list. Search query: null
+2026-05-29 13:32:12 [http-nio-8080-exec-5] INFO  c.u.t.controller.UserController - ADMIN: Generating statistics summary
+2026-05-29 13:32:19 [http-nio-8080-exec-7] INFO  c.u.t.controller.UserController - ADMIN: Changing role for ID 14 to ROLE_ADMIN
+2026-05-29 13:32:19 [http-nio-8080-exec-7] INFO  c.u.t.controller.UserController - ADMIN: Role updated for user ID 14
+2026-05-29 13:32:19 [http-nio-8080-exec-2] INFO  c.u.t.controller.UserController - ADMIN: Fetching users list. Search query: null
+2026-05-29 13:32:21 [http-nio-8080-exec-1] INFO  c.u.t.controller.UserController - ADMIN: Changing role for ID 14 to ROLE_USER
+2026-05-29 13:32:21 [http-nio-8080-exec-1] INFO  c.u.t.controller.UserController - ADMIN: Role updated for user ID 14
+2026-05-29 13:32:21 [http-nio-8080-exec-3] INFO  c.u.t.controller.UserController - ADMIN: Fetching users list. Search query: null
+2026-05-29 13:32:38 [http-nio-8080-exec-10] INFO  c.u.t.controller.UserController - Login attempt for user: test@test.com
+2026-05-29 13:32:38 [http-nio-8080-exec-10] INFO  c.u.t.security.JwtUtils - Generating JWT token for user: test@test.com with role: ROLE_USER
+2026-05-29 13:32:38 [http-nio-8080-exec-10] INFO  c.u.t.controller.UserController - Login successful for user: test@test.com
+2026-05-29 13:32:39 [http-nio-8080-exec-6] INFO  c.u.t.c.UserSettingController - Retrieving settings for user: test@test.com
+2026-05-29 13:32:39 [http-nio-8080-exec-7] INFO  c.u.t.c.UserVisitedCountryController - Fetching trip history for user: test@test.com
+2026-05-29 13:32:39 [http-nio-8080-exec-1] INFO  c.u.t.controller.CountryController - Request received for all countries for map/list display.
+2026-05-29 13:32:39 [http-nio-8080-exec-3] INFO  c.u.t.controller.CountryController - Request received for all countries for map/list display.
+2026-05-29 13:32:45 [http-nio-8080-exec-10] INFO  c.u.t.controller.CountryController - Request received for all countries for map/list display.
+2026-05-29 13:32:51 [http-nio-8080-exec-4] INFO  c.u.t.controller.CountryController - Searching for country details: Finland
+2026-05-29 13:32:51 [http-nio-8080-exec-7] INFO  c.u.t.controller.CountryController - Request received for all countries for map/list display.
+2026-05-29 13:33:01 [http-nio-8080-exec-2] INFO  c.u.t.c.UserSettingController - Updating settings for user: test@test.com
+2026-05-29 13:33:01 [http-nio-8080-exec-2] INFO  c.u.t.c.UserSettingController - Settings for user test@test.com successfully updated.
+2026-05-29 13:33:04 [http-nio-8080-exec-1] INFO  c.u.t.c.UserSettingController - Updating settings for user: test@test.com
+2026-05-29 13:33:04 [http-nio-8080-exec-1] INFO  c.u.t.c.UserSettingController - Settings for user test@test.com successfully updated.
+2026-05-29 13:33:09 [http-nio-8080-exec-9] INFO  c.u.t.c.AchievementController - Fetching achievements for user: test@test.com
+2026-05-29 13:33:23 [http-nio-8080-exec-4] INFO  c.u.t.c.UserSettingController - Updating settings for user: test@test.com
+2026-05-29 13:33:23 [http-nio-8080-exec-4] INFO  c.u.t.c.UserSettingController - Settings for user test@test.com successfully updated.
+2026-05-29 13:33:33 [http-nio-8080-exec-7] INFO  c.u.t.controller.CountryController - Request received for all countries for map/list display.
+2026-05-29 13:33:35 [http-nio-8080-exec-8] INFO  c.u.t.controller.CountryController - Request received for all countries for map/list display.
+2026-05-29 13:33:44 [http-nio-8080-exec-3] INFO  c.u.t.c.UserVisitedCountryController - User test@test.com is adding a new visit for country ID: 131
+2026-05-29 13:33:44 [http-nio-8080-exec-3] INFO  c.u.t.c.UserVisitedCountryController - Visit record ID 149 successfully saved. Newly unlocked achievements: 1
+2026-05-29 13:33:44 [http-nio-8080-exec-10] INFO  c.u.t.c.UserVisitedCountryController - Fetching trip history for user: test@test.com
+2026-05-29 13:33:50 [http-nio-8080-exec-4] INFO  c.u.t.c.AchievementController - Fetching achievements for user: test@test.com
+2026-05-29 13:34:08 [http-nio-8080-exec-7] INFO  c.u.t.controller.CountryController - Request received for all countries for map/list display.
+2026-05-29 13:34:10 [http-nio-8080-exec-3] INFO  c.u.t.c.UserVisitedCountryController - Fetching trip history for user: test@test.com
+2026-05-29 13:34:10 [http-nio-8080-exec-9] INFO  c.u.t.c.UserSettingController - Retrieving settings for user: test@test.com
+2026-05-29 13:34:10 [http-nio-8080-exec-10] INFO  c.u.t.controller.CountryController - Request received for all countries for map/list display.
+2026-05-29 13:34:16 [http-nio-8080-exec-4] INFO  c.u.t.c.AchievementController - Fetching achievements for user: test@test.com
+2026-05-29 13:34:21 [http-nio-8080-exec-7] INFO  c.u.t.c.UserVisitedCountryController - User test@test.com deleted visit record ID 149.
+2026-05-29 13:34:24 [http-nio-8080-exec-8] INFO  c.u.t.c.UserVisitedCountryController - User test@test.com deleted visit record ID 137.
+2026-05-29 13:34:26 [http-nio-8080-exec-9] INFO  c.u.t.c.UserVisitedCountryController - User test@test.com deleted visit record ID 147.
+2026-05-29 13:34:29 [http-nio-8080-exec-10] INFO  c.u.t.c.UserVisitedCountryController - User test@test.com deleted visit record ID 131.
+2026-05-29 13:34:33 [http-nio-8080-exec-4] INFO  c.u.t.controller.CountryController - Request received for all countries for map/list display.
+2026-05-29 13:36:44 [http-nio-8080-exec-9] INFO  c.u.t.controller.UserController - Login attempt for user: admin@admin.com
+2026-05-29 13:36:44 [http-nio-8080-exec-9] INFO  c.u.t.security.JwtUtils - Generating JWT token for user: admin@admin.com with role: ROLE_ADMIN
+2026-05-29 13:36:44 [http-nio-8080-exec-9] INFO  c.u.t.controller.UserController - Login successful for user: admin@admin.com
+2026-05-29 13:36:44 [http-nio-8080-exec-4] INFO  c.u.t.c.UserSettingController - Retrieving settings for user: admin@admin.com
+2026-05-29 13:36:44 [http-nio-8080-exec-5] INFO  c.u.t.c.UserVisitedCountryController - Fetching trip history for user: admin@admin.com
+2026-05-29 13:36:44 [http-nio-8080-exec-2] INFO  c.u.t.controller.UserController - ADMIN: Generating statistics summary
+2026-05-29 13:36:44 [http-nio-8080-exec-8] INFO  c.u.t.controller.UserController - ADMIN: Fetching users list. Search query: null
+2026-05-29 13:36:54 [http-nio-8080-exec-4] INFO  c.u.t.c.UserSettingController - Retrieving settings for user: admin@admin.com
+2026-05-29 13:36:54 [http-nio-8080-exec-10] INFO  c.u.t.c.UserVisitedCountryController - Fetching trip history for user: admin@admin.com
+2026-05-29 13:36:54 [http-nio-8080-exec-2] INFO  c.u.t.controller.UserController - ADMIN: Generating statistics summary
+2026-05-29 13:36:54 [http-nio-8080-exec-6] INFO  c.u.t.controller.UserController - ADMIN: Fetching users list. Search query: null
+2026-05-29 13:37:52 [http-nio-8080-exec-9] INFO  c.u.t.controller.UserController - Login attempt for user: test@test.com
+2026-05-29 13:37:52 [http-nio-8080-exec-9] INFO  c.u.t.security.JwtUtils - Generating JWT token for user: test@test.com with role: ROLE_USER
+2026-05-29 13:37:52 [http-nio-8080-exec-9] INFO  c.u.t.controller.UserController - Login successful for user: test@test.com
+2026-05-29 13:37:53 [http-nio-8080-exec-4] INFO  c.u.t.c.UserVisitedCountryController - Fetching trip history for user: test@test.com
+2026-05-29 13:37:53 [http-nio-8080-exec-10] INFO  c.u.t.c.UserSettingController - Retrieving settings for user: test@test.com
+2026-05-29 13:37:53 [http-nio-8080-exec-5] INFO  c.u.t.controller.CountryController - Request received for all countries for map/list display.
+2026-05-29 13:37:53 [http-nio-8080-exec-2] INFO  c.u.t.controller.CountryController - Request received for all countries for map/list display.
+2026-05-29 13:37:57 [http-nio-8080-exec-9] INFO  c.u.t.controller.CountryController - Request received for all countries for map/list display.
+2026-05-29 13:38:05 [http-nio-8080-exec-3] INFO  c.u.t.c.AchievementController - Fetching achievements for user: test@test.com
+2026-05-29 13:39:50 [http-nio-8080-exec-2] INFO  c.u.t.controller.UserController - Login attempt for user: test@test.com
+2026-05-29 13:39:50 [http-nio-8080-exec-2] INFO  c.u.t.security.JwtUtils - Generating JWT token for user: test@test.com with role: ROLE_USER
+2026-05-29 13:39:50 [http-nio-8080-exec-2] INFO  c.u.t.controller.UserController - Login successful for user: test@test.com
+2026-05-29 13:39:50 [http-nio-8080-exec-9] INFO  c.u.t.c.UserVisitedCountryController - Fetching trip history for user: test@test.com
+2026-05-29 13:39:50 [http-nio-8080-exec-1] INFO  c.u.t.c.UserSettingController - Retrieving settings for user: test@test.com
+2026-05-29 13:39:50 [http-nio-8080-exec-10] INFO  c.u.t.controller.CountryController - Request received for all countries for map/list display.
+2026-05-29 13:40:05 [http-nio-8080-exec-7] INFO  c.u.t.controller.CountryController - Request received for all countries for map/list display.
+2026-05-29 13:40:27 [http-nio-8080-exec-8] INFO  c.u.t.c.UserSettingController - Retrieving settings for user: test@test.com
+2026-05-29 13:40:27 [http-nio-8080-exec-6] INFO  c.u.t.c.UserVisitedCountryController - Fetching trip history for user: test@test.com
+2026-05-29 13:40:51 [http-nio-8080-exec-10] INFO  c.u.t.controller.CountryController - Request received for all countries for map/list display.
+2026-05-29 13:40:55 [http-nio-8080-exec-7] INFO  c.u.t.controller.CountryController - Request received for all countries for map/list display.
+2026-05-29 13:41:06 [http-nio-8080-exec-1] INFO  c.u.t.c.AchievementController - Fetching achievements for user: test@test.com
+2026-05-29 13:41:38 [http-nio-8080-exec-3] INFO  c.u.t.controller.UserController - Login attempt for user: admin@admin.com
+2026-05-29 13:41:38 [http-nio-8080-exec-3] INFO  c.u.t.security.JwtUtils - Generating JWT token for user: admin@admin.com with role: ROLE_ADMIN
+2026-05-29 13:41:38 [http-nio-8080-exec-3] INFO  c.u.t.controller.UserController - Login successful for user: admin@admin.com
+2026-05-29 13:41:38 [http-nio-8080-exec-5] INFO  c.u.t.c.UserSettingController - Retrieving settings for user: admin@admin.com
+2026-05-29 13:41:38 [http-nio-8080-exec-7] INFO  c.u.t.c.UserVisitedCountryController - Fetching trip history for user: admin@admin.com
+2026-05-29 13:41:38 [http-nio-8080-exec-8] INFO  c.u.t.controller.UserController - ADMIN: Generating statistics summary
+2026-05-29 13:41:38 [http-nio-8080-exec-6] INFO  c.u.t.controller.UserController - ADMIN: Fetching users list. Search query: null
+2026-05-29 13:42:38 [http-nio-8080-exec-4] INFO  c.u.t.controller.UserController - Login attempt for user: admin@admin.com
+2026-05-29 13:42:38 [http-nio-8080-exec-4] INFO  c.u.t.security.JwtUtils - Generating JWT token for user: admin@admin.com with role: ROLE_ADMIN
+2026-05-29 13:42:38 [http-nio-8080-exec-4] INFO  c.u.t.controller.UserController - Login successful for user: admin@admin.com
+2026-05-29 13:42:38 [http-nio-8080-exec-2] INFO  c.u.t.c.UserVisitedCountryController - Fetching trip history for user: admin@admin.com
+2026-05-29 13:42:38 [http-nio-8080-exec-1] INFO  c.u.t.c.UserSettingController - Retrieving settings for user: admin@admin.com
+2026-05-29 13:42:38 [http-nio-8080-exec-4] INFO  c.u.t.controller.UserController - ADMIN: Generating statistics summary
+2026-05-29 13:42:38 [http-nio-8080-exec-10] INFO  c.u.t.controller.UserController - ADMIN: Fetching users list. Search query: null
+2026-05-29 13:42:38 [http-nio-8080-exec-5] INFO  c.u.t.controller.UserController - ADMIN: Generating statistics summary
+2026-05-29 13:42:38 [http-nio-8080-exec-7] INFO  c.u.t.controller.UserController - ADMIN: Fetching users list. Search query: null
+2026-05-29 13:48:47 [http-nio-8080-exec-10] INFO  c.u.t.c.UserSettingController - Retrieving settings for user: admin@admin.com
+2026-05-29 13:48:47 [http-nio-8080-exec-7] INFO  c.u.t.c.UserVisitedCountryController - Fetching trip history for user: admin@admin.com
+2026-05-29 13:48:47 [http-nio-8080-exec-1] INFO  c.u.t.c.UserSettingController - Retrieving settings for user: admin@admin.com
+2026-05-29 13:48:47 [http-nio-8080-exec-8] INFO  c.u.t.c.UserVisitedCountryController - Fetching trip history for user: admin@admin.com
+2026-05-29 13:48:47 [http-nio-8080-exec-5] INFO  c.u.t.controller.UserController - ADMIN: Generating statistics summary
+2026-05-29 13:48:47 [http-nio-8080-exec-2] INFO  c.u.t.controller.UserController - ADMIN: Fetching users list. Search query: null
+2026-05-29 13:48:47 [http-nio-8080-exec-7] INFO  c.u.t.controller.UserController - ADMIN: Generating statistics summary
+2026-05-29 13:48:48 [http-nio-8080-exec-10] INFO  c.u.t.controller.UserController - ADMIN: Fetching users list. Search query: null
+2026-05-29 13:49:00 [http-nio-8080-exec-1] INFO  c.u.t.controller.UserController - ADMIN: Changing role for ID 16 to ROLE_ADMIN
+2026-05-29 13:49:00 [http-nio-8080-exec-1] INFO  c.u.t.controller.UserController - ADMIN: Role updated for user ID 16
+2026-05-29 13:49:01 [http-nio-8080-exec-4] INFO  c.u.t.controller.UserController - ADMIN: Fetching users list. Search query: null
+2026-05-29 13:49:01 [http-nio-8080-exec-3] INFO  c.u.t.controller.UserController - ADMIN: Changing role for ID 16 to ROLE_USER
+2026-05-29 13:49:01 [http-nio-8080-exec-3] INFO  c.u.t.controller.UserController - ADMIN: Role updated for user ID 16
+2026-05-29 13:49:01 [http-nio-8080-exec-6] INFO  c.u.t.controller.UserController - ADMIN: Fetching users list. Search query: null
+2026-05-29 13:49:05 [http-nio-8080-exec-7] INFO  c.u.t.controller.UserController - ADMIN: Request to delete user ID: 16
+2026-05-29 13:49:05 [http-nio-8080-exec-7] INFO  c.u.t.controller.UserController - ADMIN: User ID 16 deleted successfully
+2026-05-29 13:49:05 [http-nio-8080-exec-2] INFO  c.u.t.controller.UserController - ADMIN: Fetching users list. Search query: null
+2026-05-29 13:51:09 [http-nio-8080-exec-5] INFO  c.u.t.controller.UserController - Login attempt for user: test@test.com
+2026-05-29 13:51:09 [http-nio-8080-exec-5] INFO  c.u.t.security.JwtUtils - Generating JWT token for user: test@test.com with role: ROLE_USER
+2026-05-29 13:51:09 [http-nio-8080-exec-5] INFO  c.u.t.controller.UserController - Login successful for user: test@test.com
+2026-05-29 13:51:09 [http-nio-8080-exec-8] INFO  c.u.t.c.UserSettingController - Retrieving settings for user: test@test.com
+2026-05-29 13:51:09 [http-nio-8080-exec-10] INFO  c.u.t.c.UserVisitedCountryController - Fetching trip history for user: test@test.com
+2026-05-29 13:51:09 [http-nio-8080-exec-9] INFO  c.u.t.controller.CountryController - Request received for all countries for map/list display.
+2026-05-29 13:51:14 [http-nio-8080-exec-3] INFO  c.u.t.c.UserSettingController - Updating settings for user: test@test.com
+2026-05-29 13:51:14 [http-nio-8080-exec-3] INFO  c.u.t.c.UserSettingController - Settings for user test@test.com successfully updated.
+2026-05-29 13:51:15 [http-nio-8080-exec-5] INFO  c.u.t.controller.CountryController - Request received for all countries for map/list display.
+2026-05-29 13:51:20 [http-nio-8080-exec-2] INFO  c.u.t.controller.CountryController - Request received for all countries for map/list display.
+2026-05-29 13:51:30 [http-nio-8080-exec-10] INFO  c.u.t.controller.CountryController - Searching for country details: Canada
+2026-05-29 13:51:30 [http-nio-8080-exec-9] INFO  c.u.t.controller.CountryController - Request received for all countries for map/list display.
+2026-05-29 13:51:36 [http-nio-8080-exec-3] INFO  c.u.t.controller.CountryController - Searching for country details: Lesotho
+2026-05-29 13:51:36 [http-nio-8080-exec-5] INFO  c.u.t.controller.CountryController - Request received for all countries for map/list display.
+2026-05-29 13:51:40 [http-nio-8080-exec-7] INFO  c.u.t.controller.CountryController - Request received for all countries for map/list display.
+2026-05-29 13:51:41 [http-nio-8080-exec-2] INFO  c.u.t.controller.CountryController - Request received for all countries for map/list display.
+2026-05-29 13:51:51 [http-nio-8080-exec-10] INFO  c.u.t.c.UserVisitedCountryController - User test@test.com is adding a new visit for country ID: 171
+2026-05-29 13:51:51 [http-nio-8080-exec-10] INFO  c.u.t.c.UserVisitedCountryController - Visit record ID 150 successfully saved. Newly unlocked achievements: 1
+2026-05-29 13:51:51 [http-nio-8080-exec-9] INFO  c.u.t.c.UserVisitedCountryController - Fetching trip history for user: test@test.com
+2026-05-29 13:51:55 [http-nio-8080-exec-3] INFO  c.u.t.controller.CountryController - Request received for all countries for map/list display.
+2026-05-29 13:51:59 [http-nio-8080-exec-5] INFO  c.u.t.controller.CountryController - Searching for country details: Lesotho
+2026-05-29 13:51:59 [http-nio-8080-exec-7] INFO  c.u.t.controller.CountryController - Request received for all countries for map/list display.
+2026-05-29 13:52:06 [http-nio-8080-exec-8] INFO  c.u.t.c.UserSettingController - Updating settings for user: test@test.com
+2026-05-29 13:52:06 [http-nio-8080-exec-8] INFO  c.u.t.c.UserSettingController - Settings for user test@test.com successfully updated.
+2026-05-29 13:52:07 [http-nio-8080-exec-10] INFO  c.u.t.c.UserSettingController - Updating settings for user: test@test.com
+2026-05-29 13:52:08 [http-nio-8080-exec-10] INFO  c.u.t.c.UserSettingController - Settings for user test@test.com successfully updated.
+2026-05-29 13:52:09 [http-nio-8080-exec-1] INFO  c.u.t.c.UserSettingController - Updating settings for user: test@test.com
+2026-05-29 13:52:09 [http-nio-8080-exec-1] INFO  c.u.t.c.UserSettingController - Settings for user test@test.com successfully updated.
+2026-05-29 13:52:09 [http-nio-8080-exec-9] INFO  c.u.t.c.UserSettingController - Updating settings for user: test@test.com
+2026-05-29 13:52:09 [http-nio-8080-exec-9] INFO  c.u.t.c.UserSettingController - Settings for user test@test.com successfully updated.
+2026-05-29 13:52:12 [http-nio-8080-exec-6] INFO  c.u.t.c.UserSettingController - Updating settings for user: test@test.com
+2026-05-29 13:52:12 [http-nio-8080-exec-6] INFO  c.u.t.c.UserSettingController - Settings for user test@test.com successfully updated.
+2026-05-29 13:52:14 [http-nio-8080-exec-7] INFO  c.u.t.c.AchievementController - Fetching achievements for user: test@test.com
+2026-05-29 13:52:27 [http-nio-8080-exec-8] INFO  c.u.t.c.UserSettingController - Updating settings for user: test@test.com
+2026-05-29 13:52:27 [http-nio-8080-exec-8] INFO  c.u.t.c.UserSettingController - Settings for user test@test.com successfully updated.
+2026-05-29 13:52:29 [http-nio-8080-exec-10] INFO  c.u.t.c.UserSettingController - Updating settings for user: test@test.com
+2026-05-29 13:52:29 [http-nio-8080-exec-10] INFO  c.u.t.c.UserSettingController - Settings for user test@test.com successfully updated.
+2026-05-29 13:52:30 [http-nio-8080-exec-9] INFO  c.u.t.c.AchievementController - Fetching achievements for user: test@test.com
+2026-05-29 13:53:34 [http-nio-8080-exec-7] INFO  c.u.t.controller.UserController - Login attempt for user: test@test.com
+2026-05-29 13:53:34 [http-nio-8080-exec-7] INFO  c.u.t.security.JwtUtils - Generating JWT token for user: test@test.com with role: ROLE_USER
+2026-05-29 13:53:34 [http-nio-8080-exec-7] INFO  c.u.t.controller.UserController - Login successful for user: test@test.com
+2026-05-29 13:53:34 [http-nio-8080-exec-1] INFO  c.u.t.c.UserVisitedCountryController - Fetching trip history for user: test@test.com
+2026-05-29 13:53:34 [http-nio-8080-exec-10] INFO  c.u.t.c.UserSettingController - Retrieving settings for user: test@test.com
+2026-05-29 13:53:34 [http-nio-8080-exec-3] INFO  c.u.t.controller.CountryController - Request received for all countries for map/list display.
+2026-05-29 13:53:34 [http-nio-8080-exec-6] INFO  c.u.t.controller.CountryController - Request received for all countries for map/list display.
+2026-05-29 13:53:36 [http-nio-8080-exec-2] INFO  c.u.t.c.AchievementController - Fetching achievements for user: test@test.com
+2026-05-29 13:53:36 [http-nio-8080-exec-8] INFO  c.u.t.c.AchievementController - Fetching achievements for user: test@test.com
+2026-05-29 13:53:40 [http-nio-8080-exec-10] INFO  c.u.t.c.AchievementController - Fetching achievements for user: test@test.com
+2026-05-29 13:53:40 [http-nio-8080-exec-1] INFO  c.u.t.c.AchievementController - Fetching achievements for user: test@test.com
+2026-05-29 13:57:16 [http-nio-8080-exec-10] INFO  c.u.t.c.UserVisitedCountryController - Fetching trip history for user: test@test.com
+2026-05-29 13:57:16 [http-nio-8080-exec-1] INFO  c.u.t.c.UserSettingController - Retrieving settings for user: test@test.com
+2026-05-29 13:57:16 [http-nio-8080-exec-9] INFO  c.u.t.c.UserSettingController - Retrieving settings for user: test@test.com
+2026-05-29 13:57:16 [http-nio-8080-exec-4] INFO  c.u.t.c.UserVisitedCountryController - Fetching trip history for user: test@test.com
+2026-05-29 13:57:16 [http-nio-8080-exec-7] INFO  c.u.t.c.AchievementController - Fetching achievements for user: test@test.com
+2026-05-29 13:57:16 [http-nio-8080-exec-5] INFO  c.u.t.c.AchievementController - Fetching achievements for user: test@test.com
+2026-05-29 14:00:41 [http-nio-8080-exec-3] INFO  c.u.t.c.UserVisitedCountryController - Fetching trip history for user: test@test.com
+2026-05-29 14:00:41 [http-nio-8080-exec-7] INFO  c.u.t.c.UserVisitedCountryController - Fetching trip history for user: test@test.com
+2026-05-29 14:00:42 [http-nio-8080-exec-1] INFO  c.u.t.c.AchievementController - Fetching achievements for user: test@test.com
+2026-05-29 14:00:42 [http-nio-8080-exec-9] INFO  c.u.t.c.AchievementController - Fetching achievements for user: test@test.com
+2026-05-29 14:00:50 [http-nio-8080-exec-10] INFO  c.u.t.c.UserSettingController - Updating settings for user: test@test.com
+2026-05-29 14:00:50 [http-nio-8080-exec-10] INFO  c.u.t.c.UserSettingController - Settings for user test@test.com successfully updated.
+2026-05-29 14:00:51 [http-nio-8080-exec-3] INFO  c.u.t.c.AchievementController - Fetching achievements for user: test@test.com
+2026-05-29 14:00:51 [http-nio-8080-exec-7] INFO  c.u.t.c.AchievementController - Fetching achievements for user: test@test.com
+2026-05-29 14:01:00 [http-nio-8080-exec-2] INFO  c.u.t.c.UserSettingController - Updating settings for user: test@test.com
+2026-05-29 14:01:00 [http-nio-8080-exec-2] INFO  c.u.t.c.UserSettingController - Settings for user test@test.com successfully updated.
+2026-05-29 14:01:01 [http-nio-8080-exec-8] INFO  c.u.t.c.AchievementController - Fetching achievements for user: test@test.com
+2026-05-29 14:01:01 [http-nio-8080-exec-10] INFO  c.u.t.c.AchievementController - Fetching achievements for user: test@test.com
+2026-05-29 14:03:39 [http-nio-8080-exec-7] INFO  c.u.t.c.UserSettingController - Updating settings for user: test@test.com
+2026-05-29 14:03:39 [http-nio-8080-exec-7] INFO  c.u.t.c.UserSettingController - Settings for user test@test.com successfully updated.
+2026-05-29 14:04:22 [http-nio-8080-exec-2] INFO  c.u.t.c.UserSettingController - Updating settings for user: test@test.com
+2026-05-29 14:04:22 [http-nio-8080-exec-2] INFO  c.u.t.c.UserSettingController - Settings for user test@test.com successfully updated.
+2026-05-29 14:04:42 [http-nio-8080-exec-9] INFO  c.u.t.c.UserSettingController - Updating settings for user: test@test.com
+2026-05-29 14:04:42 [http-nio-8080-exec-9] INFO  c.u.t.c.UserSettingController - Settings for user test@test.com successfully updated.
+2026-05-29 14:04:44 [http-nio-8080-exec-8] INFO  c.u.t.c.UserSettingController - Updating settings for user: test@test.com
+2026-05-29 14:04:44 [http-nio-8080-exec-8] INFO  c.u.t.c.UserSettingController - Settings for user test@test.com successfully updated.
+2026-05-29 14:04:52 [http-nio-8080-exec-6] INFO  c.u.t.c.UserSettingController - Updating settings for user: test@test.com
+2026-05-29 14:04:52 [http-nio-8080-exec-6] INFO  c.u.t.c.UserSettingController - Settings for user test@test.com successfully updated.
+2026-05-29 14:04:54 [http-nio-8080-exec-4] INFO  c.u.t.c.UserSettingController - Updating settings for user: test@test.com
+2026-05-29 14:04:54 [http-nio-8080-exec-4] INFO  c.u.t.c.UserSettingController - Settings for user test@test.com successfully updated.
+2026-05-29 14:05:41 [http-nio-8080-exec-7] INFO  c.u.t.c.UserSettingController - Updating settings for user: test@test.com
+2026-05-29 14:05:41 [http-nio-8080-exec-7] INFO  c.u.t.c.UserSettingController - Settings for user test@test.com successfully updated.
+2026-05-29 14:05:54 [SpringApplicationShutdownHook] INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-05-29 14:05:54 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-05-29 14:05:54 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-05-29 14:05:54 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-05-29 14:05:54 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-05-29 14:38:16 [main] INFO  c.u.t.TravelLogBackendApplication - Starting TravelLogBackendApplication using Java 23.0.2 with PID 11216 (C:\VisualStudioProjects\React\TravelLogNew\travel-log-backend\target\classes started by rfajc in C:\VisualStudioProjects\React\TravelLogNew\travel-log-backend)
+2026-05-29 14:38:16 [main] INFO  c.u.t.TravelLogBackendApplication - No active profile set, falling back to 1 default profile: "default"
+2026-05-29 14:38:17 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-29 14:38:17 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 102 ms. Found 6 JPA repository interfaces.
+2026-05-29 14:38:18 [main] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-05-29 14:38:18 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-05-29 14:38:18 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-05-29 14:38:18 [main] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 2850 ms
+2026-05-29 14:38:19 [main] INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-05-29 14:38:19 [main] INFO  org.hibernate.orm.core - HHH000001: Hibernate ORM core version 7.2.4.Final
+2026-05-29 14:38:20 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-05-29 14:38:20 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-05-29 14:38:21 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@65c689e7
+2026-05-29 14:38:21 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-05-29 14:38:21 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/travel_log_db?createDatabaseIfNotExist=true&serverTimezone=UTC]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.46
+	Default catalog/schema: travel_log_db/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-05-29 14:38:22 [main] INFO  org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-05-29 14:38:22 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-05-29 14:38:23 [main] INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-05-29 14:38:25 [main] WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-05-29 14:38:25 [main] WARN  o.s.b.s.a.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: d0703569-6805-471f-966b-90ab1ee768e7
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-05-29 14:38:25 [main] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-05-29 14:38:26 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
+2026-05-29 14:38:26 [main] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-05-29 14:38:26 [main] INFO  c.u.t.TravelLogBackendApplication - Started TravelLogBackendApplication in 11.47 seconds (process running for 12.702)
+2026-05-29 14:38:27 [RMI TCP Connection(1)-192.168.5.132] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-05-29 14:38:27 [RMI TCP Connection(1)-192.168.5.132] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-05-29 14:38:27 [RMI TCP Connection(1)-192.168.5.132] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2026-05-29 14:38:31 [http-nio-8080-exec-1] INFO  c.u.t.controller.UserController - Login attempt for user: test@test.com
+2026-05-29 14:38:32 [http-nio-8080-exec-1] INFO  c.u.t.security.JwtUtils - Generating JWT token for user: test@test.com with role: ROLE_USER
+2026-05-29 14:38:32 [http-nio-8080-exec-1] INFO  c.u.t.controller.UserController - Login successful for user: test@test.com
+2026-05-29 14:38:32 [http-nio-8080-exec-8] INFO  c.u.t.controller.CountryController - Request received for all countries for map/list display.
+2026-05-29 14:38:32 [http-nio-8080-exec-7] INFO  c.u.t.c.UserSettingController - Retrieving settings for user: test@test.com
+2026-05-29 14:38:32 [http-nio-8080-exec-9] INFO  c.u.t.c.UserVisitedCountryController - Fetching trip history for user: test@test.com
+2026-05-29 14:38:32 [http-nio-8080-exec-10] INFO  c.u.t.controller.CountryController - Request received for all countries for map/list display.
+2026-05-29 14:38:36 [http-nio-8080-exec-3] INFO  c.u.t.c.AchievementController - Fetching achievements for user: test@test.com
+2026-05-29 14:38:41 [http-nio-8080-exec-4] INFO  c.u.t.c.UserSettingController - Updating settings for user: test@test.com
+2026-05-29 14:38:41 [http-nio-8080-exec-4] INFO  c.u.t.c.UserSettingController - Settings for user test@test.com successfully updated.
+2026-05-29 14:38:45 [http-nio-8080-exec-5] INFO  c.u.t.c.AchievementController - Fetching achievements for user: test@test.com
+2026-05-29 14:38:52 [http-nio-8080-exec-7] INFO  c.u.t.controller.CountryController - Request received for all countries for map/list display.
+2026-05-29 14:38:56 [http-nio-8080-exec-10] INFO  c.u.t.controller.CountryController - Request received for all countries for map/list display.
+2026-05-29 14:38:59 [http-nio-8080-exec-3] INFO  c.u.t.controller.CountryController - Searching for country details: Austria
+2026-05-29 14:38:59 [http-nio-8080-exec-1] INFO  c.u.t.controller.CountryController - Request received for all countries for map/list display.
+2026-05-29 14:39:01 [http-nio-8080-exec-2] INFO  c.u.t.controller.CountryController - Request received for all countries for map/list display.
+2026-05-29 14:39:10 [http-nio-8080-exec-9] INFO  c.u.t.c.AchievementController - Fetching achievements for user: test@test.com
+2026-05-29 14:39:21 [http-nio-8080-exec-8] INFO  c.u.t.c.UserSettingController - Updating settings for user: test@test.com
+2026-05-29 14:39:21 [http-nio-8080-exec-8] INFO  c.u.t.c.UserSettingController - Settings for user test@test.com successfully updated.
+2026-05-29 14:39:25 [http-nio-8080-exec-6] INFO  c.u.t.controller.CountryController - Request received for all countries for map/list display.
+2026-05-29 14:39:28 [http-nio-8080-exec-1] INFO  c.u.t.c.AchievementController - Fetching achievements for user: test@test.com
+2026-05-29 14:39:56 [http-nio-8080-exec-9] INFO  c.u.t.controller.UserController - Login attempt for user: admin@admin.com
+2026-05-29 14:39:56 [http-nio-8080-exec-9] INFO  c.u.t.security.JwtUtils - Generating JWT token for user: admin@admin.com with role: ROLE_ADMIN
+2026-05-29 14:39:56 [http-nio-8080-exec-9] INFO  c.u.t.controller.UserController - Login successful for user: admin@admin.com
+2026-05-29 14:39:56 [http-nio-8080-exec-10] INFO  c.u.t.c.UserVisitedCountryController - Fetching trip history for user: admin@admin.com
+2026-05-29 14:39:56 [http-nio-8080-exec-6] INFO  c.u.t.c.UserSettingController - Retrieving settings for user: admin@admin.com
+2026-05-29 14:39:56 [http-nio-8080-exec-4] INFO  c.u.t.controller.UserController - ADMIN: Generating statistics summary
+2026-05-29 14:39:56 [http-nio-8080-exec-2] INFO  c.u.t.controller.UserController - ADMIN: Fetching users list. Search query: null
+2026-05-29 14:40:19 [http-nio-8080-exec-9] INFO  c.u.t.controller.UserController - ADMIN: Changing role for ID 25 to ROLE_ADMIN
+2026-05-29 14:40:19 [http-nio-8080-exec-9] INFO  c.u.t.controller.UserController - ADMIN: Role updated for user ID 25
+2026-05-29 14:40:19 [http-nio-8080-exec-8] INFO  c.u.t.controller.UserController - ADMIN: Fetching users list. Search query: null
+2026-05-29 14:40:20 [http-nio-8080-exec-10] INFO  c.u.t.controller.UserController - ADMIN: Changing role for ID 25 to ROLE_USER
+2026-05-29 14:40:21 [http-nio-8080-exec-10] INFO  c.u.t.controller.UserController - ADMIN: Role updated for user ID 25
+2026-05-29 14:40:21 [http-nio-8080-exec-6] INFO  c.u.t.controller.UserController - ADMIN: Fetching users list. Search query: null
+2026-05-29 14:42:00 [http-nio-8080-exec-6] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 717 ms
+2026-05-29 14:42:46 [SpringApplicationShutdownHook] INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-05-29 14:42:46 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-05-29 14:42:46 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-05-29 14:42:46 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-05-29 14:42:46 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
