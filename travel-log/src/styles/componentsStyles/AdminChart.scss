@@ -1,0 +1,53 @@
+@use '../variables' as *;
+
+.admin-charts-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; // Dva grafy vedle sebe na desktopu
+  gap: 24px;
+  width: 100%;
+
+  .chart-card {
+    background: $color-white;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: $box-shadow;
+    border: 1px solid rgba($color-dark-primary, 0.05);
+
+    .chart-header {
+      margin-bottom: 30px;
+
+      h3 {
+        font-family: $font-family-header;
+        font-size: 1.25rem;
+        color: $color-dark-primary;
+        margin: 0;
+        font-weight: 700;
+        text-align: left;
+      }
+
+      p {
+        font-family: $font-family-primary;
+        font-size: 0.85rem;
+        color: #94a3b8;
+        margin: 4px 0 0 0;
+        text-align: left;
+      }
+    }
+
+    .chart-body {
+      width: 100%;
+      
+      // Úprava pro Recharts tooltipy a mřížku
+      .recharts-cartesian-grid-horizontal line {
+        stroke: #f1f5f9;
+      }
+    }
+  }
+}
+
+// Responzivita
+@media screen and (max-width: 1100px) {
+  .admin-charts-container {
+    grid-template-columns: 1fr; // Grafy pod sebou na menších obrazovkách
+  }
+}

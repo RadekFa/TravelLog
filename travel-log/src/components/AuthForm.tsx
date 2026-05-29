@@ -5,6 +5,8 @@ import * as Yup from 'yup';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext'; 
+// IMPORT NOVÉHO KONTEXTU
+import { useAlertToast } from '../context/AlertToastContext'; 
 import '../styles/componentsStyles/AuthForm.scss';
 
 interface AuthValues {
@@ -27,7 +29,6 @@ const BirthdaySelects = ({ form, field }: FieldProps) => {
   const currentYear = new Date().getFullYear();
   const years = Array.from({ length: 100 }, (_, i) => currentYear - i);
 
-  // Zavedeme lokální stav pro částečné výběry (den, měsíc, rok), aby se selecty nevymazaly
   const [partialDate, setPartialDate] = useState(() => {
     if (field.value instanceof Date) {
       return {
@@ -40,24 +41,18 @@ const BirthdaySelects = ({ form, field }: FieldProps) => {
   });
 
   const handleSelectChange = (type: 'd' | 'm' | 'y', value: string) => {
-    // 1. Uložíme částečnou hodnotu do lokálního stavu
     const newPartial = { ...partialDate, [type]: value };
     setPartialDate(newPartial);
 
-    // 2. Kontrola, zda už máme všechny 3 hodnoty
     if (newPartial.d && newPartial.m && newPartial.y) {
       const monthIndex = months.indexOf(newPartial.m);
-      // Vytvoříme datum (ve 12:00 kvůli eliminaci časových pásem)
       const newDate = new Date(parseInt(newPartial.y), monthIndex, parseInt(newPartial.d), 12, 0, 0);
       
-      // Kontrola pro přestupné roky a neexistující dny (např. 31. listopadu)
       if (newDate.getMonth() === monthIndex) {
         form.setFieldValue(field.name, newDate);
         return;
       }
     }
-    
-    // Pokud je datum nevalidní nebo nekompletní, nastavíme ve Formiku null
     form.setFieldValue(field.name, null);
   };
 
@@ -81,7 +76,6 @@ const BirthdaySelects = ({ form, field }: FieldProps) => {
   );
 };
 
-// Synchronizováno s backendovou validací @StrongPassword
 const passwordValidation = Yup.string()
   .min(8, 'At least 8 characters.')
   .matches(/[A-Z]/, 'Must contain an uppercase letter.')
@@ -105,6 +99,7 @@ const LoginSchema = Yup.object().shape({
 const AuthForm: React.FC<AuthFormProps> = ({ isLogin, toggleAuth }) => {
   const navigate = useNavigate(); 
   const { login } = useAuth(); 
+  const { showAlert } = useAlertToast(); // Použití nového kontextu
   const [step, setStep] = useState(1);
 
   useEffect(() => {
@@ -128,18 +123,27 @@ const AuthForm: React.FC<AuthFormProps> = ({ isLogin, toggleAuth }) => {
         body: JSON.stringify(payload),
       });
 
-      const data = await response.json();
+      // 1. Nejprve zkusíme z backendu vyždímat tělo (ideálně tam bude smysluplný text/JSON)
+      let data = null;
+      let responseText = "";
+      try {
+        responseText = await response.text();
+        if (responseText) {
+            data = JSON.parse(responseText);
+        }
+      } catch (e) {
+        // Ignorujeme, prostě to nebyl JSON
+      }
 
       if (response.ok) {
         helpers.setSubmitting(false);
         
-        // ZDE PROBĚHLA OPRAVA: Předání všech dat včetně fullName do AuthContextu
         await login({
           token: data.token,
           username: data.username,
           role: data.role,
           registrationYear: data.registrationYear,
-          fullName: data.fullName, // Nyní se jméno bezpečně uloží do localStorage
+          fullName: data.fullName,
           id: data.id || 0,
           email: data.email || values.email
         });
@@ -150,22 +154,37 @@ const AuthForm: React.FC<AuthFormProps> = ({ isLogin, toggleAuth }) => {
           navigate('/map'); 
         }
       } else {
+        helpers.setSubmitting(false);
+
+        // 2. Obsluha HTTP chyb podle statusu
+        if (response.status === 404 && isLogin) {
+            showAlert('This email does not exist.', 'error');
+            return;
+        }
+
+        if (response.status === 401 || response.status === 403) {
+            showAlert('Invalid email or password.', 'error');
+            return;
+        }
+
+        // 3. Obsluha chyb z případného JSON těla (tvůj původní kód)
         if (data && typeof data === 'object') {
-            // Bezpečné zachycení chybových zpráv z backendu
             if (data.message && data.message.toLowerCase().includes("email")) {
-                helpers.setFieldError('email', 'This email is already registered.');
+                showAlert('This email is already registered.', 'error');
             } else if (data.email) {
-                helpers.setFieldError('email', data.email);
+                showAlert(data.email, 'error');
             } else {
                 helpers.setErrors(data);
             }
         } else {
-            alert('Authentication failed: ' + data);
+            // Pokud tu nemáme JSON, ale máme text, ukážeme ten (jinak fallback)
+            showAlert(responseText || `Authentication failed (Error ${response.status})`, 'error');
         }
-        helpers.setSubmitting(false);
       }
     } catch (error) {
-      alert('Could not connect to the server.');
+      // Sem to spadne JEDINĚ TEHDY, pokud backend vůbec neběží (např. spadne server)
+      console.error(error);
+      showAlert('Could not connect to the server. Please check if backend is running.', 'error');
       helpers.setSubmitting(false);
     }
   };

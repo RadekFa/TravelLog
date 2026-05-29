@@ -3,18 +3,18 @@
 .profile-countries-section {
   width: 95vw;
   margin: 0px auto;
-  padding-bottom: 20px; // Příjemná vzdušnost nad spodním menu
+  padding-bottom: 20px; 
 
   .section-header h2 {
     font-family: $font-family-header;
     color: $color-text-dark;
     font-size: $base-font-size * $golden-ratio;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     text-align: left;
     margin-left: 0;
+    margin-top: 0px;
   }
 
-  // Izolovaný grid pouze pro profil
   .countries-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr) !important;
@@ -26,9 +26,13 @@
     overflow: hidden;
 
     &.collapsed {
-      max-height: 152px; 
-      mask-image: linear-gradient(to bottom, black 55%, transparent 95%);
-      -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 95%);
+      /* OPRAVA: Zvýšení max-height na 250px, aby se bezpečně vešly 2 řádky karet (2x 90px + 20px gap).
+         Tím pádem první řádek nikdy nebude seříznutý maskou. */
+      max-height: 250px; 
+      
+      /* OPRAVA: Gradient začne blednout až dole, kde je (nebo by měla být) druhá řada. */
+      mask-image: linear-gradient(to bottom, black 65%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, black 65%, transparent 100%);
     }
 
     &.expanded {
@@ -38,11 +42,21 @@
     }
   }
 
-  // Izolovaná karta pouze pro profil (přetlačí 200px z druhé stránky)
+  /*
+   OPRAVA: Odstranění "uříznutí", pokud je položek málo.
+   Pokud se nevykreslí tlačítko "View all" (protože trips.length <= gridColumns),
+   React komponenta mu nedá třídu "collapsed", ale rovnou ho nechá plně zobrazené.
+   Ale pro jistotu přidáme třídu .no-mask, pokud bys to chtěl řešit čistě přes CSS.
+  */
+  &.has-few-items .countries-grid.collapsed {
+      mask-image: none;
+      -webkit-mask-image: none;
+  }
+
   .country-card {
     width: 100% !important; 
     max-width: 100% !important;
-    height: 90px !important; // Pevná nízká výška pro profilový řádek
+    height: 90px !important; 
     background: $color-card-bg;
     border-radius: $border-radius;
     box-shadow: $box-shadow;
@@ -241,7 +255,6 @@
   }
 }
 
-// MEDIÁLNÍ DOTAZY PRO PROFIL
 @media screen and (max-width: 1150px) {
   .profile-countries-section .countries-grid {
     grid-template-columns: repeat(2, 1fr) !important;

@@ -1,0 +1,250 @@
+@use '../../styles/variables.scss' as *;
+
+.admin-user-management {
+  .management-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: $box-shadow;
+    border: 1px solid #f0f0f0;
+    overflow: hidden;
+
+    .card-header {
+      padding: 24px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #f5f5f5;
+
+      .header-info {
+        h2 {
+          font-family: $font-family-header;
+          font-size: 1.5rem;
+          color: $color-dark-primary;
+          margin: 0;
+          text-align: left;
+        }
+        p {
+          font-family: $font-family-primary;
+          font-size: 0.85rem;
+          color: #888;
+          margin: 4px 0 0 0;
+          text-align: left;
+        }
+      }
+
+      .search-box {
+        position: relative;
+        display: flex;
+        align-items: center;
+        background: #f8fafc;
+        border-radius: 8px;
+        padding: 0 12px;
+        width: 300px;
+        border: 1px solid #eee;
+
+        .search-icon { color: #aaa; }
+
+        input {
+          border: none;
+          background: transparent;
+          padding: 10px;
+          outline: none;
+          width: 100%;
+          font-family: $font-family-primary;
+          font-size: 0.9rem;
+        }
+      }
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+    }
+
+    .users-table {
+      width: 100%;
+      border-collapse: collapse;
+      
+      th {
+        background: #fafafa;
+        padding: 14px 24px;
+        text-align: left;
+        font-family: $font-family-primary;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #666;
+        border-bottom: 1px solid #eee;
+      }
+
+      td {
+        padding: 16px 24px;
+        border-bottom: 1px solid #f8f8f8;
+        vertical-align: middle;
+        text-align: left;
+      }
+
+      .centerTh { text-align: center; }
+
+      .row-me { background-color: rgba($color-accent-strong, 0.02); }
+
+      .user-profile {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        .avatar {
+          width: 40px;
+          height: 40px;
+          background: rgba($color-accent-strong, 0.1);
+          color: $color-accent-strong;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 700;
+          font-size: 0.85rem;
+        }
+
+        .details {
+          display: flex;
+          flex-direction: column;
+          .name { font-weight: 700; color: #1a1a1a; font-size: 0.95rem; }
+          .email { 
+            font-size: 0.8rem; 
+            color: #777; 
+            display: flex; 
+            align-items: center; 
+            gap: 4px; 
+          }
+        }
+      }
+
+      .icon-text {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.9rem;
+        color: #555;
+        
+        .icon-blue { color: $color-accent-strong; }
+        .count { font-weight: 700; color: #1a1a1a; }
+        .label { color: #888; font-size: 0.8rem; }
+      }
+
+      .role-badge {
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        
+        &.admin { background: $color-dark-primary; color: #fff; }
+        &.user { background: #eef2ff; color: #4f46e5; }
+      }
+
+      .action-buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+
+        .delete-popover-container {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        button {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          padding: 6px 12px;
+          border-radius: 6px;
+          border: 1px solid #e0e0e0;
+          background: #fff;
+          font-size: 0.8rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.2s;
+
+          &.btn-promote:hover:not(:disabled) {
+            border-color: $color-accent-strong;
+            color: $color-accent-strong;
+          }
+
+          &.btn-delete {
+            color: $color-error;
+            border-color: rgba($color-error, 0.1);
+            &:hover:not(:disabled), &.active {
+              background: $color-error;
+              color: #fff;
+              border-color: $color-error;
+            }
+          }
+
+          &:disabled { opacity: 0.3; cursor: not-allowed; }
+        }
+
+        .inline-delete-popover {
+          position: absolute;
+          bottom: 135%; 
+          left: 50%;
+          transform: translateX(-50%);
+          background: #2b2b2b;
+          color: #fff;
+          padding: 8px 12px;
+          border-radius: 6px;
+          z-index: 100;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+          animation: popoverFadeIn 0.12s ease-out;
+
+          p {
+            margin: 0 0 6px 0;
+            font-family: $font-family-primary;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-align: center;
+            white-space: nowrap;
+            color: #fff;
+          }
+
+          .popover-btns {
+            display: flex;
+            gap: 6px;
+            justify-content: center;
+
+            button {
+              border: none;
+              padding: 4px 10px;
+              border-radius: 4px;
+              font-size: 0.7rem;
+              font-weight: bold;
+              cursor: pointer;
+              font-family: $font-family-primary;
+              &:hover { opacity: 0.9; }
+              &.btn-yes { background: $color-error; color: #fff; }
+              &.btn-no { background: #444; color: #ccc; }
+            }
+          }
+
+          .popover-arrow {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 6px solid #2b2b2b;
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes popoverFadeIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(3px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}

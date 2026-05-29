@@ -7,6 +7,33 @@
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
+/* Základní text (tloušťka 400) */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  /* Zkontroluj, jestli se tvůj soubor jmenuje 'regular' nebo '400' */
+  src: url('/fonts/montserrat-v31-latin-regular.woff2') format('woff2'); 
+}
+
+/* Polotučné texty (tloušťka 600) */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/montserrat-v31-latin-600.woff2') format('woff2');
+}
+
+/* Tučné nadpisy (tloušťka 700) */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/montserrat-v31-latin-700.woff2') format('woff2');
+}
 // FIX: Úprava webkit autofillu, aby fungoval pro světlé i tmavé inputy
 .input-group input:-webkit-autofill,
 .input-group input:-webkit-autofill:hover,

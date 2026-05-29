@@ -1,8 +1,9 @@
-package cz.upa.travellogbackend.service;
+package cz.upa.travellogbackend;
 
 import cz.upa.travellogbackend.dto.UserRegistrationDto;
 import cz.upa.travellogbackend.model.User;
 import cz.upa.travellogbackend.repository.UserRepository;
+import cz.upa.travellogbackend.service.UserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -34,11 +35,10 @@ class UserServiceTest {
 
     @Test
     void registerUser_ShouldSaveUserWithEncodedPassword() {
-        // Arrange (Příprava)
         UserRegistrationDto dto = new UserRegistrationDto();
-        dto.setEmail("radek@example.com");
+        dto.setEmail("karel@example.com");
         dto.setPassword("Secret123");
-        dto.setFullName("Radek Fajčík");
+        dto.setFullName("Karel Novák");
 
         when(userRepository.findByEmail(anyString())).thenReturn(Optional.empty());
         when(passwordEncoder.encode(anyString())).thenReturn("encoded_password");
@@ -47,10 +47,10 @@ class UserServiceTest {
         // Act (Akce)
         User result = userService.registerUser(dto);
 
-        // Assert (Ověření výsledků) [cite: 4]
+        // Assert (Ověření výsledků)
         assertNotNull(result);
         assertEquals("encoded_password", result.getPassword());
-        assertEquals("radek@example.com", result.getEmail());
+        assertEquals("karel@example.com", result.getEmail());
         verify(userRepository, times(1)).save(any(User.class));
     }
 

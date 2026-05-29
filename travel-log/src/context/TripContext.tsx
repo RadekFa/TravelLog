@@ -16,8 +16,9 @@ interface Trip {
 
 interface TripContextType {
   trips: Trip[];
-  addTrip: (countryId: number, start: string, end: string) => Promise<void>;
-  updateTrip: (tripId: number, countryId: number, start: string, end: string) => Promise<void>;
+  // PRÁVĚ UPRAVENO: Typy se změnily na Promise<any>, aby mohly vracet pole achievementů
+  addTrip: (countryId: number, start: string, end: string) => Promise<any>;
+  updateTrip: (tripId: number, countryId: number, start: string, end: string) => Promise<any>;
   deleteTrip: (tripId: number) => Promise<void>;
   loading: boolean;
 }
@@ -66,14 +67,17 @@ export const TripProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       });
 
       if (response.ok) {
+        // Zpracujeme JSON s objektem visit a polem newlyUnlocked
+        const data = await response.json(); 
         await fetchVisits();
+        return data.newlyUnlocked || []; // Vrátíme achievementy do modalu
       }
     } catch (error) {
       console.error("Failed to save trip:", error);
     }
+    return [];
   };
 
-  // NOVÁ METODA: UPDATE
   const updateTrip = async (tripId: number, countryId: number, start: string, end: string) => {
     try {
       const response = await fetch(`http://localhost:8080/api/visits/${tripId}`, {
@@ -90,16 +94,18 @@ export const TripProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       });
 
       if (response.ok) {
-        await fetchVisits(); // Znovu načteme data pro synchronizaci UI
+        const data = await response.json();
+        await fetchVisits(); 
+        return data.newlyUnlocked || []; // Vrátíme achievementy do modalu
       } else {
         console.error("Failed to update trip on server");
       }
     } catch (error) {
       console.error("Error during updateTrip:", error);
     }
+    return [];
   };
 
-  // NOVÁ METODA: DELETE
   const deleteTrip = async (tripId: number) => {
     try {
       const response = await fetch(`http://localhost:8080/api/visits/${tripId}`, {
@@ -110,7 +116,6 @@ export const TripProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       });
 
       if (response.ok) {
-        // Můžeme buď znovu fetchovat, nebo jen odfiltrovat lokálně pro rychlost
         setTrips(prev => prev.filter(trip => trip.id !== tripId));
       } else {
         console.error("Failed to delete trip on server");

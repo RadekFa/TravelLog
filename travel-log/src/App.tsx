@@ -2,10 +2,12 @@ import React, { Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { TripProvider } from './context/TripContext';
-import { SettingsProvider, useSettings } from './context/SettingsContext'; // Přidán useSettings
+import { SettingsProvider, useSettings } from './context/SettingsContext';
 import { LanguageProvider } from './context/LanguageContext';
-import './styles/Main.scss'
+import { AchievementToastProvider } from './context/AchievementToastContext';
+import './styles/Main.scss';
 import ScrollToTop from './components/ScrollToTop';
+import { AlertToastProvider } from './context/AlertToastContext';
 
 const WelcomeScreen = lazy(() => import('./pages/WelcomeScreen'));
 const MainPage = lazy(() => import('./pages/MainPage'));
@@ -21,7 +23,6 @@ const PageLoader = () => (
   </div>
 );
 
-// IZOLOVANÝ WRAPPER: Aplikuje třídu dark-theme-active pouze na vnitřní uživatelské stránky
 const ThemeWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { settings } = useSettings();
   const themeClass = settings?.darkModeEnabled ? 'dark-theme-active' : 'light-theme-active';
@@ -53,7 +54,6 @@ const AppContent: React.FC = () => {
   return (
     <Suspense fallback={<PageLoader />}>
       <Routes>
-        {/* 1. WELCOME SCREEN - Stojí mimo wrapper, takže je vždy ve světlém režimu */}
         <Route 
             path="/" 
             element={
@@ -63,14 +63,12 @@ const AppContent: React.FC = () => {
             } 
         />
         
-        {/* 2. UŽIVATELSKÉ STRÁNKY - Všechny jsou správně otevřeny i uzavřeny v ThemeWrapperu */}
         <Route path="/map" element={<ProtectedRoute><ThemeWrapper><MainPage /></ThemeWrapper></ProtectedRoute>} />
         <Route path="/countries" element={<ProtectedRoute><ThemeWrapper><CountryList /></ThemeWrapper></ProtectedRoute>} />
         <Route path="/country/:name" element={<ProtectedRoute><ThemeWrapper><CountryDetail /></ThemeWrapper></ProtectedRoute>} />
         <Route path="/settings" element={<ProtectedRoute><ThemeWrapper><SettingsPage /></ThemeWrapper></ProtectedRoute>} />
         <Route path="/profile" element={<ProtectedRoute><ThemeWrapper><ProfilePage /></ThemeWrapper></ProtectedRoute>} />
         
-        {/* 3. ADMIN PANEL - Stojí mimo wrapper, takže zůstává striktně světlý */}
         <Route
           path="/admin"
           element={
@@ -106,7 +104,11 @@ const App: React.FC = () => {
         <SettingsProvider>
           <LanguageProvider>
             <TripProvider>
-              <AppContent />
+              <AchievementToastProvider>
+                <AlertToastProvider>
+                <AppContent />
+                </AlertToastProvider>
+              </AchievementToastProvider>
             </TripProvider>
           </LanguageProvider>
         </SettingsProvider>

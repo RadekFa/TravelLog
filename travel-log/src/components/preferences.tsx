@@ -1,4 +1,3 @@
-import React from "react";
 import { useSettings } from "../context/SettingsContext";
 import { useLanguage } from "../context/LanguageContext";
 import "../styles/componentsStyles/Preferences.scss";
@@ -43,6 +42,7 @@ const Preferences = () => {
             type="checkbox"
             checked={settings.notificationsEnabled}
             onChange={() => updateSettings({ notificationsEnabled: !settings.notificationsEnabled })}
+            aria-label={t('settings.notifications_toggle') || "Toggle Notifications"}
           />
           <span className="slider" />
         </label>
@@ -60,6 +60,7 @@ const Preferences = () => {
             type="checkbox"
             checked={settings.darkModeEnabled}
             onChange={() => updateSettings({ darkModeEnabled: !settings.darkModeEnabled })}
+            aria-label={t('settings.dark_mode_toggle') || "Toggle Dark Mode"}
           />
           <span className="slider" />
         </label>

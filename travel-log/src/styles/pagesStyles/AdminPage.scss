@@ -1,0 +1,84 @@
+@use '../variables.scss' as *;
+
+.admin-page {
+  background-color: #f4f7f6;
+  min-height: 100vh;
+
+  .admin-page-header {
+    background-color: $color-dark-primary;
+    padding: 30px 2.5vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: $color-white;
+
+    .header-left {
+      h1 {
+        margin: 0;
+        font-family: $font-family-header;
+        font-size: 2.2rem;
+        letter-spacing: $letter-spacing-header;
+        font-weight: 600;
+        text-align: left;
+      }
+      p {
+        margin: 5px 0 0 0;
+        font-family: $font-family-primary;
+        font-size: 0.9rem;
+        text-align: left;
+        opacity: 0.7;
+      }
+    }
+
+    .admin-logout-btn {
+      background: transparent;
+      border: 1px solid rgba($color-white, 0.2);
+      color: $color-white;
+      padding: 10px 20px;
+      border-radius: $border-radius;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      font-family: $font-family-primary;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: $color-white;
+        color: $color-dark-primary;
+      }
+    }
+  }
+
+  .admin-main-content {
+    padding: 40px 2.5vw 100px 2.5vw; // Padding dole kvůli BottomMenu
+
+    .admin-container-stack {
+      width: 95vw;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 40px; // Mezera mezi sekcemi (Stats, Charts, Table)
+
+      section {
+        width: 100%;
+      }
+    }
+  }
+}
+
+// Responzivita pro mobilní zařízení
+@media screen and (max-width: 710px) {
+  .admin-page {
+    .admin-page-header {
+      padding: 20px 5vw;
+      text-align: left;
+      h1 { font-size: 1.6rem; 
+        text-align: left;
+      }
+    }
+    .admin-main-content {
+      padding: 20px 5vw 100px 5vw;
+    }
+  }
+}

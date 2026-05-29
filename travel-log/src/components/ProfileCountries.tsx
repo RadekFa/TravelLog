@@ -65,7 +65,7 @@ const ProfileCountries = () => {
         <h2>{t('profile.visited_countries') || "Visited Countries"}</h2>
       </div>
 
-      <div className={`countries-grid ${isExpanded ? "expanded" : "collapsed"}`}>
+      <div className={`countries-grid ${isExpanded || !shouldShowButton ? "expanded" : "collapsed"}`}>
         {displayedTrips.map((trip) => (
           <div key={trip.id} className="country-card">
             

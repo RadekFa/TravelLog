@@ -19,6 +19,7 @@ const TravelGoalSetting = () => {
           max={195}
           value={settings.travelGoal}
           onChange={(e) => updateSettings({ travelGoal: Number(e.target.value) })}
+          aria-label={t('settings.goal_slider_label') || "Set your country target"}
           style={{
             "--value": settings.travelGoal,
             "--min": 1,
