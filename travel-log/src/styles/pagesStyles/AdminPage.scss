@@ -3,10 +3,13 @@
 .admin-page {
   background-color: #f4f7f6;
   min-height: 100vh;
+  // Zajištění, že obsah nepřeteče horizontálně (např. při dlouhých tabulkách)
+  overflow-x: hidden;
 
   .admin-page-header {
     background-color: $color-dark-primary;
-    padding: 30px 2.5vw;
+    // Symetrický padding 5vw z obou stran
+    padding: 30px 5vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -43,6 +46,10 @@
       font-family: $font-family-primary;
       transition: all 0.3s ease;
 
+      svg {
+        stroke: currentColor;
+      }
+
       &:hover {
         background: $color-white;
         color: $color-dark-primary;
@@ -51,17 +58,21 @@
   }
 
   .admin-main-content {
-    padding: 40px 2.5vw 100px 2.5vw; // Padding dole kvůli BottomMenu
+    // Sjednocený padding pro obsah
+    padding: 40px 5vw 100px 5vw;
 
     .admin-container-stack {
-      width: 95vw;
+      width: 100%;
+      // Omezení maximální šířky, aby to na obřích monitorech nevypadalo roztaženě
+      max-width: 1400px; 
       margin: 0 auto;
       display: flex;
       flex-direction: column;
-      gap: 40px; // Mezera mezi sekcemi (Stats, Charts, Table)
+      gap: 40px;
 
       section {
         width: 100%;
+        box-sizing: border-box; // Důležité pro korektní výpočet šířky
       }
     }
   }
@@ -72,10 +83,11 @@
   .admin-page {
     .admin-page-header {
       padding: 20px 5vw;
-      text-align: left;
-      h1 { font-size: 1.6rem; 
-        text-align: left;
-      }
+      flex-direction: column; // Pokud se nevejdou vedle sebe, jdou pod sebe
+      align-items: flex-start;
+      gap: 20px;
+      
+      h1 { font-size: 1.6rem; }
     }
     .admin-main-content {
       padding: 20px 5vw 100px 5vw;
